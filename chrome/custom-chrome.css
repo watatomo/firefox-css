@@ -58,3 +58,7 @@ box#sidebar-header {
 .eom-addon-button[message-type="warning"] {
     background-color: unset;
 }
+
+:root {
+    --tooltip-bgcolor: var(--uc-toolbar-bgcolor);
+}

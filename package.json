@@ -3,7 +3,10 @@
     "version": "0.0.1",
     "main": "false",
     "scripts": {
-        "build": "sass src/uc-globals.scss chrome/uc-globals.css --no-source-map"
+        "build": "sass src/uc-globals.scss chrome/uc-globals.css --no-source-map && npx prettier --write chrome/uc-globals.css",
+        "prettier": "npx prettier --write .",
+        "update-css": "cp chrome/uc-globals.css /c/Users/Ren/AppData/Roaming/Mozilla/Firefox/Profiles/ridzo5dx.default/chrome",
+        "update": "cp -r chrome /c/Users/Ren/AppData/Roaming/Mozilla/Firefox/Profiles/ridzo5dx.default"
     },
     "repository": {
         "type": "git",
