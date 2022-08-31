@@ -19,27 +19,27 @@
     --uc-frame-color: var(--uc-accent-color);
     --uc-toolbar-bgcolor: #{$base};
     --uc-toolbar-color: var(--ui-text-100);
-    --uc-toolbar-field-color: var(--ui-text-100);
-    --uc-arrowpanel-background: #{$surface0};
-    --uc-arrowpanel-color: var(--ui-text-100);
-    --uc-arrowpanel-very-faint: #{fade-out($blue, 0.05)};
-    --uc-arrowpanel-faint: #{fade-out($blue, 0.1)};
-    --uc-arrowpanel-dimmed: #{fade-out($lavender, 0.17)};
-    --uc-arrowpanel-dimmed-further: #{fade-out($lavender, 0.25)};
-    --uc-arrowpanel-dimmed-even-further: #{fade-out($lavender, 0.3)};
-    --uc-desaturate-faint: #{fade-out($text, 0.1)};
-    --uc-desaturate-semi-faint: #{fade-out($text, 0.13)};
-    --uc-desaturate-dimmed: #{fade-out($text, 0.17)};
-    --uc-desaturate-dimmed-further: #{fade-out($text, 0.25)};
-    --uc-desaturate-dimmed-even-further: #{fade-out($text, 0.3)};
-    --uc-content-text-a50: #{fade-out($subtext1, 0.5)};
-    --uc-content-text-a80: #{fade-out($subtext1, 0.8)};
-    --uc-panel-button-solid: #{$surface0};
-    --uc-panel-button-faint-solid: #{fade-out($surface0, 0.8)};
-    --uc-panel-box-solid: #{$base};
-    --button-solid-hover-background: #{$surface0};
-    --button-solid-active-background: #{scale-color($surface0, $lightness: 10%)};
-    --button-solid-checked-background: #{scale-color($surface0, $lightness: -5%)};
+    --uc-toolbar-field-color: hsl(240, 60%, 99%);
+    --uc-arrowpanel-background: hsl(233, 36%, 11%);
+    --uc-arrowpanel-color: hsl(213, 43%, 89%);
+    --uc-arrowpanel-very-faint: hsla(236, 100%, 83%, 0.05);
+    --uc-arrowpanel-faint: hsla(236, 100%, 83%, 0.1);
+    --uc-arrowpanel-dimmed: hsla(236, 100%, 83%, 0.17);
+    --uc-arrowpanel-dimmed-further: hsla(234, 100%, 83%, 0.25);
+    --uc-arrowpanel-dimmed-even-further: hsla(232, 100%, 85%, 0.3);
+    --uc-desaturate-faint: hsla(236, 60%, 83%, 0.1);
+    --uc-desaturate-semi-faint: hsla(236, 60%, 83%, 0.13);
+    --uc-desaturate-dimmed: hsla(236, 60%, 83%, 0.17);
+    --uc-desaturate-dimmed-further: hsla(234, 60%, 83%, 0.25);
+    --uc-desaturate-dimmed-even-further: hsla(232, 60%, 85%, 0.3);
+    --uc-content-text-a50: hsla(236, 100%, 85%, 0.5);
+    --uc-content-text-a80: hsla(236, 50%, 85%, 0.8);
+    --uc-panel-button-solid: hsl(234, 24%, 35%);
+    --uc-panel-button-faint-solid: hsl(234, 27%, 23%);
+    --uc-panel-box-solid: hsl(233, 29%, 18%);
+    --button-solid-hover-background: hsl(232, 29%, 26%);
+    --button-solid-active-background: hsl(234, 26%, 30%);
+    --button-solid-checked-background: hsl(232, 31%, 23%);
     --uc-toolbarbutton-checked-background: hsla(236, 82%, 83%, 0.13);
     --uc-toolbarbutton-hover-background: hsla(236, 82%, 83%, 0.17);
     --uc-toolbarbutton-active-background: hsla(234, 82%, 83%, 0.22);
@@ -52,13 +52,11 @@
     --uc-panel-shortcut-focus: hsla(235, 32%, 80%, 95%);
     --uc-places-cell-focus-bgcolor: hsl(232, 30%, 19%);
     --uc-places-cell-hover-bgcolor: hsl(232, 30%, 23%);
-    --light-on-dark-button-text-color: #{$text};
+    --light-on-dark-button-text-color: #fff;
 
     --menupopup-inner-box-margin: 0px;
-    --uc-menupopup-shadow: 0px 0px 8px -4px hsla(240, 4%, 0%, 0.6),
-        0px 0px 15px 0px hsla(0, 0%, 0%, 0.2);
-    --uc-panel-shadow: 0px 0px 8px -4px hsla(240, 4%, 0%, 0.6),
-        0px 0px 15px 0px hsla(0, 0%, 0%, 0.2);
+    --uc-menupopup-shadow: none;
+    --uc-panel-shadow: none;
     --searchbar-popup-border: 1px solid var(--uc-menu-border-color);
     --searchbar-popup-border-radius: 0 0 4px 4px;
     --searchbar-popup-box-shadow: 0 0 10px 3px hsla(0, 0%, 0%, 0.15);
@@ -161,17 +159,17 @@
     --default-search-identity-icon: url(chrome://userchrome/content/search-glass.svg);
     --identity-box-solid-bg: hsl(233, 34%, 22%);
     --identity-box-focus-bg: hsl(234, 34%, 23%);
-    --secure-color: #{$green};
-    --secure-text-color: #{$green};
-    --warning-color: #{$maroon};
-    --uc-warning-background: #{fade-out($maroon, 0.15)};
-    --warning-text-color: #{$maroon};
+    --secure-color: hsl(119, 80%, 60%);
+    --secure-text-color: hsl(129, 100%, 70%);
+    --warning-color: hsl(355, 100%, 66%);
+    --uc-warning-background: hsla(2, 100%, 66%, 25%);
+    --warning-text-color: hsl(355, 100%, 70%);
     --warning-icon-background: hsl(358, 86%, 63%);
     --warning-icon-detail: hsl(354, 69%, 30%);
     --warning-icon-stroke: hsl(358, 100%, 60%);
     --low-warning-background: hsla(48, 100%, 66%, 0.2);
-    --low-warning-color: #{$yellow};
-    --low-warning-text-color: #{$yellow};
+    --low-warning-color: hsl(40, 100%, 57%);
+    --low-warning-text-color: hsl(40, 100%, 70%);
     --low-warning-border-color: hsla(35, 70%, 76%, 0.2);
     --low-warning-icon-background: hsl(44, 95%, 60%);
     --low-warning-icon-detail: hsl(32, 52%, 35%);
@@ -181,7 +179,7 @@
     --update-badge-bg: hsl(125, 81%, 57%);
     --update-badge-color: hsl(118, 89%, 24%);
     --update-badge-inactive: hsl(227, 19%, 48%);
-    --attention-color: #{$blue};
+    --attention-color: hsl(224, 100%, 71%);
     --eom-warning-bg: hsla(48, 100%, 66%, 0.15);
     --eom-warning-bg-hover: hsla(48, 100%, 75%, 0.23);
     --eom-warning-bg-active: hsla(48, 100%, 80%, 0.27);
@@ -193,7 +191,7 @@
     --uc-destructive-active-bgcolor: hsl(345.8, 90%, 40%);
     --uc-destructive-color: var(--ui-text-100);
 
-    --global-selection-bgcolor: #{fade-out($blue, 0.5)};
+    --global-selection-bgcolor: hsla(245, 100%, 70%, 0.55);
     --global-selection-color: white;
     --global-selection-bgcolor-disabled: hsla(243, 35%, 65%, 0.45);
     --ui-selection-bgcolor: hsla(0, 0%, 100%, 0.9);
@@ -205,10 +203,7 @@
     --pdf-selection-bgcolor: hsl(245, 100%, 46.7%);
     --pdf-highlight-bgcolor: hsl(345, 100%, 40%);
 
-    /* controls the color of the search highlights in about:preferences */
     --solid-selection-bgcolor: var(--pink-action);
-    /* controls the color of the little tooltips that appear on search highlighted
-  buttons in about:preferences */
     --aboutPrefs-find-tags: var(--pink-action);
 
     --uc-tab-background: var(--lwt-accent-color);
@@ -239,7 +234,7 @@
         ),
         var(--uc-toolbar-bgcolor)
     );
-    --multiselected-color: #{$blue};
+    --multiselected-color: hsl(241, 50%, 51%);
 
     --titlebar-spacer-width: 32px;
     --titlebar-gradient: radial-gradient(
@@ -268,7 +263,7 @@
     --ui-textbox-focus-bgcolor: hsl(232, 22%, 34%);
     --ebp-menulist-background-color: hsl(232, 24%, 32%);
     --ebp-menulist-menuitem-hover-background-color: hsl(232, 21%, 40%);
-    --ebp-menulist-separator-color: #{$surface2};
+    --ebp-menulist-separator-color: hsl(232, 21%, 43%);
     --ebp-favicon-background-color: var(--dialog-bgcolor);
     --ebmp-hover-bgcolor: hsl(233, 24%, 33%);
     --ebmp-focus-bgcolor: hsl(233, 24%, 38%);
@@ -279,8 +274,8 @@
     --urlbar-results-bgcolor: var(--ui-secondary-bg);
     /* the width of a search one-off button in the urlbar */
     --urlbar-one-offs-engine-width: 28px;
-    --loading-throbber-fill: #{$blue};
-    --busy-throbber-fill: #{$text};
+    --loading-throbber-fill: hsl(225, 100%, 75%);
+    --busy-throbber-fill: hsl(218, 90%, 85%);
     --sanitize-border-color: hsla(0, 0%, 5%, 0.2);
     --menu-separator-color: #{$surface2};
     --urlbar-input-bgcolor: #{$surface0};
@@ -311,28 +306,28 @@
     --download-button-hover-bg: var(--button-hover-bgcolor);
     --download-button-active-bg: var(--button-active-bgcolor);
 
-    --pink-action: #{$pink};
-    --purple-20: #{$blue}; // hsl(240, 100%, 80%)
-    --purple-25: #{$blue}; // hsl(240, 100%, 75%)
-    --purple-30: #{$blue}; // hsl(239, 100%, 70%)
-    --purple-30-a50: #{fade-out($blue, 0.5)}; // hsla(240, 100%, 70%, 0.5)
-    --purple-35: #{$blue}; // hsl(245, 100%, 65%)
-    --purple-40: #{$blue}; // hsl(250, 100%, 60%)
-    --purple-40-a10: #{fade-out($blue, 0.1)}; // hsla(250, 100%, 60%, 0.1)
-    --purple-40-a30: #{fade-out($blue, 0.3)}; // hsla(250, 100%, 60%, 0.3)
-    --purple-40-a50: #{fade-out($blue, 0.5)}; // hsla(250, 100%, 60%, 0.5)
-    --purple-45: #{$blue}; // hsl(250, 87%, 55%)
-    --purple-50: #{$blue} !important; // hsl(256, 87%, 50%)
-    --purple-55: #{$blue}; // hsl(256, 87%, 45%)
-    --purple-50-a30: #{fade-out($blue, 0.3)}; // hsla(256, 87%, 50%, 0.3)
-    --purple-60: #{$blue} !important;
-    --purple-70: #{$blue}; // hsl(256, 97%, 30%)
-    --purple-80: #{$blue}; // hsl(254, 100%, 20%)
-    --pink-40: #{$pink}; // hsl(340, 73%, 60%)
-    --pink-35: #{$pink}; // hsl(340, 73%, 65%)
-    --pink-30: #{$pink}; // hsl(340, 73%, 70%)
+    --pink-action: hsl(340, 73%, 58%);
+    --purple-20: hsl(240, 100%, 80%);
+    --purple-25: hsl(240, 100%, 75%);
+    --purple-30: hsl(239, 100%, 70%);
+    --purple-30-a50: hsla(240, 100%, 70%, 0.5);
+    --purple-35: hsl(245, 100%, 65%);
+    --purple-40: hsl(250, 100%, 60%);
+    --purple-40-a10: hsla(250, 100%, 60%, 0.1);
+    --purple-40-a30: hsla(250, 100%, 60%, 0.3);
+    --purple-40-a50: hsla(250, 100%, 60%, 0.5);
+    --purple-45: hsl(250, 87%, 55%);
+    --purple-50: hsl(256, 87%, 50%) !important;
+    --purple-55: hsl(256, 87%, 45%);
+    --purple-50-a30: hsla(256, 87%, 50%, 0.3);
+    --purple-60: hsl(258, 95%, 40%) !important;
+    --purple-70: hsl(256, 97%, 30%);
+    --purple-80: hsl(254, 100%, 20%);
+    --pink-40: hsl(340, 73%, 60%);
+    --pink-35: hsl(340, 73%, 65%);
+    --pink-30: hsl(340, 73%, 70%);
 
-    --uc-parent-page-color: #{$text};
+    --uc-parent-page-color: hsl(212, 43%, 90%);
     --uc-parent-link-color: var(--purple-35);
     --uc-parent-link-color-hover: var(--purple-30);
     --uc-parent-link-color-active: var(--purple-30);
@@ -376,7 +371,7 @@
     --uc-switch-off-active-background: hsl(233, 19%, 24.5%);
     --uc-switch-off-hover-border: hsl(233, 15%, 32%);
 
-    accent-color: $blue;
+    accent-color: var(--global-focus-outline-color);
 }
 
 :root[fxastatus="not_configured"] {

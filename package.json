@@ -3,14 +3,14 @@
     "version": "0.0.1",
     "main": "false",
     "scripts": {
-        "test": "npm test"
+        "build": "sass src/uc-globals.scss chrome/uc-globals.css --no-source-map"
     },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/watatomo/firefox-css.git"
     },
     "author": "Ren",
-    "license": "MIT",
+    "license": "CC BY-NC-SA",
     "bugs": {
         "url": "https://github.com/watatomo/firefox-css/issues"
     },
