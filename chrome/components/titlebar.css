@@ -1,0 +1,44 @@
+/* Fix title bar buttons */
+.titlebar-button,
+.titlebar-button:hover {
+    background-color: unset !important;
+    stroke: ButtonText !important;
+}
+
+/* .titlebar-min:hover,
+.titlebar-max:hover,
+.titlebar-close:hover,
+.titlebar-restore:hover {
+    background-color: var(--toolbarbutton-hover-background) !important;
+}
+
+.titlebar-min {
+    list-style-image: url(chrome://browser/skin/window-controls/minimize.svg) !important;
+}
+
+.titlebar-max {
+    list-style-image: url(chrome://browser/skin/window-controls/maximize.svg) !important;
+}
+
+.titlebar-close {
+    list-style-image: url(chrome://browser/skin/window-controls/close.svg) !important;
+}
+
+.titlebar-restore {
+    list-style-image: url(chrome://browser/skin/window-controls/restore.svg) !important;
+} */
+
+/* .identity-box-button:hover:not([open="true"]),
+#tracking-protection-icon-container:hover:not([open="true"]) {
+    fill: currentColor !important;
+    fill-opacity: var(--urlbar-icon-fill-opacity) !important;
+    background-color: var(--toolbarbutton-hover-background) !important;
+    color: var(--toolbar-field-color) !important;
+}
+
+.urlbar-page-action:not([disabled]):hover,
+#urlbar-go-button:hover,
+.search-go-button:hover {
+    background-color: var(--toolbarbutton-hover-background) !important;
+    color: var(--toolbar-field-color) !important;
+} */

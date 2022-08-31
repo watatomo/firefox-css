@@ -1,0 +1,3 @@
+#sidebar-box[sidebarcommand^="containertabs"] #sidebar-header {
+    display: none !important;
+}

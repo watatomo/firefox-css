@@ -1,0 +1,24 @@
+{
+    "name": "firefox-css",
+    "version": "0.0.1",
+    "main": "false",
+    "scripts": {
+        "test": "npm test"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/watatomo/firefox-css.git"
+    },
+    "author": "Ren",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/watatomo/firefox-css/issues"
+    },
+    "homepage": "https://github.com/watatomo/firefox-css#readme",
+    "description": "",
+    "devDependencies": {
+        "eslint": "^8.23.0",
+        "eslint-config-prettier": "^8.5.0",
+        "prettier": "2.7.1"
+    }
+}

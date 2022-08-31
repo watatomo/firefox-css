@@ -1,0 +1,60 @@
+/* a stylesheet for custom user rules. this way you can customize the theme,
+and when you update you can preserve your modifications by just updating everything except this file. */
+
+/* add a dummy rule so this will be loaded by the style editor on any page. */
+:root {
+    --uc-dummy-custom-property: initial;
+}
+
+toolbarbutton[label="Hydrus Companion"] {
+    background-color: transparent !important;
+}
+
+#tab-nav-tooltip-textbox {
+    max-width: 300px;
+}
+
+/* hides all tabs button. get an extension to show it instead */
+#tabbrowser-tabs ~ #alltabs-button {
+    display: none !important;
+}
+
+#urlbar-results [dynamicType="quickactions"] {
+    display: none !important;
+}
+
+:is(.customization-target, .widget-overflow-list)
+    :is(toolbarbutton, toolbaritem):not([attention])
+    > .toolbarbutton-badge-stack
+    > .toolbarbutton-badge {
+    color: var(--uc-toolbar-bgcolor) !important;
+}
+
+box#sidebar-header {
+    display: none !important;
+}
+
+#urlbar-input-container[contextid] {
+    background-color: color-mix(
+        in srgb,
+        transparent 75%,
+        var(--identity-tab-color)
+    ) !important;
+}
+
+#urlbar[open] #urlbar-input-container[contextid] {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+#urlbar[open]
+    > #urlbar-input-container[contextid]
+    ~ .urlbarView
+    > .urlbarView-body-outer
+    > .urlbarView-body-inner {
+    border-color: transparent !important;
+}
+
+.eom-addon-button[message-type="warning"] {
+    background-color: unset;
+}
