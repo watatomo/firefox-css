@@ -443,10 +443,10 @@ tooltip:not([position]) {
 }
 
 tooltip > description {
-    background-color: var(--tooltip-bgcolor);
-    color: var(--tooltip-color);
-    border: 1px solid var(--tooltip-border-color);
-    border-radius: var(--tooltip-border-radius);
+    background-color: var(--uc-tooltip-bgcolor, #313244);
+    color: var(--uc-tooltip-color, #cdd6f4);
+    border: 1px soild var(--uc-tooltip-border, #585b70);
+    border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     padding: var(--uc-tooltip-inner-padding, 4px 7px 6px 7px);
     margin: 0;

@@ -1,9 +1,5 @@
-/* a stylesheet for custom user rules. this way you can customize the theme,
-and when you update you can preserve your modifications by just updating everything except this file. */
-
-/* add a dummy rule so this will be loaded by the style editor on any page. */
-:root {
-    --uc-dummy-custom-property: initial;
+#sidebar-box[sidebarcommand^="containertabs"] #sidebar-header {
+    display: none !important;
 }
 
 toolbarbutton[label="Hydrus Companion"] {
@@ -56,9 +52,5 @@ box#sidebar-header {
 }
 
 .eom-addon-button[message-type="warning"] {
-    background-color: unset;
-}
-
-:root {
-    --tooltip-bgcolor: var(--uc-toolbar-bgcolor);
+    background-color: unset !important;
 }

@@ -42,14 +42,16 @@
 /****** simpleMenuWizard END ******/
 /**********************************/
 
-box#identity-icon-box,
-box#identity-permission-box,
+/* box#identity-icon-box,
+box#identity-permission-box, */
 menuitem[id*="ublock"],
 menuitem[id*="tampermonkey"],
 menuitem.context-menu-add-engine,
 hbox.search-one-offs,
 menu[id*="tampermonkey"],
 menuitem[id*="open-tab-then-discard"],
-menuitem[label*="Clean Link"] {
+menuitem[label*="Clean Link"],
+menugroup#context-navigation,
+menu[label*="Tampermonkey"] ~ menuseperator {
     display: none !important;
 }

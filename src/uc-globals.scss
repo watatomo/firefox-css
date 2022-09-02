@@ -370,6 +370,10 @@
     --uc-switch-off-hover-border: hsl(233, 15%, 32%);
 
     accent-color: $blue;
+
+    --uc-tooltip-color: #{$text};
+    --uc-tooltip-bgcolor: #{$surface0};
+    --uc-tooltip-border: #{$surface2};
 }
 
 :root[fxastatus="not_configured"] {

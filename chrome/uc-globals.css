@@ -344,6 +344,9 @@
     --uc-switch-off-active-background: hsl(233, 19%, 24.5%);
     --uc-switch-off-hover-border: hsl(233, 15%, 32%);
     accent-color: #89b4fa;
+    --uc-tooltip-color: #cdd6f4;
+    --uc-tooltip-bgcolor: #313244;
+    --uc-tooltip-border: #585b70;
 }
 
 :root[fxastatus="not_configured"] {

@@ -295,8 +295,8 @@ overflowing tabs don't draw shadows on the special new tab button */
 .uc-titlebar-restore {
     appearance: none !important;
     padding: 0px !important;
-    padding-left: 7px !important;
-    padding-right: 7px !important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
     margin-left: 0px !important;
     margin-right: 0px !important;
     margin-top: 0px !important;
@@ -321,8 +321,8 @@ overflowing tabs don't draw shadows on the special new tab button */
 :is(.titlebar-min, .uc-titlebar-min) {
     appearance: none !important;
     padding: 0px !important;
-    padding-left: 10px !important;
-    padding-right: 10px !important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
     margin-left: 0px !important;
     margin-right: 0px !important;
     margin-top: 0px !important;
@@ -340,8 +340,8 @@ overflowing tabs don't draw shadows on the special new tab button */
 .uc-titlebar-close {
     appearance: none !important;
     padding: 0px !important;
-    padding-left: 7px !important;
-    padding-right: 7px !important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
     margin-left: 0px !important;
     margin-right: 0px !important;
     margin-top: 0px !important;

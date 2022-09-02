@@ -21,19 +21,19 @@
 class ExtensionOptionsWidget {
     // user configuration. change the value to the right of the colon.
     static config = {
-        "Replace addons button": true, // this script replaces the "Add-ons & Themes" button in the app menu with an "Extensions" button that opens our new panel instead of opening about:addons. set to false if you want to leave this button alone
+        "Replace addons button": false, // this script replaces the "Add-ons & Themes" button in the app menu with an "Extensions" button that opens our new panel instead of opening about:addons. set to false if you want to leave this button alone
 
-        "Show header": true, // set to false if you don't want the "Add-on options" title to be displayed at the top of the panel
+        "Show header": false, // set to false if you don't want the "Add-on options" title to be displayed at the top of the panel
 
         "Show version": false, // show the addon version next to its name in the list
 
-        "Show addon messages": true, // about:addons shows you when an addon has a warning or error, e.g. it's unsigned or blocked. if this is set to true, we'll show the same information in the panel
+        "Show addon messages": false, // about:addons shows you when an addon has a warning or error, e.g. it's unsigned or blocked. if this is set to true, we'll show the same information in the panel
 
-        "Show theme preview tooltips": true, // when hovering a theme in the panel, a preview/screenshot of the theme will be displayed in a tooltip, if possible. this depends on the add-on author.
+        "Show theme preview tooltips": false, // when hovering a theme in the panel, a preview/screenshot of the theme will be displayed in a tooltip, if possible. this depends on the add-on author.
 
         "Show hidden extensions": false, // show system extensions?
 
-        "Show disabled extensions": true, // show extensions that you've disabled?
+        "Show disabled extensions": false, // show extensions that you've disabled?
 
         "Show enabled extensions first": true, // show enabled extensions at the top of the list and disabled extensions at the bottom?
 

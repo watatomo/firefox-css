@@ -23,7 +23,7 @@
 (function () {
     // user configuration
     const config = {
-        urlOverride: ""
+        urlOverride: "about:config"
         /* the script tries to automatically find earthlng's aboutconfig URL, and if
     it can't be found, uses the built-in about:config URL instead. if it's
     unable to find the URL for your particular setup, or if you just want to
