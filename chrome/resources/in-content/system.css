@@ -503,6 +503,31 @@
         --message-bar-text-color: var(--text-color) !important;
     }
 
+    @-moz-document url-prefix("about:addons") {
+        .addon-badge {
+            border: 1px solid transparent !important;
+            width: 22px !important;
+            height: 22px !important;
+            border-radius: 11px !important;
+        }
+
+        .addon-badge-private-browsing-allowed {
+            background-color: var(--purple-40) !important;
+            border-color: var(--purple-30) !important;
+            background-position: center !important;
+            background-size: 15px !important;
+        }
+
+        .addon-badge-recommended {
+            background-color: hsl(40, 100%, 43%) !important;
+            border-color: hsl(40, 70%, 70%) !important;
+        }
+
+        .addon-badge-line {
+            background-size: 17px !important;
+        }
+    }
+
     .home-section .section .selector {
         background-color: var(--newtab-element-secondary-color) !important;
         border-color: transparent !important;

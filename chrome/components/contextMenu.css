@@ -31,7 +31,7 @@
    How to activate or deactivate the following options:
    Remove '/*' at the beginning of a line (not comment line) to activate the option
    Add '/*' at the beginning of the line (not comment line) to deactivate the option
-   **********************************************************/
+ **********************************************************/
 
 /*** Hide all "Send <item> to Device" entries ***/
 @import url("./simpleMenuWizard/opt_noSendToDevice.css");
@@ -52,6 +52,8 @@ menu[id*="tampermonkey"],
 menuitem[id*="open-tab-then-discard"],
 menuitem[label*="Clean Link"],
 menugroup#context-navigation,
-menu[label*="Tampermonkey"] ~ menuseperator {
+menu[label*="Tampermonkey"] + menuseperator,
+menuseparator.menuseparator-add-engine,
+menuseparator#context-media-eme-separator {
     display: none !important;
 }

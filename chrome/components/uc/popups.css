@@ -793,6 +793,9 @@ rtl languages. adjust the border radius accordingly */
             --arrowpanel-dimmed-even-further
         ) !important;
         --in-content-item-selected: var(--purple-40) !important;
+        --in-content-deemphasized-text: var(
+            --uc-panel-description-color
+        ) !important;
         --in-content-border-color: var(--dialog-box-border-color) !important;
         --in-content-border-hover: var(--dialog-box-border-hover) !important;
         --in-content-link-color: var(--purple-35) !important;
@@ -842,6 +845,10 @@ rtl languages. adjust the border radius accordingly */
         --in-content-button-vertical-padding: 5px !important;
     }
 
+    :root:not(.system-font-size) {
+        font-size: 12px !important;
+    }
+
     dialog[subdialog] .dialogRow {
         margin-block: 0 5px !important;
     }
@@ -886,7 +893,10 @@ rtl languages. adjust the border radius accordingly */
     }
 
     .dialog-button-box > button:not([disabled="true"]):focus-visible {
-        outline: var(--default-focusring, auto) !important;
+        outline: var(
+            --global-focus-outline,
+            var(--default-focusring, auto)
+        ) !important;
     }
 
     .dialog-button-box > button:not([disabled="true"]):hover:active,
@@ -1257,6 +1267,9 @@ rtl languages. adjust the border radius accordingly */
         ) !important;
         --in-content-item-selected: var(--purple-40) !important;
         --in-content-item-hover: var(--arrowpanel-dimmed) !important;
+        --in-content-deemphasized-text: var(
+            --uc-panel-description-color
+        ) !important;
         --in-content-border-color: var(--dialog-box-border-color) !important;
         --in-content-border-hover: var(--dialog-box-border-hover) !important;
         --in-content-link-color: var(--purple-35) !important;
@@ -1314,6 +1327,10 @@ rtl languages. adjust the border radius accordingly */
         --in-content-primary-button-text-color-hover: var(
             --ui-text-100
         ) !important;
+    }
+
+    :root:not(.system-font-size) {
+        font-size: 12px !important;
     }
 
     /* remove spotlight backdrop overlay */
@@ -1647,6 +1664,25 @@ rtl languages. adjust the border radius accordingly */
         }
     }
 
+    @-moz-document url("chrome://browser/content/spotlight.html")
+    {
+        .onboardingContainer :is(.primary, .secondary) {
+            line-height: revert !important;
+            min-height: revert !important;
+        }
+
+        .onboardingContainer
+            .screen[pos="split"]
+            .section-main
+            .main-content
+            .action-buttons
+            .secondary-cta
+            .arrow-icon {
+            padding-inline-end: 28px !important;
+            background-position-x: right 10px !important;
+        }
+    }
+
     @supports -moz-bool-pref("userChrome.css.mac-ui-fonts") {
         :root[dialogroot],
         :root[dialogroot] dialog {
@@ -1936,7 +1972,7 @@ link[href="chrome://global/content/printPagination.css"]
     }
 }
 
-/* page info popup. kinda lame */
+/* page info popup */
 @-moz-document url(chrome://browser/content/pageinfo/pageInfo.xhtml)
 {
     :root {
@@ -1952,8 +1988,8 @@ link[href="chrome://global/content/printPagination.css"]
     }
 
     #main-window {
-        background-color: var(--arrowpanel-background) !important;
-        color: var(--arrowpanel-color) !important;
+        background-color: var(--uc-arrowpanel-background) !important;
+        color: var(--uc-arrowpanel-color) !important;
     }
 
     #topBar {
@@ -1969,7 +2005,7 @@ link[href="chrome://global/content/printPagination.css"]
     #viewGroup > radio {
         margin: 4px 0 !important;
         padding: 2px !important;
-        color: var(--arrowanel-color) !important;
+        color: var(--uc-arrowanel-color) !important;
         background: none !important;
         fill: currentColor;
         -moz-image-region: initial !important;
@@ -1990,6 +2026,10 @@ link[href="chrome://global/content/printPagination.css"]
     #viewGroup > radio[selected="true"] .radio-label-box,
     #viewGroup > radio:hover:active .radio-label-box {
         background-color: var(--uc-places-cell-hover-bgcolor) !important;
+    }
+
+    #viewGroup > radio[focused="true"] .radio-label-box {
+        outline: var(--global-focus-outline, auto) !important;
     }
 
     #viewGroup > radio .radio-icon {
@@ -2029,8 +2069,8 @@ link[href="chrome://global/content/printPagination.css"]
     treecolpicker,
     button {
         appearance: none !important;
-        background-color: var(--arrowpanel-dimmed) !important;
-        color: var(--arrowpanel-color) !important;
+        background-color: var(--uc-arrowpanel-dimmed) !important;
+        color: var(--uc-arrowpanel-color) !important;
         border-color: var(--button-solid-active-background) !important;
     }
 
@@ -2039,10 +2079,14 @@ link[href="chrome://global/content/printPagination.css"]
     #permList {
         appearance: none !important;
         background: var(--ui-secondary-bg) !important;
-        color: var(--arrowpanel-color) !important;
+        color: var(--uc-arrowpanel-color) !important;
         border-radius: var(--general-button-border-radius) !important;
         overflow: clip !important;
         border: 1px solid var(--button-solid-active-background) !important;
+    }
+
+    :is(tree, richlistbox, #permList):focus-visible {
+        outline: var(--global-focus-outline, auto) !important;
     }
 
     .permission {
@@ -2063,7 +2107,7 @@ link[href="chrome://global/content/printPagination.css"]
     }
 
     :is(treecol, treecolpicker):where(:hover) {
-        background-color: var(--arrowpanel-dimmed-further) !important;
+        background-color: var(--uc-arrowpanel-dimmed-further) !important;
     }
 
     treechildren {
@@ -2081,7 +2125,7 @@ link[href="chrome://global/content/printPagination.css"]
 
     treechildren::-moz-tree-row(selected) {
         background-color: var(--uc-places-cell-hover-bgcolor) !important;
-        color: var(--arrowpanel-color) !important;
+        color: var(--uc-arrowpanel-color) !important;
     }
 
     treechildren::-moz-tree-row(selected),
@@ -2091,7 +2135,7 @@ link[href="chrome://global/content/printPagination.css"]
     }
 
     treechildren::-moz-tree-cell-text {
-        color: var(--arrowpanel-color) !important;
+        color: var(--uc-arrowpanel-color) !important;
     }
 
     button {
@@ -2195,8 +2239,8 @@ link[href="chrome://global/content/printPagination.css"]
 
     #imagecontainerbox {
         background: var(--transparent-img-background-context) !important;
-        background-color: var(--arrowpanel-faint) !important;
-        fill: var(--arrowpanel-dimmed);
+        background-color: var(--uc-arrowpanel-faint) !important;
+        fill: var(--uc-arrowpanel-dimmed);
         fill-opacity: 0.5;
         border: 1px solid var(--button-solid-active-background) !important;
         border-radius: var(--general-button-border-radius);

@@ -1291,7 +1291,7 @@ for some window scaling factors. */
     > #identity-icon {
     /* list-style-image: url(chrome://userchrome/content/about-logo.png) !important; */
     -moz-context-properties: fill !important;
-    list-style-image: url(chrome://userchrome/content/nightly-logo-gradient.svg) !important;
+    list-style-image: url(chrome://userchrome/content/developer-logo-gradient.svg) !important;
 }
 
 #urlbar[pageproxystate="valid"] #identity-box.chromeUI {

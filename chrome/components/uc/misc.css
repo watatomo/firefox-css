@@ -38,7 +38,7 @@ tooltip > description,
 tooltip .uc-tooltip-box {
     background-color: var(--tooltip-bgcolor) !important;
     color: var(--tooltip-color) !important;
-    border: 1px solid var(--tooltip-border-color) !important;
+    border: var(--tooltip-border) !important;
     border-radius: var(--tooltip-border-radius) !important;
     box-shadow: var(--tooltip-box-shadow) !important;
     padding: var(--uc-tooltip-inner-padding, 4px 7px 6px 7px) !important;

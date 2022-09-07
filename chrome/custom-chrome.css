@@ -1,3 +1,5 @@
+@import url("./uc-globals.css");
+
 #sidebar-box[sidebarcommand^="containertabs"] #sidebar-header {
     display: none !important;
 }
@@ -53,4 +55,29 @@ box#sidebar-header {
 
 .eom-addon-button[message-type="warning"] {
     background-color: unset !important;
+}
+
+#statuspanel:not([mirror])
+    > #statuspanel-inner
+    > #statuspanel-label:-moz-locale-dir(ltr),
+#statuspanel[mirror]
+    > #statuspanel-inner
+    > #statuspanel-label:-moz-locale-dir(rtl) {
+    background-color: var(--uc-toolbar-bgcolor) !important;
+
+    border-top-right-radius: 5px !important;
+}
+
+#statuspanel {
+    border-right: 1px solid #585b70 !important;
+    border-top: 1px solid #585b70 !important;
+    border-top-right-radius: 5px !important;
+    --tooltip-border-radius: 5px;
+}
+
+#statuspanel-label {
+    /* background: var(--uc-toolbar-bgcolor) !important; */
+    color: var(--ui-text-100) !important;
+    border-top-right-radius: 5px !important;
+    /* border-radius: 0px 5px 0px 0px !important; */
 }

@@ -354,6 +354,19 @@ toolbar
     background-color: var(--toolbarbutton-checked-background) !important;
 }
 
+#firefox-view-button:is(:focus-visible, [checked="true"]):not([open], :hover, :active)
+    > .toolbarbutton-icon {
+    background: var(--toolbarbutton-checked-background) !important;
+}
+
+#firefox-view-button:hover > .toolbarbutton-icon {
+    background: var(--toolbarbutton-hover-background) !important;
+}
+
+#firefox-view-button:is(:hover:active, [open]) > .toolbarbutton-icon {
+    background: var(--toolbarbutton-active-background) !important;
+}
+
 toolbar
     .toolbarbutton-1:not([disabled], [open])[checked]:hover
     > .toolbarbutton-icon {
@@ -992,7 +1005,7 @@ notification .messageCloseButton > .toolbarbutton-icon {
 notification .messageCloseButton,
 notification .messageImage,
 link[href="chrome://global/content/elements/message-bar.css"] ~ .container.infobar .notification-close,
-    link[href="chrome://global/content/elements/message-bar.css"] ~ .container.infobar .icon
+link[href="chrome://global/content/elements/message-bar.css"] ~ .container.infobar .icon
 {
     transition: 0.25s transform var(--animation-easing-function),
         0.25s opacity var(--animation-easing-function) !important;
@@ -1042,4 +1055,14 @@ link[href="chrome://global/content/elements/message-bar.css"] ~ .container.infob
 
 #fxa-toolbar-menu-button .toolbarbutton-icon {
     list-style-image: var(--fxa-ui-img, url(chrome://userchrome/content/fxa/avatar-big.svg));
+}
+
+#firefox-view-button {
+    list-style-image: var(--uc-firefox-view-icon) !important;
+}
+
+#firefox-view-button[attention] {
+    background-image: url(chrome://userchrome/content/indicator-tab-attention-purple.svg) !important;
+    background-size: 10px !important;
+    background-position: top 0 right 2px !important;
 }
