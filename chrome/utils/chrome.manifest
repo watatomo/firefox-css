@@ -14,6 +14,14 @@ override chrome://global/skin/arrowscrollbox.css ../resources/layout/arrowscroll
 # Override the tab element to restore the tab sound button and move the close button, among other things.
 override chrome://browser/content/tabbrowser-tab.js ../resources/script-override/tabMods.uc.js
 
+# These 3 are necessary for restorePreProtonArrowpanels.uc.js
+# Restore the arrow for panels.
+override chrome://global/content/elements/panel.js ../resources/script-override/panel.js
+# Restore the arrow for places menupopups (like the bookmarks toolbar button popup).
+override chrome://browser/content/places/places-menupopup.js ../resources/script-override/places-menupopup.js
+# Restore the arrow for translation notification panel.
+override chrome://browser/content/translation-notification.js ../resources/script-override/translation-notification.js
+
 # Override the notification message bar element to move the close button to the left in tab order.
 override chrome://global/content/elements/message-bar.js ../resources/script-override/message-bar.js
 
@@ -65,6 +73,8 @@ override chrome://browser/skin/login.svg ../resources/skin/login.svg
 override chrome://browser/skin/home.svg ../resources/skin/home.svg
 override chrome://browser/skin/privateBrowsing.svg ../resources/skin/privateBrowsing.svg
 override chrome://browser/skin/privatebrowsing/favicon.svg ../resources/skin/privateBrowsing.svg
+override chrome://global/skin/icons/indicator-private-browsing.svg ../resources/skin/privateBrowsing.svg
+override chrome://browser/skin/quickactions.svg ../resources/material/quickactions.svg
 override chrome://browser/skin/sidebars.svg ../resources/skin/sidebars.svg
 override chrome://browser/skin/sidebars-right.svg ../resources/skin/sidebars-right.svg
 override chrome://browser/skin/library.svg ../resources/skin/library.svg

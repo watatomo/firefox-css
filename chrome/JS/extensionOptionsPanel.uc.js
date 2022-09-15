@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name           Extension Options Panel
-// @version        1.8.6
+// @version        1.8.7
 // @author         aminomancer
 // @homepage       https://github.com/aminomancer/uc.css.js
 // @description    This script creates a toolbar button that opens a popup panel
@@ -37,7 +37,10 @@ class ExtensionOptionsWidget {
 
         "Show enabled extensions first": true, // show enabled extensions at the top of the list and disabled extensions at the bottom?
 
-        "Addon ID blacklist": [], // put addon IDs in this list, separated by commas, to exclude them from the list, e.g. ["screenshots@mozilla.org", "dark-theme@mozilla.org"]
+        "Addon ID blacklist": [
+            "FirefoxColor@mozilla.com",
+            "@testpilot-containers"
+        ], // put addon IDs in this list, separated by commas, to exclude them from the list, e.g. ["screenshots@mozilla.org", "dark-theme@mozilla.org"]
 
         "Icon URL": `chrome://mozapps/skin/extensions/extension.svg`, // if you want to change the button's icon for some reason, you can replace this string with any URL or data URL that leads to an image.
 
@@ -446,10 +449,10 @@ class ExtensionOptionsWidget {
             .sort((a, b) => {
                 // get sorted by enabled state...
                 let ka =
-                    (enabledFirst ? Number(a.isActive) : "") +
+                    (enabledFirst ? Number(!a.isActive) : "") +
                     a.name.toLowerCase();
                 let kb =
-                    (enabledFirst ? Number(b.isActive) : "") +
+                    (enabledFirst ? Number(!b.isActive) : "") +
                     b.name.toLowerCase();
                 return ka < kb ? -1 : 1;
             })

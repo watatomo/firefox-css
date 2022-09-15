@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name           Toolbox Button
-// @version        1.2.8
+// @version        1.2.9
 // @author         aminomancer
 // @homepage       https://github.com/aminomancer/uc.css.js
 // @description    Adds a new toolbar button that 1) opens the content toolbox on left click;
@@ -93,19 +93,19 @@
         /^chrome:\/\/browser\/content\/browser.(xul||xhtml)$/i.test(location) &&
         !CustomizableUI.getPlacementOfWidget("toolbox-button", true)
     ) {
-        const { require } = ChromeUtils.import(
-            "resource://devtools/shared/loader/Loader.jsm"
+        const lazy = {};
+        ChromeUtils.defineESModuleGetters(lazy, {
+            BrowserToolboxLauncher:
+                "resource://devtools/client/framework/browser-toolbox/Launcher.sys.mjs"
+        });
+        XPCOMUtils.defineLazyModuleGetters(lazy, {
+            require: "resource://devtools/shared/loader/Loader.jsm"
+        });
+        XPCOMUtils.defineLazyGetter(
+            lazy,
+            "Actor",
+            () => lazy.require("devtools/shared/protocol/Actor").Actor
         );
-        const { BrowserToolboxLauncher } = ChromeUtils.import(
-            "resource://devtools/client/framework/browser-toolbox/Launcher.jsm"
-        );
-        const { Actor } = require("devtools/shared/protocol/Actor");
-        const STATES = {
-            DETACHED: "detached",
-            EXITED: "exited",
-            RUNNING: "running",
-            PAUSED: "paused"
-        };
 
         CustomizableUI.createWidget({
             id: "toolbox-button",
@@ -334,7 +334,7 @@
                             aDoc.defaultView.key_toggleToolbox.click();
                             break;
                         case this.mouseConfig.browserToolbox:
-                            BrowserToolboxLauncher.getBrowserToolboxSessionState() // check if a browser toolbox window is already open
+                            lazy.BrowserToolboxLauncher.getBrowserToolboxSessionState() // check if a browser toolbox window is already open
                                 ? CustomHint.show(
                                       toolbarbutton,
                                       l10n.alreadyOpenMsg,
@@ -441,7 +441,7 @@
                 function toolboxObserver(sub, top, _data) {
                     // whether a toolbox is open
                     let state =
-                        BrowserToolboxLauncher.getBrowserToolboxSessionState();
+                        lazy.BrowserToolboxLauncher.getBrowserToolboxSessionState();
                     // set toolbar button's badge content
                     badgeLabel.textContent = state ? 1 : "";
                     // if toolbox is open and autohide is not already enabled, enable it
@@ -471,7 +471,7 @@
                 }
 
                 function destroyThreadActor() {
-                    if (this._state == STATES.PAUSED) {
+                    if (this._state == "paused") {
                         this.doResume();
                     }
 
@@ -501,9 +501,9 @@
                     this._threadLifetimePool.destroy();
                     this._threadLifetimePool = null;
                     this._dbg = null;
-                    this._state = STATES.EXITED;
+                    this._state = "exited";
 
-                    Actor.prototype.destroy.call(this);
+                    lazy.Actor.prototype.destroy.call(this);
                     // this leads back to toolboxObserver in 200ms
                     setTimeout(
                         () =>
@@ -594,6 +594,89 @@
                 ]) {
                     obSvc.addObserver(toolboxObserver, topic);
                 }
+                if (gBrowserInit.delayedStartupFinished) {
+                    toolboxInit();
+                } else {
+                    let delayedListener2 = (subject, topic) => {
+                        if (
+                            topic == "browser-delayed-startup-finished" &&
+                            subject == window
+                        ) {
+                            obSvc.removeObserver(delayedListener2, topic);
+                            toolboxInit();
+                        }
+                    };
+                    obSvc.addObserver(
+                        delayedListener2,
+                        "browser-delayed-startup-finished"
+                    );
+                }
+                return toolbarbutton;
+            }
+        });
+    }
+
+    let styleSvc = Cc["@mozilla.org/content/style-sheet-service;1"].getService(
+        Ci.nsIStyleSheetService
+    );
+    let toolboxCSS = /* css */ `.toolbarbutton-1#toolbox-button {
+    -moz-box-align: center;
+  }
+  .toolbarbutton-1#toolbox-button .toolbarbutton-badge-stack {
+    -moz-box-pack: center;
+  }
+  .toolbarbutton-1#toolbox-button .toolbarbutton-icon {
+    height: 16px;
+    width: 16px;
+    transition: fill 50ms ease-in-out 0s;
+  }
+  .toolbarbutton-1#toolbox-button {
+    list-style-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="context-fill" fill-opacity="context-fill-opacity" width="16" height="16" viewBox="0 0 16 16"><path d="M16,8V6c0-1.105-.895-2-2-2H2C0.895,4,0,4.895,0,6v2h4v1.333H0v5.333c0,.368,.298,.667,.667,.667h14.667 c0.368,0,.667-.298,.667-.667V9.333h-4V8H16z M11.333,10.667H10.6c-.058,.233-.148,.457-.267,.667l0.533,.533L9.933,12.8 L9.4,12.267l-.667,.267v0.8h-1.4V12.6l-.667-.267l-.533,.533l-.933-1l0.533-.533c-.119-.209-.208-.433-.267-.667h-.8 V9.333H5.4C5.458,9.1,5.548,8.876,5.667,8.667L5.133,8.133L6.067,7.2L6.6,7.733l0.667-.267v-.8H8.6V7.4l0.667,.267L9.8,7.133 l0.933,.933L10.2,8.6c0.119,.209,.208,.433,.267,.667h0.867L11.333,10.667L11.333,10.667z"/><circle cx="8" cy="10" r="1.333"/><path d="M6,2h4v1.333h1.333v-2c0-.368-.298-.667-.667-.667H5.333c-.368,0-.667,.298-.667,.667v2H6V2z"/></svg>');
+  }
+  .toolbarbutton-1#toolbox-button[icon="autohide"] {
+    list-style-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="context-fill" fill-opacity="context-fill-opacity" viewBox="0 0 16 16"><path d="M5.293.293a1 1 0 011.414 0L8.414 2H13a3 3 0 013 3v8a3 3 0 01-3 3H3a3 3 0 01-3-3V5a3 3 0 013-3h.586L5.293.293zM6 2.414L4.707 3.707A1 1 0 014 4H3c-.545 0-1 .455-1 1v8c0 .545.455 1 1 1h10c.545 0 1-.455 1-1V5c0-.545-.455-1-1-1H8a1 1 0 01-.707-.293L6 2.414z"/></svg>');
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .toolbarbutton-1#toolbox-button[animate] .toolbarbutton-icon {
+      animation-name: toolboxButtonPulse;
+      animation-duration: 200ms;
+      animation-iteration-count: 1;
+      animation-timing-function: ease-in-out;
+    }
+  }
+  @keyframes toolboxButtonPulse {
+    from {
+      transform: scale(1);
+    }
+    40% {
+      transform: scale(0.7);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  #confirmation-hint[data-message-id="hideCheckHint"] #confirmation-hint-message {
+    margin-inline: 0;
+  }`;
+    let styleURI = makeURI(
+        "data:text/css;charset=UTF=8," + encodeURIComponent(toolboxCSS)
+    );
+    if (!styleSvc.sheetRegistered(styleURI, styleSvc.AUTHOR_SHEET)) {
+        styleSvc.loadAndRegisterSheet(styleURI, styleSvc.AUTHOR_SHEET);
+    }
+
+    let observer = new MutationObserver(() => {
+        if (document.getElementById("key_toggleToolbox")) {
+            CustomizableUI.getWidget("toolbox-button")
+                .forWindow(window)
+                .node.setStrings();
+            observer.disconnect();
+            observer = null;
+        }
+    });
+    observer.observe(document.body, { childList: true });
+})();
+           }
                 if (gBrowserInit.delayedStartupFinished) {
                     toolboxInit();
                 } else {

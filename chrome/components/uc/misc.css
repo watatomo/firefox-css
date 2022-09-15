@@ -38,7 +38,7 @@ tooltip > description,
 tooltip .uc-tooltip-box {
     background-color: var(--tooltip-bgcolor) !important;
     color: var(--tooltip-color) !important;
-    border: var(--tooltip-border) !important;
+    border: 1px solid var(--tooltip-border-color) !important;
     border-radius: var(--tooltip-border-radius) !important;
     box-shadow: var(--tooltip-box-shadow) !important;
     padding: var(--uc-tooltip-inner-padding, 4px 7px 6px 7px) !important;
@@ -340,6 +340,7 @@ progress[paused]:indeterminate::-moz-progress-bar {
   background-image: var(--acrylic-texture) !important;
   backdrop-filter: var(--acrylic-blur) !important; */
 
+    padding: revert !important;
     border: 1px none var(--tooltip-border-color) !important;
     border-top-style: solid !important;
     box-shadow: var(--tooltip-box-shadow) !important;
@@ -696,6 +697,8 @@ toolbar:not(#PersonalToolbar)
             font-kerning: normal !important;
         }
 
+        .PanelUI-fxa-service-description-label,
+        .PanelUI-remotetabs-instruction-label,
         .pointerlockfswarning-domain-text,
         .pointerlockfswarning-generic-text {
             font-weight: var(--uc-font-weight-thin, 300) !important;
