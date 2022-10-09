@@ -153,8 +153,7 @@ titlebar, this sheet controls their appearance as well. */
     margin: 0 !important;
 }
 
-/* brings back new tab button next to tabs */
-/* #tabs-newtab-button,
+#tabs-newtab-button,
 #newPrivateTab-button {
     display: none !important;
 }
@@ -162,7 +161,7 @@ titlebar, this sheet controls their appearance as well. */
 #new-tab-button,
 #privateTab-button {
     display: -moz-box !important;
-} */
+}
 
 /* get rid of drop shadow drawn on leftmost visible tab */
 .tabbrowser-arrowscrollbox > .arrowscrollbox-overflow-start-indicator {
@@ -204,7 +203,7 @@ titlebar, this sheet controls their appearance as well. */
     margin-inline-end: 2px !important;
 }
 
-:is(toolbarbutton, toolbaritem) + #tabbrowser-tabs {
+:is(toolbarbutton, toolbaritem, toolbarpaletteitem) + #tabbrowser-tabs {
     margin-inline-start: 2px !important;
 }
 
@@ -295,8 +294,8 @@ overflowing tabs don't draw shadows on the special new tab button */
 .uc-titlebar-restore {
     appearance: none !important;
     padding: 0px !important;
-    padding-left: 5px !important;
-    padding-right: 5px !important;
+    padding-left: 7px !important;
+    padding-right: 7px !important;
     margin-left: 0px !important;
     margin-right: 0px !important;
     margin-top: 0px !important;
@@ -305,7 +304,7 @@ overflowing tabs don't draw shadows on the special new tab button */
     list-style-image: url(chrome://userchrome/content/window/maximize.svg) !important;
     grid-column: 1 !important;
     order: 1 !important;
-    -moz-box-ordinal-group: 2 !important;
+    -moz-box-ordinal-group: 1 !important;
 }
 
 :is(.titlebar-max, .uc-titlebar-max):hover {
@@ -321,15 +320,15 @@ overflowing tabs don't draw shadows on the special new tab button */
 :is(.titlebar-min, .uc-titlebar-min) {
     appearance: none !important;
     padding: 0px !important;
-    padding-left: 5px !important;
-    padding-right: 5px !important;
+    padding-left: 7px !important;
+    padding-right: 7px !important;
     margin-left: 0px !important;
     margin-right: 0px !important;
     margin-top: 0px !important;
     margin-bottom: 0px !important;
     background-color: transparent !important;
     list-style-image: url(chrome://userchrome/content/window/minimize.svg) !important;
-    -moz-box-ordinal-group: 1 !important;
+    -moz-box-ordinal-group: 2 !important;
 }
 
 :is(.titlebar-min, .uc-titlebar-min):hover {
@@ -340,8 +339,8 @@ overflowing tabs don't draw shadows on the special new tab button */
 .uc-titlebar-close {
     appearance: none !important;
     padding: 0px !important;
-    padding-left: 5px !important;
-    padding-right: 5px !important;
+    padding-left: 7px !important;
+    padding-right: 7px !important;
     margin-left: 0px !important;
     margin-right: 0px !important;
     margin-top: 0px !important;
@@ -373,6 +372,11 @@ overflowing tabs don't draw shadows on the special new tab button */
 
 .private-browsing-indicator {
     background: none !important;
+}
+
+#private-browsing-indicator-with-label {
+    -moz-context-properties: fill, fill-opacity !important;
+    fill: currentColor !important;
 }
 
 .private-browsing-indicator::before {
@@ -409,6 +413,18 @@ button.private-browsing-indicator:is(:hover, :focus-visible)::before {
 .accessibility-indicator:is(:hover:active, [open]) > .button-box,
 button.private-browsing-indicator:is(:hover:active, [open])::before {
     background-color: var(--arrowpanel-dimmed-further) !important;
+}
+
+:root:not([privatebrowsingmode="temporary"])
+    :is(#firefox-view-button, #wrapper-firefox-view-button)
+    + #tabbrowser-tabs {
+    border-inline-start: revert !important;
+    padding-inline-start: revert !important;
+}
+
+#TabsToolbar-customization-target
+    > :is(toolbarbutton, toolbaritem, toolbarpaletteitem):first-child {
+    margin-inline-start: 2px !important;
 }
 
 /* all tabs button popup */
@@ -623,6 +639,11 @@ button.private-browsing-indicator:is(:hover:active, [open])::before {
     transform: none !important;
     opacity: 0.7 !important;
     margin-inline-start: -2px !important;
+}
+
+/* temporarily revert flexbox emulation to make vertical tabs pane work. */
+#browser {
+    -moz-box-layout: revert !important;
 }
 
 #vertical-tabs-pane

@@ -46,8 +46,9 @@
     --uc-panel-shortcut-focus: hsla(235, 32%, 80%, 95%);
     --uc-places-cell-focus-bgcolor: hsl(232, 30%, 19%);
     --uc-places-cell-hover-bgcolor: hsl(232, 30%, 23%);
-    --light-on-dark-button-text-color: #fff;
+    --light-on-dark-button-text-color: #cdd6f4;
     --menupopup-inner-box-margin: 0px;
+    --panel-inner-box-margin: 4px;
     --uc-menupopup-shadow: none;
     --uc-panel-shadow: none;
     --searchbar-popup-border: 1px solid var(--uc-menu-border-color);
@@ -58,8 +59,9 @@
     --webextension-panel-border-radius: 5px;
     --menupopup-margin: calc(0px - var(--menupopup-inner-box-margin));
     --menupopup-background: transparent;
+    /* the "- 1px" below is to account for 1px menu borders */
     --menupopup-child-margin-block-start: calc(
-        -4px - var(--menupopup-inner-box-margin)
+        -4px - 1px - var(--menupopup-inner-box-margin)
     );
     --menupopup-child-margin-inline-start: calc(
         2px - var(--menupopup-inner-box-margin)
@@ -120,10 +122,6 @@
         var(--global-focus-outline-color);
     --global-focus-shadow: 0 0 0 2px var(--global-focus-shadow-color);
     --global-focus-outline-offset: -2px;
-    --transparent-img-background: center/16px repeat hsla(0, 0%, 80%)
-        url(chrome://userchrome/content/checker.svg);
-    --transparent-img-background-context: center/16px repeat
-        url(chrome://userchrome/content/checker-context.svg);
     --acrylic-blur: blur(15px);
     --acrylic-texture: url(chrome://userchrome/content/texture/lightnoise.png);
     --acrylic-blue: hsla(233.3, 39.1%, 9%, 0.58);
@@ -429,4 +427,21 @@ popupnotification,
     --protections-popup-switch-off-hover-border-custom: var(
         --uc-switch-off-hover-border
     );
+}
+
+@supports -moz-bool-pref("userChrome.css.mac-ui-fonts") {
+    :root {
+        --uc-font-weight-extrabold: 600;
+        --uc-font-weight-bold: 500;
+        --uc-font-weight-semibold: 400;
+        --uc-font-weight-thin: 300;
+    }
+}
+@supports -moz-bool-pref("userChrome.css.menupopup-shadows") {
+    :root {
+        --menupopup-inner-box-margin: 4px !important;
+        --panel-inner-box-margin: 4px;
+        --uc-menupopup-shadow: var(--tooltip-box-shadow) !important;
+        --uc-panel-shadow: var(--tooltip-box-shadow) !important;
+    }
 }

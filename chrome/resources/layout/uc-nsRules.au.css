@@ -5,6 +5,20 @@ from the style editor in the browser toolbox. */
 
 @-moz-document regexp("^((chrome|resource|file)://|about:).*$")
 {
+    menupopup:not([is="places-popup-arrow"]) {
+        -moz-window-input-region-margin: var(
+            --menupopup-inner-box-margin,
+            4px
+        ) !important;
+    }
+
+    :is(panel, menupopup)[type="arrow"] {
+        -moz-window-input-region-margin: var(
+            --panel-inner-box-margin,
+            4px
+        ) !important;
+    }
+
     panel,
     menupopup,
     :is(menupopup, panel)[type="arrow"] {

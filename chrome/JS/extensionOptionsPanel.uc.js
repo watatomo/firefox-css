@@ -1214,3 +1214,142 @@ class ExtensionOptionsWidget {
 }
 
 window.extensionOptionsPanel = new ExtensionOptionsWidget();
+
+    onTooltipShowing(e) {
+        let anchor = e.target.triggerNode
+            ? e.target.triggerNode.closest(".eom-addon-button")
+            : null;
+        let message = anchor._addonMessage;
+        let img = e.target.querySelector("#eom-theme-preview-canvas");
+        img.src = message?.preview || "";
+        if (!anchor || !message?.preview) {
+            e.preventDefault();
+            return;
+        }
+        e.target.setAttribute("position", "after_start");
+        e.target.moveToAnchor(anchor, "after_start");
+    }
+
+    // generate and load a stylesheet
+    loadStylesheet() {
+        let sss = Cc["@mozilla.org/content/style-sheet-service;1"].getService(
+            Ci.nsIStyleSheetService
+        );
+        let uri = makeURI(
+            "data:text/css;charset=UTF=8," +
+                encodeURIComponent(
+                    /*css*/
+                    `#eom-button {
+    list-style-image: url('${this.config["Icon URL"]}');
+}
+#eom-mainView-panel-header {
+    padding: 8px 4px 4px 4px;
+    min-height: 44px;
+    -moz-box-pack: center;
+    -moz-box-align: center;
+}
+#eom-mainView-panel-header-span {
+    font-weight: 600;
+    display: inline-block;
+    text-align: center;
+    overflow-wrap: break-word;
+}
+.panel-header ~ #eom-mainView-panel-header,
+.panel-header ~ #eom-mainView-panel-header + toolbarseparator {
+    display: none;
+}
+.eom-addon-button {
+    list-style-image: var(--extension-icon);
+}
+#${this.viewId} {
+    min-height: 400px;
+    min-width: 27em;
+}
+#${this.viewId} .disabled label {
+    opacity: 0.6;
+    font-style: italic;
+}
+#${this.viewId} .eom-message-label {
+    opacity: 0.6;
+    margin-inline-start: 8px;
+    font-style: italic;
+}
+.eom-addon-button[message-type="warning"] {
+    background-color: var(--eom-warning-bg, hsla(48, 100%, 66%, 0.15));
+}
+.eom-addon-button[message-type="warning"]:not([disabled], [open], :active):is(:hover) {
+    background-color: var(
+        --eom-warning-bg-hover,
+        color-mix(in srgb, currentColor 8%, hsla(48, 100%, 66%, 0.18))
+    );
+}
+.eom-addon-button[message-type="warning"]:not([disabled]):is([open], :hover:active) {
+    background-color: var(
+        --eom-warning-bg-active,
+        color-mix(in srgb, currentColor 15%, hsla(48, 100%, 66%, 0.2))
+    );
+}
+.eom-addon-button[message-type="error"] {
+    background-color: var(--eom-error-bg, hsla(2, 100%, 66%, 0.15));
+}
+.eom-addon-button[message-type="error"]:not([disabled], [open], :active):is(:hover) {
+    background-color: var(
+        --eom-error-bg-hover,
+        color-mix(in srgb, currentColor 8%, hsla(2, 100%, 66%, 0.18))
+    );
+}
+.eom-addon-button[message-type="error"]:not([disabled]):is([open], :hover:active) {
+    background-color: var(
+        --eom-error-bg-active,
+        color-mix(in srgb, currentColor 15%, hsla(2, 100%, 66%, 0.2))
+    );
+}
+.eom-radio-hbox {
+    padding-block: 4px;
+}
+.eom-radio-hbox .radio-check {
+    margin-block: 0;
+}
+.eom-radio-hbox label {
+    padding-bottom: 1px;
+}
+.eom-radio-label {
+    margin-inline-end: 8px;
+}
+.eom-radio-hbox .subviewradio {
+    margin: 0;
+    margin-inline: 2px;
+    padding: 0;
+    background: none !important;
+}
+.eom-radio-hbox .radio-label-box {
+    margin: 0;
+    padding: 0;
+}
+.eom-radio-label[tooltiptext] {
+    cursor: help;
+}
+.eom-addon-button[enable-checked]::after {
+    -moz-context-properties: fill, fill-opacity;
+    content: url(chrome://global/skin/icons/check.svg);
+    fill: currentColor;
+    fill-opacity: 0.6;
+    display: block;
+    margin-inline-start: 10px;
+}
+#eom-theme-preview-tooltip {
+    appearance: none;
+    padding: 0;
+    border-radius: var(--arrowpanel-border-radius, 8px);
+    overflow: hidden;
+    border: 1px solid var(--arrowpanel-border-color);
+    background: var(--arrowpanel-border-color);
+}`
+                )
+        );
+        if (sss.sheetRegistered(uri, sss.AUTHOR_SHEET)) return;
+        sss.loadAndRegisterSheet(uri, sss.AUTHOR_SHEET);
+    }
+}
+
+window.extensionOptionsPanel = new ExtensionOptionsWidget();

@@ -76,8 +76,15 @@ box#sidebar-header {
 }
 
 #statuspanel-label {
-    /* background: var(--uc-toolbar-bgcolor) !important; */
+    background: var(--uc-toolbar-bgcolor) !important;
     color: var(--ui-text-100) !important;
     border-top-right-radius: 5px !important;
     /* border-radius: 0px 5px 0px 0px !important; */
+}
+
+tooltip > description,
+.places-tooltip-box,
+tooltip .uc-tooltip-box,
+menupopup > arrowscrollbox {
+    border: 1px solid #585b70 !important;
 }

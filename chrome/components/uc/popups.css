@@ -1795,13 +1795,19 @@ rtl languages. adjust the border radius accordingly */
 
     @supports -moz-bool-pref("userChrome.css.mac-ui-fonts") {
         :root[dialogroot],
-        :root[dialogroot] dialog {
+        :root[dialogroot] dialog,
+        :root[dialogroot] body {
             font-family: SF Pro Text, SF Arabic, Segoe UI, sans-serif !important;
             font-kerning: normal !important;
         }
 
         :root[dialogroot] :is(h2, h3, #titleText) {
             font-weight: var(--uc-font-weight-semibold, 400) !important;
+            font-family: SF Pro Display, SF Arabic, Segoe UI, sans-serif !important;
+        }
+
+        :root[dialogroot] .onboardingContainer h1 {
+            font-weight: var(--uc-font-weight-bold, 600) !important;
             font-family: SF Pro Display, SF Arabic, Segoe UI, sans-serif !important;
         }
     }
@@ -2138,7 +2144,7 @@ link[href="chrome://global/content/printPagination.css"]
         background-color: var(--uc-places-cell-hover-bgcolor) !important;
     }
 
-    #viewGroup > radio[focused="true"] .radio-label-box {
+    #viewGroup:focus-visible > radio[focused="true"] .radio-label-box {
         outline: var(--global-focus-outline, auto) !important;
     }
 
@@ -2452,5 +2458,13 @@ link[href="chrome://global/content/printPagination.css"]
 
     #perm-microphone-row .permissionLabel {
         background-image: url(chrome://userchrome/content/notifications/microphone.svg);
+    }
+
+    @supports -moz-bool-pref("userChrome.css.mac-ui-fonts") {
+        strong,
+        .header,
+        .permissionLabel {
+            font-weight: var(--uc-font-weight-extrabold, 600) !important;
+        }
     }
 }
