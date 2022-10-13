@@ -153,7 +153,8 @@ titlebar, this sheet controls their appearance as well. */
     margin: 0 !important;
 }
 
-#tabs-newtab-button,
+/* brings back new tab button next to tabs when commented out */
+/* #tabs-newtab-button,
 #newPrivateTab-button {
     display: none !important;
 }
@@ -161,7 +162,7 @@ titlebar, this sheet controls their appearance as well. */
 #new-tab-button,
 #privateTab-button {
     display: -moz-box !important;
-}
+} */
 
 /* get rid of drop shadow drawn on leftmost visible tab */
 .tabbrowser-arrowscrollbox > .arrowscrollbox-overflow-start-indicator {
@@ -303,8 +304,9 @@ overflowing tabs don't draw shadows on the special new tab button */
     background-color: transparent !important;
     list-style-image: url(chrome://userchrome/content/window/maximize.svg) !important;
     grid-column: 1 !important;
+    /* windows order bc i'm on windows :clueless */
     order: 1 !important;
-    -moz-box-ordinal-group: 1 !important;
+    -moz-box-ordinal-group: 2 !important;
 }
 
 :is(.titlebar-max, .uc-titlebar-max):hover {
@@ -328,7 +330,8 @@ overflowing tabs don't draw shadows on the special new tab button */
     margin-bottom: 0px !important;
     background-color: transparent !important;
     list-style-image: url(chrome://userchrome/content/window/minimize.svg) !important;
-    -moz-box-ordinal-group: 2 !important;
+    /* windows order bc i'm on windows :clueless */
+    -moz-box-ordinal-group: 1 !important;
 }
 
 :is(.titlebar-min, .uc-titlebar-min):hover {
