@@ -16,11 +16,11 @@
     --ui-text-100: #{$text};
 
     --uc-accent-color: #{$crust};
-    --uc-frame-color: var(--uc-accent-color);
+    --uc-frame-color: #{$crust};
     --uc-toolbar-bgcolor: #{$base};
     --uc-toolbar-color: var(--ui-text-100);
     --uc-toolbar-field-color: hsl(240, 60%, 99%);
-    --uc-arrowpanel-background: #{$surface0};
+    --uc-arrowpanel-background: #{$base};
     --uc-arrowpanel-color: #{$text};
     --uc-arrowpanel-very-faint: #{fade-out($blue, 0.8)};
     --uc-arrowpanel-faint: #{fade-out($blue, 0.9)};
@@ -47,17 +47,18 @@
     --uc-toolbarbutton-badge-bgcolor: var(
         --lwt-toolbarbutton-icon-fill-attention
     );
-    --uc-panel-description-color: hsla(235, 48%, 89%, 70%);
-    --uc-panel-shortcut-color: hsla(235, 27%, 73%, 70%);
-    --uc-panel-shortcut-focus: hsla(235, 32%, 80%, 95%);
+    --uc-panel-description-color: hsla(235, 48%, 89%, 0.7);
+    --uc-panel-shortcut-color: hsla(235, 27%, 73%, 0.7);
+    --uc-panel-shortcut-focus: hsla(235, 32%, 80%, 0.95);
     --uc-places-cell-focus-bgcolor: hsl(232, 30%, 19%);
     --uc-places-cell-hover-bgcolor: hsl(232, 30%, 23%);
     --light-on-dark-button-text-color: #{$text};
 
-    --menupopup-inner-box-margin: 0px;
+    --menupopup-inner-box-margin: 4px;
     --panel-inner-box-margin: 4px;
-    --uc-menupopup-shadow: none;
-    --uc-panel-shadow: none;
+    --uc-menupopup-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    --uc-panel-shadow: 0 0 7px rgba(0, 0, 0, 0.3);
+
     --searchbar-popup-border: 1px solid var(--uc-menu-border-color);
     --searchbar-popup-border-radius: 0 0 4px 4px;
     --searchbar-popup-box-shadow: 0 0 10px 3px hsla(0, 0%, 0%, 0.15);
@@ -274,7 +275,7 @@
     --sanitize-border-color: hsla(0, 0%, 5%, 0.2);
     --menu-separator-color: #{$surface2};
     --urlbar-input-bgcolor: #{$surface0};
-    --urlbar-input-bgcolor-brighter: #{scale-color($surface0, $lightness: 10%)};
+    --urlbar-input-bgcolor-brighter: #{scale-color($surface0, $lightness: 5%)};
     --urlbar-input-bgcolor-disabled: #{scale-color($surface0, $lightness: -5%)};
     --urlbar-dim-button-bgcolor: hsla(0, 0%, 0%, 0.09);
     --uc-urlbar-container-height: 38px;
@@ -289,6 +290,8 @@
     --subviewbutton-height: 28px;
     --subview-subheader-padding: 5px 3px;
     --findbar-height: 22px;
+    --findbar-min-width: 225px;
+    --findbar-max-width: 500px;
     --textbox-outline-transition-duration: 100ms;
     --findbar-textbox-bg-transition-duration: 200ms;
     --findbar-textbox-bg-notfound-transition-duration: 300ms;
@@ -323,7 +326,7 @@
     --pink-35: hsl(340, 73%, 65%);
     --pink-30: hsl(340, 73%, 70%);
 
-    --uc-parent-page-color: hsl(212, 43%, 90%);
+    --uc-parent-page-color: #{$text};
     --uc-parent-link-color: var(--purple-35);
     --uc-parent-link-color-hover: var(--purple-30);
     --uc-parent-link-color-active: var(--purple-30);
@@ -334,17 +337,17 @@
         --light-on-dark-button-text-color
     );
 
-    --uc-content-page-background: var(--in-content-bg-dark);
-    --uc-content-page-background-light: hsl(240, 3%, 12%);
-    --uc-content-page-color: var(--uc-parent-page-color);
-    --uc-content-box-background: hsl(240, 2%, 14%);
-    --uc-content-box-background-odd: hsl(260, 3%, 19%);
-    --uc-content-box-background-dim: hsl(240, 2%, 12%);
+    --uc-content-page-background: #{$mantle};
+    --uc-content-page-background-light: #{$base};
+    --uc-content-page-color: #{$text};
+    --uc-content-box-background: #{$base};
+    --uc-content-box-background-odd: #{$mantle};
+    --uc-content-box-background-dim: #{$crust};
     --uc-content-box-border-color: hsla(240, 7%, 98%, 0.1);
-    --uc-content-button-background: hsla(240, 3%, 70%, 0.1);
-    --uc-content-button-background-hover: hsla(240, 4%, 70%, 0.15);
-    --uc-content-button-background-active: hsla(240, 5%, 70%, 0.19);
-    --uc-content-button-background-solid: hsl(240, 3%, 18%);
+    --uc-content-button-background: #{fade-out($surface2, 0.5)};
+    --uc-content-button-background-hover: #{fade-out($surface2, 0.47)};
+    --uc-content-button-background-active: #{fade-out($surface2, 0.45)};
+    --uc-content-button-background-solid: #{$surface0};
     --uc-content-border-color: hsla(240, 7%, 98%, 0.1);
     --uc-content-border-hover: hsla(240, 7%, 98%, 0.15);
 
@@ -464,11 +467,11 @@ popupnotification,
     }
 }
 
-@supports -moz-bool-pref("userChrome.css.menupopup-shadows") {
-    :root {
-        --menupopup-inner-box-margin: 4px !important;
-        --panel-inner-box-margin: 4px;
-        --uc-menupopup-shadow: var(--tooltip-box-shadow) !important;
-        --uc-panel-shadow: var(--tooltip-box-shadow) !important;
-    }
-}
+// @supports -moz-bool-pref("userChrome.css.menupopup-shadows") {
+//     :root {
+//         --menupopup-inner-box-margin: 4px !important;
+//         --panel-inner-box-margin: 4px;
+//         --uc-menupopup-shadow: var(--tooltip-box-shadow) !important;
+//         --uc-panel-shadow: var(--tooltip-box-shadow) !important;
+//     }
+// }

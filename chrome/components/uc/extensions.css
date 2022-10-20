@@ -141,6 +141,8 @@ menupopup#viewSidebarMenu
 
 /* i don't care about cookies */
 :is(.webextension-browser-action, .eom-addon-button)[data-extensionid="jid1-KKzOGWgsW3Ao4Q@jetpack"i]
+    .toolbarbutton-icon,
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="idcac-pub@guus.ninja"i]
     .toolbarbutton-icon {
     list-style-image: url(chrome://userchrome/content/skin/controlcenter/3rdpartycookies.svg);
 }

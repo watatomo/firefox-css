@@ -153,6 +153,7 @@ and a few elements like checkboxes */
         color: var(--menu-color) !important;
         border-radius: var(--menupopup-border-radius) !important;
         box-shadow: var(--uc-menupopup-shadow) !important;
+        /* filter: drop-shadow(var(--uc-menupopup-shadow)) !important; */
     }
 
     .menupopup-arrowscrollbox[orient="vertical"][overflowing="true"] {

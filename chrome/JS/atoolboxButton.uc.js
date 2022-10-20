@@ -94,10 +94,16 @@
         !CustomizableUI.getPlacementOfWidget("toolbox-button", true)
     ) {
         const lazy = {};
+        // for developer
         XPCOMUtils.defineLazyModuleGetters(lazy, {
             BrowserToolboxLauncher:
                 "resource://devtools/client/framework/browser-toolbox/Launcher.jsm"
         });
+        // for nightly
+        // ChromeUtils.defineESModuleGetters(lazy, {
+        //     BrowserToolboxLauncher:
+        //         "resource://devtools/client/framework/browser-toolbox/Launcher.sys.mjs"
+        // });
         XPCOMUtils.defineLazyModuleGetters(lazy, {
             require: "resource://devtools/shared/loader/Loader.jsm"
         });

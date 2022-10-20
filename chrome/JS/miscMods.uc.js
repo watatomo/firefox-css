@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name           Misc. Mods
-// @version        2.0.5
+// @version        2.0.6
 // @author         aminomancer
 // @homepage       https://github.com/aminomancer/uc.css.js
 // @description    Various tiny mods not worth making separate scripts for. Read the comments inside the script for details.
@@ -49,6 +49,12 @@
         // by default, when you hit ctrl+tab it waits 200ms before opening the panel. if you replace
         // the 200 with another number, it will wait that long in milliseconds instead.
         "Reduce ctrl+tab delay": 200,
+
+        // By default, Shift+Ctrl+Tab will open the all-tabs panel. But if you hit
+        // Ctrl+Tab to open the ctrlTab panel, then Shift+Ctrl+Tab will cycle
+        // backwards through recently used tabs. To make this more consistent with
+        // OS-level Alt/Cmd+Tab, this setting disables the all-tabs panel shortcut.
+        "Use Shift+Ctrl+Tab to switch": true,
 
         // normally, firefox only animates the stop/reload button when it's in the main customizable
         // navbar. if you enter customize mode and move the button to the tabs toolbar, menu bar, or
@@ -161,25 +167,29 @@
             if (config["Disable bookmarks toolbar auto show"]) {
                 gEditItemOverlay._autoshowBookmarksToolbar = function () {};
             }
-            if (config["Moving tabs with arrow keys can wrap"])
+            if (config["Moving tabs with arrow keys can wrap"]) {
                 gBrowser.arrowKeysShouldWrap = true;
+            }
             if (
                 config["Stop downloads panel auto-focusing the footer button"]
             ) {
                 this.stopDownloadsPanelFocus();
             }
-            if (config["Move all selected tabs with hotkeys"])
+            if (config["Move all selected tabs with hotkeys"]) {
                 this.moveTabKeysMoveSelectedTabs();
-            if (config["Anchor bookmarks menu tooltip to bookmark"])
+            }
+            if (config["Anchor bookmarks menu tooltip to bookmark"]) {
                 this.anchorBookmarksTooltip();
-            this.reduceCtrlTabDelay(config["Reduce ctrl+tab delay"]);
+            }
+            this.modCtrlTabMethods();
             if (
                 config["Allow stop/reload button to animate in other toolbars"]
             ) {
                 this.stopReloadAnimations();
             }
-            if (config["Give the private browsing indicator a tooltip"])
+            if (config["Give the private browsing indicator a tooltip"]) {
                 this.addPrivateBrowsingTooltip();
+            }
             if (config["Preserve your default bookmarks folder"]) {
                 this.makeDefaultBookmarkFolderPermanent();
             }
@@ -193,13 +203,15 @@
             ) {
                 this.permsPopupInFullscreen();
             }
-            if (config["Customize tab drag preview background color"])
+            if (config["Customize tab drag preview background color"]) {
                 this.tabDragPreview();
+            }
             if (config["Show container icons on multiselected tabs"]) {
                 this.containerIconsOnMultiselectedTabs();
             }
-            if (config["Disable loading status for status panel"])
+            if (config["Disable loading status for status panel"]) {
                 this.disableLoadingStatus();
+            }
             this.randomTinyStuff();
         }
         stopDownloadsPanelFocus() {
@@ -243,9 +255,11 @@
                 );
                 for (let i = tabs.length - 1; i >= 0; i--) {
                     let tab = tabs[i];
-                    if (nextTab) this.moveTabTo(tab, nextTab._tPos);
-                    else if (this.arrowKeysShouldWrap && tab._tPos > 0)
+                    if (nextTab) {
+                        this.moveTabTo(tab, nextTab._tPos);
+                    } else if (this.arrowKeysShouldWrap && tab._tPos > 0) {
                         this.moveTabTo(tab, 0);
+                    }
                 }
             };
             eval(
@@ -285,8 +299,9 @@
                 if (!node && !targetURI) return false;
                 var title = node ? node.title : tooltipNode.label;
                 var url;
-                if (targetURI || PlacesUtils.nodeIsURI(node))
+                if (targetURI || PlacesUtils.nodeIsURI(node)) {
                     url = targetURI || node.uri;
+                }
                 if (!cropped && !url) return false;
                 aEvent.target.setAttribute("position", "after_start");
                 if (tooltipNode) {
@@ -311,9 +326,40 @@
                 return true;
             };
         }
-        reduceCtrlTabDelay(delay) {
-            if (delay === 200) return;
-            ctrlTab.open = function () {
+        modCtrlTabMethods() {
+            const delay = config["Reduce ctrl+tab delay"];
+            const shiftCtrlTabBehavior = config["Use Shift+Ctrl+Tab to switch"];
+            ctrlTab.onKeyDown = function (event) {
+                let action = ShortcutUtils.getSystemActionForEvent(event);
+                if (action != ShortcutUtils.CYCLE_TABS) {
+                    return;
+                }
+
+                event.preventDefault();
+                event.stopPropagation();
+
+                if (this.isOpen) {
+                    this.advanceFocus(!event.shiftKey);
+                    return;
+                }
+
+                Services.els.addSystemEventListener(
+                    document,
+                    "keyup",
+                    this,
+                    false
+                );
+
+                let tabs = gBrowser.visibleTabs;
+                if (tabs.length > 2) {
+                    let reverse = event.shiftKey && shiftCtrlTabBehavior;
+                    this.open(!reverse);
+                } else if (tabs.length == 2) {
+                    let index = tabs[0].selected ? 1 : 0;
+                    gBrowser.selectedTab = tabs[index];
+                }
+            };
+            ctrlTab.open = function (forward = true) {
                 if (this.isOpen) return;
                 this.canvasWidth = Math.ceil(
                     (screen.availWidth * 0.85) / this.maxTabPreviews
@@ -322,8 +368,21 @@
                     this.canvasWidth * tabPreviews.aspectRatio
                 );
                 this.updatePreviews();
-                this._selectedIndex = 1;
-                gBrowser.warmupTab(this.selected._tab);
+
+                let selectedIndex = 0;
+                do {
+                    selectedIndex += forward ? 1 : -1;
+                    if (selectedIndex < 0) {
+                        selectedIndex = this.previews.length - 1;
+                    } else if (selectedIndex >= this.previews.length) {
+                        selectedIndex = 0;
+                    }
+                } while (this.previews[selectedIndex].hidden);
+                this._selectedIndex = selectedIndex;
+
+                if (this.selected._tab) {
+                    gBrowser.warmupTab(this.selected._tab);
+                }
                 this._timer = setTimeout(() => {
                     this._timer = null;
                     this._openPanel();
@@ -503,11 +562,12 @@
                     setEtpPopupInfoTooltip
                 );
             };
-            if (etpPanel)
+            if (etpPanel) {
                 etpPanel.addEventListener(
                     "popupshowing",
                     setEtpPopupInfoTooltip
                 );
+            }
 
             // support icons for the "move sidebar to left" and "move sidebar to right" buttons in
             // the sidebar switcher dropdown menu that appear when you click the sidebar switcher:

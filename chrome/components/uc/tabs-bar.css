@@ -304,7 +304,7 @@ overflowing tabs don't draw shadows on the special new tab button */
     background-color: transparent !important;
     list-style-image: url(chrome://userchrome/content/window/maximize.svg) !important;
     grid-column: 1 !important;
-    /* windows order bc i'm on windows :clueless */
+    /* windows order bc i'm on windows :clueless: */
     order: 1 !important;
     -moz-box-ordinal-group: 2 !important;
 }
@@ -330,7 +330,7 @@ overflowing tabs don't draw shadows on the special new tab button */
     margin-bottom: 0px !important;
     background-color: transparent !important;
     list-style-image: url(chrome://userchrome/content/window/minimize.svg) !important;
-    /* windows order bc i'm on windows :clueless */
+    /* windows order bc i'm on windows :clueless: */
     -moz-box-ordinal-group: 1 !important;
 }
 
@@ -533,6 +533,7 @@ button.private-browsing-indicator:is(:hover:active, [open])::before {
     min-height: revert !important;
     min-width: revert !important;
     padding: 0 !important;
+    display: flex !important;
 }
 
 .all-tabs-secondary-button > .toolbarbutton-icon {
@@ -572,7 +573,6 @@ button.private-browsing-indicator:is(:hover:active, [open])::before {
     margin-inline-start: -27px !important;
     transition: 0.25s cubic-bezier(0.07, 0.78, 0.21, 0.95) transform,
         0.2s cubic-bezier(0.07, 0.74, 0.24, 0.95) margin, 0.075s linear opacity !important;
-    display: block !important;
 }
 
 .all-tabs-item .all-tabs-secondary-button[toggle-mute][hidden] {
@@ -629,7 +629,6 @@ button.private-browsing-indicator:is(:hover:active, [open])::before {
     margin-inline-start: -27px !important;
     transition: 0.25s cubic-bezier(0.07, 0.78, 0.21, 0.95) transform,
         0.2s cubic-bezier(0.07, 0.74, 0.24, 0.95) margin, 0.075s linear opacity;
-    display: block !important;
     -moz-context-properties: fill, fill-opacity, stroke !important;
     fill: currentColor !important;
     fill-opacity: 0 !important;

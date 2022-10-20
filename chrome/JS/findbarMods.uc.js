@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name           Findbar Mods
-// @version        1.3.3
+// @version        1.3.4
 // @author         aminomancer
 // @homepage       https://github.com/aminomancer
 // @description    1) Make a custom context menu for the findbar that lets you
@@ -376,8 +376,9 @@ class FindbarMods {
         let findbar =
             node.tagName === "findbar" ? node : node.closest("findbar");
         if (!findbar) return;
-        if (e.currentTarget !== this.contextMenu)
+        if (e.currentTarget !== this.contextMenu) {
             return this.onSubmenuShowing(e, findbar);
+        }
         this.contextMenu._menuitemHighlightAll.setAttribute(
             "checked",
             !!findbar._highlightAll
@@ -470,8 +471,9 @@ class FindbarMods {
                 e.altKey ||
                 e.ctrlKey ||
                 e.metaKey
-            )
+            ) {
                 return;
+            }
             const charLower = String.fromCharCode(e.charCode).toLowerCase();
             if (this.accessKey.toLowerCase() == charLower) {
                 this.click();
@@ -527,11 +529,11 @@ class FindbarMods {
         entireWordButton.addEventListener("keypress", onKey);
     }
     // for a given findbar, move its label into the proper position.
-    setLabelPosition(findbar) {
-        let getBounds = window.windowUtils.getBoundsWithoutFlushing;
+    updateLabelPosition(findbar) {
         let distanceFromEdge =
-            getBounds(findbar).right -
-            getBounds(findbar.querySelector(".findbar-textbox")).right;
+            findbar.getBoundingClientRect().right -
+            findbar.querySelector(".findbar-textbox").getBoundingClientRect()
+                .right;
         findbar._tinyIndicator.style.right = `${distanceFromEdge + 1}px`;
     }
     // when a new tab is opened and the findbar somehow activated, a new findbar
@@ -587,10 +589,7 @@ class FindbarMods {
     }
     onFindbarOpen(e) {
         if (e.target.findMode == e.target.FIND_NORMAL) {
-            setTimeout(
-                () => e.target.ucFindbarMods.setLabelPosition(e.target),
-                1
-            );
+            requestAnimationFrame(() => this.updateLabelPosition(e.target));
         }
     }
 }

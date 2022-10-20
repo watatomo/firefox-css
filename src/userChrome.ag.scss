@@ -495,12 +495,12 @@ tooltip > description {
 parsererror|parsererror {
     color: var(--plaintext-color) !important;
     background-color: var(--in-content-bg-dark) !important;
-    font-family: Fira Code UC, Fira Code, SF Mono, -moz-fixed;
+    // font-family: Fira Code UC, Fira Code, SF Mono, -moz-fixed;
     font-weight: 400;
 }
 
 parsererror|sourcetext {
-    font-family: Fira Code UC, Fira Code, SF Mono, -moz-fixed;
+    // font-family: Fira Code UC, Fira Code, SF Mono, -moz-fixed;
     font-weight: bold;
 }
 
