@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name           Extension Stylesheet Loader
-// @version        1.1.3
+// @version        1.1.4
 // @author         aminomancer
 // @homepage       https://github.com/aminomancer
 // @description    Allows users to share stylesheets for webextensions without
@@ -79,6 +79,10 @@ class ExtensionStylesheetLoader {
         // listen for application quit so we can clean up the temp files.
         Services.obs.addObserver(this, "quit-application");
     }
+    get uuid() {
+        if (!this._uuid) this._uuid = Services.uuid.generateUUID().toString();
+        return this._uuid;
+    }
     /**
      * create a file in the temp folder
      * @param {string} contents (the actual file contents in UTF-8)
@@ -93,8 +97,7 @@ class ExtensionStylesheetLoader {
      */
     async createTempFile(contents, options = {}) {
         let { path = null, name = "uc-temp", type = "txt" } = options;
-        const uuid = Services.uuid.generateUUID().toString();
-        name += "-" + uuid + "." + type;
+        name += "-" + this.uuid + "." + type;
         if (!path) {
             let dir = Services.dirsvc.get("UChrm", Ci.nsIFile);
             dir.append(".ExtensionStylesheetLoader");
@@ -128,5 +131,6 @@ _ucUtils.sharedGlobal.extensionStylesheetLoader = {
     _startup: () => {}
 };
 
-if (location.href === AppConstants.BROWSER_CHROME_URL)
+if (location.href === AppConstants.BROWSER_CHROME_URL) {
     new ExtensionStylesheetLoader();
+}

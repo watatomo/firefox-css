@@ -76,11 +76,11 @@ this connects with .panel-subview-body rules in userChrome.au.css */
 }
 
 /* fixes a similar tiny height animation hiccup when switching panels in the identity popup */
-.identity-popup-section,
+/* .identity-popup-section,
 .identity-popup-security-content,
 #identity-popup .panel-view-body-unscrollable {
     max-height: 0 !important;
-}
+} */
 
 #protections-popup .panel-viewstack {
     min-height: inherit !important;
