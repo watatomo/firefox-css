@@ -1,0 +1,7 @@
+:root {
+    --tab-min-height: var(--uc-tab-min-height) !important;
+    --tab-border-radius: var(--uc-tab-border-radius) !important;
+    --toolbarbutton-border-radius: var(
+        --uc-toolbarbutton-border-radius
+    ) !important;
+}

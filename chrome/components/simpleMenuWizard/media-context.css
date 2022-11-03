@@ -1,11 +1,12 @@
 /*AGENT_SHEET*/
 
 /*********************************************************************************************
-  simpleMenuWizard: Firefox 89+ userChrome.css tweaks to remove context menu items.
+  simpleMenuWizard: userChrome.css tweaks to remove context menu items in Firefox.
   https://github.com/stonecrusher/simpleMenuWizard
 **********************************************************************************************
 
 /*** media-context.css ***/
+/*** When right-clicking on media like audio or html5 video ***/
 
 /* #context-media-play,                  /* Play                            */
 /* #context-media-pause,                 /* Pause                           */
@@ -31,8 +32,8 @@
 /* #context-saveaudio,                   /* Save Audio As…                  */
 /* #context-copyvideourl,                /* Copy Video Link                 */
 /* #context-copyaudiourl,                /* Copy Audio Link                 */
-/* #context-sendvideo,                   /* Email Video…                    */
-/* #context-sendaudio,                   /* Email Audio…                    */
+#context-sendvideo,                   /* Email Video…                    */
+#context-sendaudio,                   /* Email Audio…                    */
 /* #context-sep-setbackground,           /************ Separator ************/
 /* #context-inspect,                     /* Inspect (Q)                     */
 

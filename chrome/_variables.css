@@ -1,0 +1,9 @@
+:root {
+    --uc-tab-min-height: 32px;
+    --uc-tab-max-width: 135px;
+    --uc-tab-border-radius: 8px;
+    --uc-tab-margin: 4px;
+    --uc-tab-outline-width: 2px;
+    --uc-tab-inactive-opacity: 0.65;
+    --uc-toolbarbutton-border-radius: 8px;
+}

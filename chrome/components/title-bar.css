@@ -1,0 +1,109 @@
+/***** TITLE BAR - WINDOWS *****/
+
+/* macOS style window controls */
+.titlebar-button {
+    display: -moz-box !important;
+    background-color: transparent !important;
+    border: none;
+    margin: 0 !important;
+    padding: 8px 17px;
+    -moz-context-properties: fill, stroke !important;
+    stroke: none !important;
+    fill: none !important;
+}
+
+:root:not([sizemode="maximized"], [inFullscreen])
+    :is(.titlebar-restore, .uc-titlebar-restore),
+:root:is([sizemode="maximized"], [inFullscreen])
+    :is(.titlebar-max, .uc-titlebar-max) {
+    display: none !important;
+}
+
+:root:-moz-window-inactive:not([customizing])
+    .titlebar-buttonbox
+    > toolbarbutton:not(:hover) {
+    list-style-image: url("../resources/window/inactive.svg") !important;
+}
+
+.titlebar-buttonbox .toolbarbutton-icon {
+    opacity: 1 !important;
+}
+
+.titlebar-button > .toolbarbutton-icon {
+    appearance: none !important;
+    width: 15.3px !important;
+    height: 15.3px !important;
+    stroke: inherit !important;
+}
+
+.titlebar-buttonbox {
+    appearance: none !important;
+}
+
+.titlebar-max,
+.uc-titlebar-max,
+.titlebar-restore,
+.uc-titlebar-restore {
+    appearance: none !important;
+    padding: 0px !important;
+    padding-left: 7px !important;
+    padding-right: 7px !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+    background-color: transparent !important;
+    list-style-image: url("../resources/window/maximize.svg") !important;
+    grid-column: 1 !important;
+    /* windows order bc i'm on windows :clueless: */
+    order: 1 !important;
+    -moz-box-ordinal-group: 2 !important;
+}
+
+:is(.titlebar-max, .uc-titlebar-max):hover {
+    list-style-image: url("../resources/window/maximize-hover.svg") !important;
+}
+
+:root:is([sizemode="maximized"], [inFullscreen])
+    :is(.titlebar-max, .uc-titlebar-max):hover,
+:is(.titlebar-restore, .uc-titlebar-restore):hover {
+    list-style-image: url("../resources/window/maximize-restore.svg") !important;
+}
+
+:is(.titlebar-min, .uc-titlebar-min) {
+    appearance: none !important;
+    padding: 0px !important;
+    padding-left: 7px !important;
+    padding-right: 7px !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+    background-color: transparent !important;
+    list-style-image: url("../resources/window/minimize.svg") !important;
+    /* windows order bc i'm on windows :clueless: */
+    -moz-box-ordinal-group: 1 !important;
+}
+
+:is(.titlebar-min, .uc-titlebar-min):hover {
+    list-style-image: url("../resources/window/minimize-hover.svg") !important;
+}
+
+.titlebar-close,
+.uc-titlebar-close {
+    appearance: none !important;
+    padding: 0px !important;
+    padding-left: 7px !important;
+    padding-right: 7px !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+    background-color: transparent !important;
+    list-style-image: url("../resources/window/close.svg") !important;
+    -moz-box-ordinal-group: 3 !important;
+}
+
+:is(.titlebar-close, .uc-titlebar-close):hover {
+    list-style-image: url("../resources/window/close-hover.svg") !important;
+}

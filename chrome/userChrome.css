@@ -1,10 +1,7 @@
-/*AGENT_SHEET*/
+@import url("./components/simpleMenuWizard/_index.css");
 
-@import url("./components/contextMenu.css");
-
-@import url("./uc-globals.css");
-@import url("./uc-variables.css");
-
-@import url("./components/uc.css");
-
-@import url("./custom-chrome.css");
+@import url("./_variables.css");
+@import url("./components/_overwrite.css");
+@import url("./components/title-bar.css");
+@import url("./components/tabs.css");
+@import url("./components/nav-bar.css");
