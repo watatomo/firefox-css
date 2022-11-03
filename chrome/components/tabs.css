@@ -20,11 +20,6 @@
     box-shadow: none !important;
 }
 
-/* make unselected tabs shorter */
-.tabbrowser-tab:not([selected="true"]):not([pinned]) {
-    max-width: var(--uc-tab-max-width) !important;
-}
-
 /* adds borders around tabs */
 .tab-background {
     outline: var(--uc-tab-outline-width) solid
@@ -43,9 +38,22 @@
     outline-offset: calc(0px - var(--uc-tab-outline-width)) !important;
 }
 
+/* make inactive tabs shorter */
+.tabbrowser-tab[fadein]:not([pinned]):not([style*="max-width"]):not([selected="true"]) {
+    max-width: var(--uc-tab-inactive-max-width) !important;
+}
+
 /* inactive tabs are faded */
 .tabbrowser-tab:not([selected="true"]):not([pinned]) .tab-content {
     opacity: var(--uc-tab-inactive-opacity);
+}
+
+/* for some the close button appears when the first tab on the list is selected; this is a fix (?) */
+.tabbrowser-tab:not([pinned="true"]):not([selected="true"])
+    > .tab-stack
+    > .tab-content
+    > .tab-close-button:not([selected="true"]) {
+    display: none !important;
 }
 
 /* show close button when hovered but not when pinned */

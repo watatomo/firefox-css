@@ -1,3 +1,8 @@
 /* box.extensionPage#identity-box {
     display: none !important;
 } */
+
+#urlbar-background,
+#searchbar {
+    border-width: 2px !important;
+}
