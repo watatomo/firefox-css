@@ -3,10 +3,7 @@
     "version": "0.0.1",
     "main": "false",
     "scripts": {
-        "build": "sass src:chrome --no-source-map && npx prettier --write chrome/uc-globals.css && npx prettier --write chrome/userChrome.ag.css",
         "prettier": "npx prettier --write .",
-        "update-css": "cp chrome/uc-globals.css /c/Users/Ren/AppData/Roaming/Mozilla/Firefox/Profiles/sklzc42y.default/chrome",
-        "remove-ThisDoesntWork": "cd /c/Users/Ren/AppData/Roaming/Mozilla/Firefox/Profiles/sklzc42y.default && rm -r chrome",
         "update": "cp -r chrome /c/Users/Ren/AppData/Roaming/Mozilla/Firefox/Profiles/sklzc42y.default"
     },
     "repository": {
@@ -14,7 +11,7 @@
         "url": "git+https://github.com/watatomo/firefox-css.git"
     },
     "author": "Ren",
-    "license": "CC BY-NC-SA",
+    "license": "MIT",
     "bugs": {
         "url": "https://github.com/watatomo/firefox-css/issues"
     },
