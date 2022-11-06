@@ -28,9 +28,9 @@
 }
 
 /* multiselected tabs should have colored borders too */
-#TabsToolbar
+/* #TabsToolbar
     #firefox-view-button[open]:not(:focus-visible)
-    > .toolbarbutton-icon:-moz-lwtheme,
+    > .toolbarbutton-icon:-moz-lwtheme, */
 .tab-background[selected]:-moz-lwtheme,
 .tab-background[multiselected="true"]:-moz-lwtheme {
     outline: var(--uc-tab-outline-width) solid
@@ -39,6 +39,7 @@
 }
 
 /* make inactive tabs shorter */
+/* https://www.reddit.com/r/FirefoxCSS/comments/brklu0/the_right_way_to_change_your_tab_max_width/ */
 .tabbrowser-tab[fadein]:not([pinned]):not([style*="max-width"]):not([selected="true"]) {
     max-width: var(--uc-tab-inactive-max-width) !important;
 }
@@ -62,4 +63,61 @@
     > .tab-content
     > .tab-close-button:not([selected="true"]) {
     display: block !important;
+}
+
+/* container tabs */
+/* no top line */
+.tabbrowser-tab[usercontextid]
+    > .tab-stack
+    > .tab-background
+    > .tab-context-line {
+    display: none;
+}
+
+.tabbrowser-tab[usercontextid] > .tab-stack > .tab-background,
+.tabbrowser-tab[usercontextid]:hover > .tab-stack > .tab-background {
+    outline: var(--uc-tab-outline-width) solid
+        color-mix(in srgb, var(--identity-tab-color) 50%, transparent) !important;
+    background-color: color-mix(
+        in srgb,
+        var(--identity-tab-color) 15%,
+        transparent
+    ) !important;
+}
+
+.tabbrowser-tab[usercontextid]
+    > .tab-stack
+    > .tab-background[selected]:-moz-lwtheme,
+.tabbrowser-tab[usercontextid]
+    > .tab-stack
+    > .tab-background[multiselected="true"]:-moz-lwtheme {
+    outline: var(--uc-tab-outline-width) solid var(--identity-tab-color) !important;
+    background-color: color-mix(
+        in srgb,
+        var(--identity-tab-color) 11%,
+        transparent
+    ) !important;
+}
+
+.tabbrowser-tab[usercontextid]:-moz-lwtheme {
+    color: var(--identity-tab-color) !important;
+}
+
+#TabsToolbar #firefox-view-button[open] > .toolbarbutton-icon:-moz-lwtheme,
+#tabbrowser-tabs:not([movingtab])
+    > #tabbrowser-arrowscrollbox
+    > .tabbrowser-tab[usercontextid]
+    > .tab-stack
+    > .tab-background[multiselected="true"]:-moz-lwtheme,
+#tabbrowser-tabs:not([movingtab])
+    > #tabbrowser-arrowscrollbox
+    > .tabbrowser-tab[usercontextid]
+    > .tab-stack
+    > .tab-background[selected="true"]:-moz-lwtheme {
+    background-color: color-mix(
+        in srgb,
+        var(--identity-tab-color) 16%,
+        transparent
+    ) !important;
+    background-image: none !important;
 }

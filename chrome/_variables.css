@@ -1,9 +1,25 @@
+@import url("./palette/catppuccin-frappe.css");
+
 :root {
     --uc-tab-min-height: 32px;
-    --uc-tab-inactive-max-width: 135px;
+    --uc-tab-inactive-max-width: calc(225px / 2);
     --uc-tab-border-radius: 8px;
     --uc-tab-margin: 4px;
     --uc-tab-outline-width: 2px;
     --uc-tab-inactive-opacity: 0.55;
     --uc-toolbarbutton-border-radius: 8px;
+
+    --uc-urlbar-box-text-color: var(--toolbarbutton-icon-fill);
+    --uc-urlbar-box-hover-bgcolor: var(--lwt-toolbarbutton-icon-fill-attention);
+    --uc-urlbar-box-hover-text-color: var(--tabpanel-background-color);
+
+    /* identity colors */
+    --uc-identity-blue: var(--ctp-sapphire);
+    --uc-identity-turquoise: var(--ctp-teal);
+    --uc-identity-green: var(--ctp-green);
+    --uc-identity-yellow: var(--ctp-yellow);
+    --uc-identity-orange: var(--ctp-peach);
+    --uc-identity-red: var(--ctp-red);
+    --uc-identity-pink: var(--ctp-pink);
+    --uc-identity-purple: var(--ctp-mauve);
 }

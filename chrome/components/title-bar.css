@@ -12,10 +12,8 @@
     fill: none !important;
 }
 
-:root:not([sizemode="maximized"], [inFullscreen])
-    :is(.titlebar-restore, .uc-titlebar-restore),
-:root:is([sizemode="maximized"], [inFullscreen])
-    :is(.titlebar-max, .uc-titlebar-max) {
+:root:not([sizemode="maximized"], [inFullscreen]) :is(.titlebar-restore),
+:root:is([sizemode="maximized"], [inFullscreen]) :is(.titlebar-max) {
     display: none !important;
 }
 
@@ -41,9 +39,7 @@
 }
 
 .titlebar-max,
-.uc-titlebar-max,
-.titlebar-restore,
-.uc-titlebar-restore {
+.titlebar-restore {
     appearance: none !important;
     padding: 0px !important;
     padding-left: 7px !important;
@@ -60,17 +56,16 @@
     -moz-box-ordinal-group: 2 !important;
 }
 
-:is(.titlebar-max, .uc-titlebar-max):hover {
+:is(.titlebar-max):hover {
     list-style-image: url("../resources/window/maximize-hover.svg") !important;
 }
 
-:root:is([sizemode="maximized"], [inFullscreen])
-    :is(.titlebar-max, .uc-titlebar-max):hover,
-:is(.titlebar-restore, .uc-titlebar-restore):hover {
+:root:is([sizemode="maximized"], [inFullscreen]) :is(.titlebar-max):hover,
+:is(.titlebar-restore):hover {
     list-style-image: url("../resources/window/maximize-restore.svg") !important;
 }
 
-:is(.titlebar-min, .uc-titlebar-min) {
+:is(.titlebar-min) {
     appearance: none !important;
     padding: 0px !important;
     padding-left: 7px !important;
@@ -85,12 +80,11 @@
     -moz-box-ordinal-group: 1 !important;
 }
 
-:is(.titlebar-min, .uc-titlebar-min):hover {
+:is(.titlebar-min):hover {
     list-style-image: url("../resources/window/minimize-hover.svg") !important;
 }
 
-.titlebar-close,
-.uc-titlebar-close {
+.titlebar-close {
     appearance: none !important;
     padding: 0px !important;
     padding-left: 7px !important;
@@ -104,6 +98,6 @@
     -moz-box-ordinal-group: 3 !important;
 }
 
-:is(.titlebar-close, .uc-titlebar-close):hover {
+:is(.titlebar-close):hover {
     list-style-image: url("../resources/window/close-hover.svg") !important;
 }

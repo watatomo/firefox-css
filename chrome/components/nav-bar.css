@@ -6,3 +6,36 @@
 #searchbar {
     border-width: 2px !important;
 }
+
+.urlbar-icon,
+.urlbar-page-action {
+    filter: none !important;
+}
+
+/***** nav button change *****/
+
+#back-button,
+#forward-button {
+    padding: 0 !important;
+}
+
+#back-button > .toolbarbutton-icon {
+    list-style-image: url("../resources/nav-bar/back.svg") !important;
+}
+
+#forward-button > .toolbarbutton-icon {
+    list-style-image: url("../resources/nav-bar/forward.svg") !important;
+}
+
+#back-button > .toolbarbutton-icon,
+#forward-button > .toolbarbutton-icon {
+    width: calc(2 * var(--toolbarbutton-inner-padding) + 18px) !important;
+    height: calc(2 * var(--toolbarbutton-inner-padding) + 18px) !important;
+}
+
+/* force text color? */
+.urlbar-page-action,
+#urlbar-go-button,
+.search-go-button {
+    color: var(--uc-urlbar-box-text-color) !important;
+}
