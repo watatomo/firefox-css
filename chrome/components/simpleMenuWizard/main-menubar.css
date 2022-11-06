@@ -19,7 +19,7 @@
 /* #menu_closeWindow,                           /* Close Window                     */
 /* #menu_closeWindow + menuseparator,           /************ Separator *************/
 /* #menu_savePage,                              /* Save Page As…                    */
-/* #menu_sendLink,                              /* Email Link…                      */
+#menu_sendLink,                              /* Email Link…                      */
 /* #menu_sendLink + menuseparator,              /************ Separator *************/
 /* #menu_printSetup,                            /* Page Setup…                      */
 /* #menu_printPreview,                          /* Print Preview                    */

@@ -18,8 +18,8 @@
 /* #context-reloadframe + menuseparator,    /******** Separator *********/
 /* #context-bookmarkframe,                  /* Bookmark This Frame      */
 /* #context-saveframe,                      /* Save Frame As…           */
-/* #context-saveframe + menuseparator,      /******** Separator *********/
-/* #context-printframe,                     /* Print Frame…             */
+#context-saveframe + menuseparator,      /******** Separator *********/
+#context-printframe,                     /* Print Frame…             */
 /* #context-printframe + menuseparator,     /******** Separator *********/
 /* #context-take-frame-screenshot,          /* Take Screenshot          */
 /* #context-take-frame-screenshot

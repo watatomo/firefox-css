@@ -3,18 +3,15 @@
     "version": "0.0.1",
     "main": "false",
     "scripts": {
-        "dev": "sass src:chrome --no-source-map -q && cp -r chrome /c/Users/Ren/AppData/Roaming/Mozilla/Firefox/Profiles/ridzo5dx.default",
-        "build": "sass src:chrome --no-source-map -q && npx prettier --write chrome/*.css",
         "prettier": "npx prettier --write .",
-        "remove-ThisDoesntWork": "cd /c/Users/Ren/AppData/Roaming/Mozilla/Firefox/Profiles/ridzo5dx.default && rm -r chrome",
-        "update": "cp -r chrome /c/Users/Ren/AppData/Roaming/Mozilla/Firefox/Profiles/ridzo5dx.default"
+        "update": "cp -r chrome /c/Users/Ren/AppData/Roaming/Mozilla/Firefox/Profiles/sklzc42y.default"
     },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/watatomo/firefox-css.git"
     },
     "author": "Ren",
-    "license": "CC BY-NC-SA",
+    "license": "MIT",
     "bugs": {
         "url": "https://github.com/watatomo/firefox-css/issues"
     },

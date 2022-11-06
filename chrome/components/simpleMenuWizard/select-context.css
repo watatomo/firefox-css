@@ -11,7 +11,7 @@
 /* #context-openlinkincurrent,            /* Open Link                        */
 /* #context-copy,                         /* Copy                             */
 /* #context-selectall,                    /* Select All                       */
-/* #context-print-selection,              /* Print Selection                  */
+#context-print-selection,              /* Print Selection                  */
 /* #context-sep-selectall,                /************ Separator *************/
 /* #context-take-screenshot,              /* Take Screenshot                  */
 /* #context-sep-screenshots,              /************ Separator *************/
