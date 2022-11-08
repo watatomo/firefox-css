@@ -7,6 +7,7 @@
     ) !important;
 
     --urlbar-box-hover-bgcolor: var(--uc-urlbar-box-hover-bgcolor) !important;
+    --urlbar-box-active-bgcolor: var(--uc-urlbar-box-active-bgcolor) !important;
     --urlbar-box-hover-text-color: var(
         --uc-urlbar-box-hover-text-color
     ) !important;

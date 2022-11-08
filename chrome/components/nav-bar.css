@@ -39,3 +39,23 @@
 .search-go-button {
     color: var(--uc-urlbar-box-text-color) !important;
 }
+
+.urlbar-page-action:not([disabled]):hover,
+#urlbar-go-button:hover,
+.search-go-button:hover,
+.urlbar-page-action:not([disabled]):active,
+#urlbar-go-button:active,
+.search-go-button:active,
+.urlbar-page-action[open="true"]:not([disabled]) {
+    color: var(--urlbar-box-hover-text-color) !important;
+}
+
+.urlbar-page-action:not([disabled]):active,
+#urlbar-go-button:active,
+.search-go-button:active {
+    background-color: var(--urlbar-box-active-bgcolor) !important;
+}
+
+#star-button[starred] {
+    fill: var(--urlbar-box-hover-text-color) !important;
+}

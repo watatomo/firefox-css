@@ -1,3 +1,12 @@
+.toolbarbutton-badge {
+    background-color: var(--uc-toolbarbutton-badge-bgcolor) !important;
+    color: var(--uc-toolbarbutton-badge-color) !important;
+    /* bc hydrus' "Post" label is too long */
+    /* max-width: 27px !important; */
+}
+
+/***** ICONS *****/
+
 /* tree-style-tabs */
 .webextension-browser-action[data-extensionid="treestyletab@piro.sakura.ne.jp"i]
     .toolbarbutton-icon,
@@ -127,7 +136,37 @@ elaborate/compiled stylesheets */
     list-style-image: url("../resources/extensions/container-base.svg");
 }
 
-/* :is(.pageAction-panel-button, .urlbar-page-action)[actionid="_testpilot-containers"] {
+:is(.pageAction-panel-button, .urlbar-page-action)[actionid="_testpilot-containers"] {
     --pageAction-image-16px: url("../resources/extensions/container-go.svg") !important;
     --pageAction-image-32px: url("../resources/extensions/container-go.svg") !important;
+    list-style-image: url("../resources/extensions/container-go.svg") !important;
+}
+
+/* canvasblocker */
+:is(.pageAction-panel-button, .urlbar-page-action)[actionid^="canvasblocker_"],
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="CanvasBlocker@kkapsner.de"] {
+    --pageAction-image-16px: url("../resources/extensions/fingerprint.svg") !important;
+    --pageAction-image-32px: url("../resources/extensions/fingerprint.svg") !important;
+    list-style-image: url("../resources/extensions/fingerprint.svg") !important;
+}
+
+/* hydrus */
+/* :is(.webextension-browser-action, .eom-addon-button)[data-extensionid="hydruscompanion@hydruscompanion.hydruscompanion"] {
+    --pageAction-image-16px: url("../resources/extensions/database.svg") !important;
+    --pageAction-image-32px: url("../resources/extensions/database.svg") !important;
+    list-style-image: url("../resources/extensions/database.svg") !important;
+    transform: scale(1.15);
+} */
+
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="hydruscompanion@hydruscompanion.hydruscompanion"][badge="Post"]
+    .toolbarbutton-badge {
+    font-size: 8px !important;
+}
+
+/* yomichan */
+/* :is(.webextension-browser-action, .eom-addon-button)[data-extensionid="alex@foosoft.net"] {
+    --pageAction-image-16px: url("../resources/extensions/books.svg") !important;
+    --pageAction-image-32px: url("../resources/extensions/books.svg") !important;
+    list-style-image: url("../resources/extensions/books.svg") !important;
+    transform: scale(1.15);
 } */

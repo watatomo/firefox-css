@@ -49,7 +49,7 @@
     opacity: var(--uc-tab-inactive-opacity);
 }
 
-/* for some the close button appears when the first tab on the list is selected; this is a fix (?) */
+/* for some reason, the close button appears when the first tab on the list is selected; this is a fix (?) */
 .tabbrowser-tab:not([pinned="true"]):not([selected="true"])
     > .tab-stack
     > .tab-content
@@ -74,6 +74,7 @@
     display: none;
 }
 
+/* make tab border the identity color */
 .tabbrowser-tab[usercontextid] > .tab-stack > .tab-background,
 .tabbrowser-tab[usercontextid]:hover > .tab-stack > .tab-background {
     outline: var(--uc-tab-outline-width) solid

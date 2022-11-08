@@ -11,7 +11,17 @@
 
     --uc-urlbar-box-text-color: var(--toolbarbutton-icon-fill);
     --uc-urlbar-box-hover-bgcolor: var(--lwt-toolbarbutton-icon-fill-attention);
+    --uc-urlbar-box-active-bgcolor: color-mix(
+        in hsl,
+        var(--toolbarbutton-icon-fill) 90%,
+        var(--tabpanel-background-color)
+    );
     --uc-urlbar-box-hover-text-color: var(--tabpanel-background-color);
+
+    --uc-toolbarbutton-badge-bgcolor: var(
+        --lwt-toolbarbutton-icon-fill-attention
+    );
+    --uc-toolbarbutton-badge-color: var(--tabpanel-background-color);
 
     /* identity colors */
     --uc-identity-blue: var(--ctp-sapphire);
