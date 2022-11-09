@@ -1,4 +1,5 @@
-@import url("_reassign.css");
+@import url("_config.css");
+
 :host,
 :root {
     --in-content-page-color: #4c4f69 !important;
