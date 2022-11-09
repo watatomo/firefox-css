@@ -7,7 +7,6 @@
     --uc-tab-margin: 4px;
     --uc-tab-outline-width: 2px;
     --uc-tab-inactive-opacity: 0.55;
-    --uc-toolbarbutton-border-radius: 8px;
 
     --uc-urlbar-box-text-color: var(--toolbarbutton-icon-fill);
     --uc-urlbar-box-hover-bgcolor: var(--lwt-toolbarbutton-icon-fill-attention);
@@ -22,8 +21,10 @@
         --lwt-toolbarbutton-icon-fill-attention
     );
     --uc-toolbarbutton-badge-color: var(--tabpanel-background-color);
+    --uc-toolbarbutton-border-radius: 8px;
 
     /* identity colors */
+    --uc-identity-toolbar: var(--ctp-text);
     --uc-identity-blue: var(--ctp-sapphire);
     --uc-identity-turquoise: var(--ctp-teal);
     --uc-identity-green: var(--ctp-green);

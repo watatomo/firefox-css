@@ -28,9 +28,6 @@
 }
 
 /* multiselected tabs should have colored borders too */
-/* #TabsToolbar
-    #firefox-view-button[open]:not(:focus-visible)
-    > .toolbarbutton-icon:-moz-lwtheme, */
 .tab-background[selected]:-moz-lwtheme,
 .tab-background[multiselected="true"]:-moz-lwtheme {
     outline: var(--uc-tab-outline-width) solid
@@ -40,17 +37,17 @@
 
 /* make inactive tabs shorter */
 /* https://www.reddit.com/r/FirefoxCSS/comments/brklu0/the_right_way_to_change_your_tab_max_width/ */
-.tabbrowser-tab[fadein]:not([pinned]):not([style*="max-width"]):not([selected="true"]) {
+.tabbrowser-tab[fadein]:not([pinned], [style*="max-width"], [selected="true"]) {
     max-width: var(--uc-tab-inactive-max-width) !important;
 }
 
 /* inactive tabs are faded */
-.tabbrowser-tab:not([selected="true"]):not([pinned]) .tab-content {
+.tabbrowser-tab:not([selected="true"], [pinned]) .tab-content {
     opacity: var(--uc-tab-inactive-opacity);
 }
 
 /* for some reason, the close button appears when the first tab on the list is selected; this is a fix (?) */
-.tabbrowser-tab:not([pinned="true"]):not([selected="true"])
+.tabbrowser-tab:not([pinned="true"], [selected="true"])
     > .tab-stack
     > .tab-content
     > .tab-close-button:not([selected="true"]) {
@@ -65,60 +62,59 @@
     display: block !important;
 }
 
-/* container tabs */
-/* no top line */
-.tabbrowser-tab[usercontextid]
-    > .tab-stack
-    > .tab-background
-    > .tab-context-line {
-    display: none;
+/* don't show all tabs button */
+#alltabs-button {
+    display: none !important;
 }
 
-/* make tab border the identity color */
-.tabbrowser-tab[usercontextid] > .tab-stack > .tab-background,
-.tabbrowser-tab[usercontextid]:hover > .tab-stack > .tab-background {
-    outline: var(--uc-tab-outline-width) solid
-        color-mix(in srgb, var(--identity-tab-color) 50%, transparent) !important;
-    background-color: color-mix(
+/***** container tabs *****/
+
+.tabbrowser-tab[usercontextid] {
+    color: color-mix(
         in srgb,
-        var(--identity-tab-color) 15%,
-        transparent
+        var(--identity-tab-color) 30%,
+        var(--lwt-tab-text)
     ) !important;
-}
-
-.tabbrowser-tab[usercontextid]
-    > .tab-stack
-    > .tab-background[selected]:-moz-lwtheme,
-.tabbrowser-tab[usercontextid]
-    > .tab-stack
-    > .tab-background[multiselected="true"]:-moz-lwtheme {
-    outline: var(--uc-tab-outline-width) solid var(--identity-tab-color) !important;
-    background-color: color-mix(
+    --lwt-selected-tab-background-color: color-mix(
         in srgb,
         var(--identity-tab-color) 11%,
         transparent
     ) !important;
 }
 
-.tabbrowser-tab[usercontextid]:-moz-lwtheme {
-    color: var(--identity-tab-color) !important;
+/* make tab border the identity color */
+.tabbrowser-tab[usercontextid] > .tab-stack > .tab-background {
+    outline: var(--uc-tab-outline-width) solid
+        color-mix(in srgb, var(--identity-tab-color) 50%, transparent) !important;
+    background-color: var(--lwt-selected-tab-background-color) !important;
 }
 
-#TabsToolbar #firefox-view-button[open] > .toolbarbutton-icon:-moz-lwtheme,
-#tabbrowser-tabs:not([movingtab])
-    > #tabbrowser-arrowscrollbox
-    > .tabbrowser-tab[usercontextid]
+.tabbrowser-tab[usercontextid]
     > .tab-stack
-    > .tab-background[multiselected="true"]:-moz-lwtheme,
-#tabbrowser-tabs:not([movingtab])
-    > #tabbrowser-arrowscrollbox
-    > .tabbrowser-tab[usercontextid]
+    > .tab-background:is([selected], [multiselected]) {
+    outline: var(--uc-tab-outline-width) solid var(--identity-tab-color) !important;
+    background-image: linear-gradient(
+            var(--lwt-selected-tab-background-color, transparent),
+            var(--lwt-selected-tab-background-color, transparent)
+        ),
+        linear-gradient(var(--toolbar-bgcolor), var(--toolbar-bgcolor)),
+        var(--lwt-header-image, none) !important;
+}
+
+.tabbrowser-tab[usercontextid]:hover
     > .tab-stack
-    > .tab-background[selected="true"]:-moz-lwtheme {
+    > .tab-background:not([selected="true"], [multiselected]) {
     background-color: color-mix(
         in srgb,
-        var(--identity-tab-color) 16%,
+        var(--identity-tab-color) 18%,
         transparent
     ) !important;
-    background-image: none !important;
+}
+
+/* no top line */
+.tabbrowser-tab[usercontextid]
+    > .tab-stack
+    > .tab-background
+    > .tab-context-line {
+    display: none;
 }

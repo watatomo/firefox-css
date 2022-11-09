@@ -1,0 +1,174 @@
+// @use "sass:color";
+@import "palette/latte";
+
+$accent: $blue;
+
+:host,
+:root {
+    --in-content-page-color: #{$text} !important;
+    --in-content-page-background: #{$mantle} !important;
+    // --in-content-text-color: var(--in-content-page-color);
+    --in-content-deemphasized-text: #{$subtext0} !important;
+    --in-content-box-background: #{$base} !important;
+    // --in-content-box-background-odd: rgba(12, 12, 13, 0.05);
+    --in-content-box-border-color: #{$surface1} !important;
+    --in-content-box-info-background: #{$base} !important;
+    // --in-content-item-hover: color-mix(in srgb, var(--in-content-primary-button-background) 20% transparent);
+    // --in-content-item-hover-text: var(--in-content-page-color);
+    // --in-content-item-selected: var(--in-content-primary-button-background);
+    // --in-content-item-selected-text: var(--in-content-primary-button-text-color);
+    --in-content-icon-color: #{$base} !important;
+    // --in-content-accent-color: var(--in-content-primary-button-background);
+    // --in-content-accent-color-active: var(--in-content-primary-button-background-hover);
+    // --in-content-border-hover: var(--grey-90-a50);
+    // --in-content-border-invalid: var(--red-50);
+    --in-content-border-color: #{$surface1} !important;
+    --in-content-error-text-color: #{$red} !important;
+    // --in-content-link-color: var(--blue-60);
+    // --in-content-link-color-hover: var(--blue-70);
+    // --in-content-link-color-active: var(--blue-80);
+    // --in-content-link-color-visited: var(--blue-60);
+    // --in-content-button-text-color: var(--in-content-text-color);
+    // --in-content-button-text-color-hover: var(--in-content-text-color);
+    // --in-content-button-text-color-active: var(--in-content-button-text-color-hover);
+    --in-content-button-background: #{$surface0} !important;
+    --in-content-button-background-hover: #{scale-color(
+            $surface0,
+            $lightness: -6%
+        )} !important;
+    --in-content-button-background-active: #{scale-color(
+            $surface0,
+            $lightness: -11%
+        )} !important;
+    // --in-content-button-border-color: transparent;
+    // --in-content-button-border-color-hover: transparent;
+    // --in-content-button-border-color-active: var(--in-content-button-border-color-hover);
+    --in-content-primary-button-text-color: #{$base} !important;
+    // --in-content-primary-button-text-color-hover: var(--in-content-primary-button-text-color);
+    // --in-content-primary-button-text-color-active: var(--in-content-primary-button-text-color);
+    --in-content-primary-button-background: #{$accent} !important;
+    --in-content-primary-button-background-hover: #{scale-color(
+            $accent,
+            $lightness: -15%
+        )} !important;
+    --in-content-primary-button-background-active: #{scale-color(
+            $accent,
+            $lightness: -20%
+        )} !important;
+    // --in-content-primary-button-border-color: transparent;
+    // --in-content-primary-button-border-hover: transparent;
+    // --in-content-primary-button-border-active: transparent;
+    --in-content-danger-button-background: #{$maroon};
+    --in-content-danger-button-background-hover: #{scale-color(
+            $maroon,
+            $lightness: -15%
+        )} !important;
+    --in-content-danger-button-background-active: #{scale-color(
+            $maroon,
+            $lightness: -20%
+        )} !important;
+    // --in-content-focus-outline-color: var(--in-content-primary-button-background);
+    // --in-content-focus-outline-width: 2px;
+    // --in-content-focus-outline-offset: 2px;
+    // --in-content-focus-outline-inset: calc(-1 * var(--in-content-focus-outline-width));
+    // --in-content-focus-outline: var(--in-content-focus-outline-width) solid var(--in-content-focus-outline-color);
+    --in-content-table-background: #{$base} !important;
+    // --in-content-table-border-color: var(--in-content-box-border-color);
+    // --in-content-table-header-background: var(--in-content-primary-button-background);
+    // --in-content-table-header-color: var(--in-content-primary-button-text-color);
+    // --in-content-sidebar-width: 240px;
+    // --dialog-warning-text-color: var(--red-60);
+    // --checkbox-border-color: var(--in-content-box-border-color);
+    // --checkbox-unchecked-bgcolor: var(--in-content-button-background);
+    // --checkbox-unchecked-hover-bgcolor: var(--in-content-button-background-hover);
+    // --checkbox-unchecked-active-bgcolor: var(--in-content-button-background-active);
+    // --checkbox-checked-bgcolor: var(--in-content-primary-button-background);
+    // --checkbox-checked-color: var(--in-content-primary-button-text-color);
+    // --checkbox-checked-border-color: transparent;
+    // --checkbox-checked-hover-bgcolor: var(--in-content-primary-button-background-hover);
+    // --checkbox-checked-active-bgcolor: var(--in-content-primary-button-background-active);
+    --blue-40: #{scale-color($blue, $lightness: 10%)} !important;
+    --blue-50: #{$blue} !important;
+    --blue-60: #{scale-color($blue, $lightness: -10%)} !important;
+    --blue-70: #{scale-color($blue, $lightness: -20%)} !important;
+    --blue-80: #{scale-color($blue, $lightness: -30%)} !important;
+    --grey-30: #{$surface0} !important;
+    --grey-60: #{$overlay2} !important;
+    --grey-90-a10: #{fade-out($subtext1, 0.9)} !important;
+    --grey-90-a20: #{fade-out($subtext1, 0.8)} !important;
+    --grey-90-a30: #{fade-out($subtext1, 0.7)} !important;
+    --grey-90-a50: #{fade-out($subtext1, 0.5)} !important;
+    --grey-90-a60: #{fade-out($subtext1, 0.4)} !important;
+    --green-50: #{$green} !important;
+    --green-60: #{scale-color($green, $lightness: -10%)} !important;
+    --green-70: #{scale-color($green, $lightness: -20%)} !important;
+    --green-80: #{scale-color($green, $lightness: -30%)} !important;
+    --green-90: #{scale-color($green, $lightness: -40%)} !important;
+    --orange-50: #{$peach} !important;
+    --red-40: #{scale-color($red, $lightness: 10%)} !important;
+    --red-50: #{$red} !important;
+    --red-60: #{scale-color($red, $lightness: -10%)} !important;
+    --red-70: #{scale-color($red, $lightness: -20%)} !important;
+    --red-80: #{scale-color($red, $lightness: -30%)} !important;
+    --red-90: #{scale-color($red, $lightness: -40%)} !important;
+    --yellow-50: #{$yellow} !important;
+    --yellow-60: #{scale-color($yellow, $lightness: -10%)} !important;
+    --yellow-60-a30: #{scale-color($yellow, $lightness: -10%, $alpha: -70%)} !important;
+    --yellow-70: #{scale-color($yellow, $lightness: -20%)} !important;
+    --yellow-80: #{scale-color($yellow, $lightness: -30%)} !important;
+    --yellow-90: #{scale-color($yellow, $lightness: -40%)} !important;
+    // --shadow-10: 0 1px 4px var(--grey-90-a10);
+    // --shadow-30: 0 4px 16px var(--grey-90-a10);
+    // --card-padding: 16px;
+    // --card-shadow: var(--shadow-10);
+    // --card-outline-color: var(--grey-30);
+    // --card-shadow-hover: var(--card-shadow), 0 0 0 5px var(--card-outline-color);
+    // accent-color: var(--in-content-accent-color);
+    // color-scheme: light dark;
+}
+
+// usercontext.css
+.identity-color-toolbar {
+    --identity-tab-color: #{$text} !important;
+    --identity-icon-color: #{$text} !important;
+}
+
+.identity-color-blue {
+    --identity-tab-color: #{$sapphire} !important;
+    --identity-icon-color: #{$sapphire} !important;
+}
+
+.identity-color-turquoise {
+    --identity-tab-color: #{$teal} !important;
+    --identity-icon-color: #{$teal} !important;
+}
+
+.identity-color-green {
+    --identity-tab-color: #{$green} !important;
+    --identity-icon-color: #{$green} !important;
+}
+
+.identity-color-yellow {
+    --identity-tab-color: #{$yellow} !important;
+    --identity-icon-color: #{$yellow} !important;
+}
+
+.identity-color-orange {
+    --identity-tab-color: #{$peach} !important;
+    --identity-icon-color: #{$peach} !important;
+}
+
+.identity-color-red {
+    --identity-tab-color: #{$red} !important;
+    --identity-icon-color: #{$red} !important;
+}
+
+.identity-color-pink {
+    --identity-tab-color: #{$pink} !important;
+    --identity-icon-color: #{$pink} !important;
+}
+
+.identity-color-purple {
+    --identity-tab-color: #{$mauve} !important;
+    --identity-icon-color: #{$mauve} !important;
+}

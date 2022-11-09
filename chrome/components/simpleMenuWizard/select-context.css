@@ -18,7 +18,7 @@
 /* #context-searchselect,                 /* Search [Google] for "[selected]" */
 /* #frame-sep,                            /************ Separator *************/
 /* #context-viewpartialsource-selection,  /* View Selection Source            */
-/* #context-inspect-a11y,                 /* Inspect Accessibility Properties */
+#context-inspect-a11y,                 /* Inspect Accessibility Properties */
 /* #context-inspect,                      /* Inspect (Q)                      */
 
 #leave_this_dummy_here {

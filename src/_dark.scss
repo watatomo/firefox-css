@@ -1,0 +1,105 @@
+// @use "sass:color";
+@import "palette/mocha";
+
+$accent: $blue;
+
+@media (prefers-color-scheme: dark) {
+    :host,
+    :root {
+        --in-content-page-background: #{$mantle} !important;
+        --in-content-page-color: #{$text} !important;
+        --in-content-deemphasized-text: #{$subtext0} !important;
+        --in-content-box-background: #{$base} !important;
+        --in-content-table-border-color: #{$surface1} !important;
+        // --in-content-box-background-odd: rgba(249, 249, 250, 0.05);
+        --in-content-box-info-background: #{$base} !important;
+        --in-content-box-border-color: #{$surface1} !important;
+        --in-content-border-color: #{$surface0} !important;
+        --in-content-border-hover: #{$surface1} !important;
+        --in-content-border-invalid: #{scale-color($maroon, $saturation: 10%)} !important;
+        --in-content-error-text-color: #{$maroon} !important;
+        --in-content-button-background: #{$surface0} !important;
+        --in-content-button-background-hover: #{scale-color(
+                $surface0,
+                $lightness: -15%
+            )} !important;
+        --in-content-button-background-active: #{scale-color(
+                $surface0,
+                $lightness: 5%
+            )} !important;
+        --in-content-icon-color: #{$crust} !important;
+        --in-content-primary-button-text-color: #{$crust} !important;
+        --in-content-primary-button-background: #{$accent} !important;
+        --in-content-primary-button-background-hover: #{scale-color(
+                $accent,
+                $blackness: -15%
+            )} !important;
+        --in-content-primary-button-background-active: #{scale-color(
+                $accent,
+                $lightness: 5%
+            )} !important;
+        --in-content-danger-button-background: #{$maroon} !important;
+        --in-content-danger-button-background-hover: #{scale-color(
+                $maroon,
+                $lightness: -15%
+            )} !important;
+        --in-content-danger-button-background-active: #{scale-color(
+                $maroon,
+                $lightness: 5%
+            )} !important;
+        --in-content-table-background: #{$base} !important;
+        // --in-content-link-color: var(--in-content-primary-button-background);
+        // --in-content-link-color-hover: var(--in-content-primary-button-background-hover);
+        // --in-content-link-color-active: var(--in-content-primary-button-background-active);
+        // --in-content-link-color-visited: var(--in-content-link-color);
+        --card-outline-color: #{$surface2} !important;
+        --dialog-warning-text-color: #{$maroon} !important;
+        // scrollbar-color: rgba(249, 249, 250, 0.4) rgba(20, 20, 25, 0.3);
+    }
+
+    // usercontext.css
+    .identity-color-toolbar {
+        --identity-tab-color: #{$text} !important;
+        --identity-icon-color: #{$text} !important;
+    }
+
+    .identity-color-blue {
+        --identity-tab-color: #{$sapphire} !important;
+        --identity-icon-color: #{$sapphire} !important;
+    }
+
+    .identity-color-turquoise {
+        --identity-tab-color: #{$teal} !important;
+        --identity-icon-color: #{$teal} !important;
+    }
+
+    .identity-color-green {
+        --identity-tab-color: #{$green} !important;
+        --identity-icon-color: #{$green} !important;
+    }
+
+    .identity-color-yellow {
+        --identity-tab-color: #{$yellow} !important;
+        --identity-icon-color: #{$yellow} !important;
+    }
+
+    .identity-color-orange {
+        --identity-tab-color: #{$peach} !important;
+        --identity-icon-color: #{$peach} !important;
+    }
+
+    .identity-color-red {
+        --identity-tab-color: #{$red} !important;
+        --identity-icon-color: #{$red} !important;
+    }
+
+    .identity-color-pink {
+        --identity-tab-color: #{$pink} !important;
+        --identity-icon-color: #{$pink} !important;
+    }
+
+    .identity-color-purple {
+        --identity-tab-color: #{$mauve} !important;
+        --identity-icon-color: #{$mauve} !important;
+    }
+}

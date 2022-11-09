@@ -12,27 +12,6 @@
     filter: none !important;
 }
 
-/***** nav button change *****/
-
-#back-button,
-#forward-button {
-    padding: 0 !important;
-}
-
-#back-button > .toolbarbutton-icon {
-    list-style-image: url("../resources/nav-bar/back.svg") !important;
-}
-
-#forward-button > .toolbarbutton-icon {
-    list-style-image: url("../resources/nav-bar/forward.svg") !important;
-}
-
-#back-button > .toolbarbutton-icon,
-#forward-button > .toolbarbutton-icon {
-    width: calc(2 * var(--toolbarbutton-inner-padding) + 18px) !important;
-    height: calc(2 * var(--toolbarbutton-inner-padding) + 18px) !important;
-}
-
 /* force text color? */
 .urlbar-page-action,
 #urlbar-go-button,
@@ -56,6 +35,32 @@
     background-color: var(--urlbar-box-active-bgcolor) !important;
 }
 
-#star-button[starred] {
+.urlbar-page-action:not([disabled]):hover > #star-button[starred],
+.urlbar-page-action:not([disabled]):active > #star-button[starred] {
     fill: var(--urlbar-box-hover-text-color) !important;
+}
+
+/***** NAV ICONS CHANGE *****/
+
+#back-button,
+#forward-button {
+    padding: 0 !important;
+}
+
+#back-button > .toolbarbutton-icon {
+    list-style-image: url("../resources/nav-bar/back.svg") !important;
+}
+
+#forward-button > .toolbarbutton-icon {
+    list-style-image: url("../resources/nav-bar/forward.svg") !important;
+}
+
+#back-button > .toolbarbutton-icon,
+#forward-button > .toolbarbutton-icon {
+    width: calc(2 * var(--toolbarbutton-inner-padding) + 18px) !important;
+    height: calc(2 * var(--toolbarbutton-inner-padding) + 18px) !important;
+}
+
+.bookmark-item[container] {
+    list-style-image: url("");
 }

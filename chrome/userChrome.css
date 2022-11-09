@@ -1,7 +1,7 @@
 @import url("./components/simpleMenuWizard/_index.css");
 
-@import url("./_variables.css");
-@import url("./components/_overwrite.css");
+@import url("./_config.css");
+@import url("./components/_reassign.css");
 @import url("./components/title-bar.css");
 @import url("./components/tabs.css");
 @import url("./components/nav-bar.css");

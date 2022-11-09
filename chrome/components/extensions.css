@@ -148,6 +148,7 @@ elaborate/compiled stylesheets */
     --pageAction-image-16px: url("../resources/extensions/fingerprint.svg") !important;
     --pageAction-image-32px: url("../resources/extensions/fingerprint.svg") !important;
     list-style-image: url("../resources/extensions/fingerprint.svg") !important;
+    opacity: 0.9;
 }
 
 /* hydrus */

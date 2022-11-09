@@ -4,7 +4,8 @@
     "main": "false",
     "scripts": {
         "prettier": "npx prettier --write .",
-        "update": "cp -r chrome /c/Users/Ren/AppData/Roaming/Mozilla/Firefox/Profiles/sklzc42y.default"
+        "update": "cp -r chrome /c/Users/Ren/AppData/Roaming/Mozilla/Firefox/Profiles/xb82qfq6.default-1667938101392 && cp -r user.js /c/Users/Ren/AppData/Roaming/Mozilla/Firefox/Profiles/xb82qfq6.default-1667938101392",
+        "sass": "sass --no-charset --no-source-map src:chrome"
     },
     "repository": {
         "type": "git",
