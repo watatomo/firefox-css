@@ -13,8 +13,8 @@
 /* #context-openlink,                      /* Open Link in New Window          */
 /* #context-openlinkprivate,               /* Open Link in New Private Window  */
 /* #context-sep-open,                      /************ Separator *************/
-/* #context-bookmarklink,                  /* Bookmark Link                    */
-/* #context-savelink,                      /* Save Link As…                    */
+#context-bookmarklink,                  /* Bookmark Link                    */
+#context-savelink,                      /* Save Link As…                    */
 #context-savelinktopocket,              /* Save Link to Pocket              */
 #context-copyemail,                     /* Copy Email Address               */
 /* #context-copylink,                      /* Copy Link                        */

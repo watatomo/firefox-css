@@ -116,7 +116,7 @@ elaborate/compiled stylesheets */
 /* react devtools */
 :is(.webextension-browser-action, .eom-addon-button)[data-extensionid="@react-devtools"]
     .toolbarbutton-icon {
-    list-style-image: url("../resources/extensions/sources/react.svg");
+    list-style-image: url("../resources/extensions/react.svg");
 }
 
 /* invert github's black icon */
@@ -152,12 +152,12 @@ elaborate/compiled stylesheets */
 }
 
 /* hydrus */
-/* :is(.webextension-browser-action, .eom-addon-button)[data-extensionid="hydruscompanion@hydruscompanion.hydruscompanion"] {
-    --pageAction-image-16px: url("../resources/extensions/database.svg") !important;
-    --pageAction-image-32px: url("../resources/extensions/database.svg") !important;
-    list-style-image: url("../resources/extensions/database.svg") !important;
-    transform: scale(1.15);
-} */
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="hydruscompanion@hydruscompanion.hydruscompanion"] {
+    --pageAction-image-16px: url("../resources/extensions/hydrus.svg") !important;
+    --pageAction-image-32px: url("../resources/extensions/hydrus.svg") !important;
+    list-style-image: url("../resources/extensions/hydrus.svg") !important;
+    transform: scale(1.08);
+}
 
 :is(.webextension-browser-action, .eom-addon-button)[data-extensionid="hydruscompanion@hydruscompanion.hydruscompanion"][badge="Post"]
     .toolbarbutton-badge {
@@ -165,9 +165,9 @@ elaborate/compiled stylesheets */
 }
 
 /* yomichan */
-/* :is(.webextension-browser-action, .eom-addon-button)[data-extensionid="alex@foosoft.net"] {
-    --pageAction-image-16px: url("../resources/extensions/books.svg") !important;
-    --pageAction-image-32px: url("../resources/extensions/books.svg") !important;
-    list-style-image: url("../resources/extensions/books.svg") !important;
-    transform: scale(1.15);
-} */
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="alex@foosoft.net"] {
+    --pageAction-image-16px: url("../resources/extensions/yomichan.svg") !important;
+    --pageAction-image-32px: url("../resources/extensions/yomichan.svg") !important;
+    list-style-image: url("../resources/extensions/yomichan.svg") !important;
+    /* transform: scale(0.99); */
+}

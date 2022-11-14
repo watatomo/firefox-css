@@ -10,8 +10,8 @@
 
 /* #toolbar-context-menu .customize-context-manageExtension,             /* Manage Extension       */
 /* #toolbar-context-menu .customize-context-removeExtension,             /* Remove Extension       */
-/* #toolbar-context-menu .customize-context-reportExtension,             /* Report Extension       */
-/* #toolbar-context-menu .customize-context-reportExtension
+#toolbar-context-menu .customize-context-reportExtension,             /* Report Extension       */
+#toolbar-context-menu .customize-context-reportExtension
     + menuseparator,                                                     /******* Seperator ********/
 /* #toolbar-context-menu .customize-context-moveToPanel,                 /* Pin to Overflow Menu   */
 /* #toolbar-context-menu #toolbar-context-autohide-downloads-button,     /* Hide Button When Empty */

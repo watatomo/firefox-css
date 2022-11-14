@@ -44,12 +44,13 @@
 /* extensions */
 menuitem[id*="ublock"],
 menuitem[id*="tampermonkey"],
-menu[id*="tampermonkey"],
 menuitem[id*="open-tab-then-discard"],
 menuitem[label*="Clean Link"],
 menugroup#context-navigation,
 menu[label*="Tampermonkey"] + menuseperator,
-menuitem[id*="anonaddy"],
-menuitem[image*="libredirect"] {
+menuitem#anonaddy,
+menuitem[image*="libredirect"],
+menuitem.context-menu-add-engine,
+menuitem[id*="send_to_hydrus_meme"] {
     display: none !important;
 }

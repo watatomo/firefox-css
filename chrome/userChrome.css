@@ -2,7 +2,10 @@
 
 @import url("./_config.css");
 @import url("./components/_reassign.css");
-@import url("./components/title-bar.css");
+@import url("./components/titlebar.css");
 @import url("./components/tabs.css");
 @import url("./components/nav-bar.css");
 @import url("./components/extensions.css");
+@import url("./components/bookmarks-bar.css");
+/* @import url("./components/sidebar.css"); */
+/* @import url("./components/findbar.css"); */

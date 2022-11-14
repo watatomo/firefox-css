@@ -16,7 +16,7 @@
 /* #open-frame-sep,                         /******** Separator *********/
 /* #context-reloadframe,                    /* Reload Frame             */
 /* #context-reloadframe + menuseparator,    /******** Separator *********/
-/* #context-bookmarkframe,                  /* Bookmark This Frame      */
+#context-bookmarkframe,                  /* Bookmark This Frame      */
 /* #context-saveframe,                      /* Save Frame As…           */
 #context-saveframe + menuseparator,      /******** Separator *********/
 #context-printframe,                     /* Print Frame…             */

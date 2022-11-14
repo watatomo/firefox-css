@@ -20,6 +20,8 @@
         var(--urlbar-box-text-color)
     ) !important;
     /* --urlbar-box-focus-bgcolor: var(--uc-urlbar-box-focus-bgcolor, var(--button-bgcolor)) !important; */
+
+    --focus-outline-color: var(--uc-focus-outline-color) !important;
 }
 
 /***** usercontext.css *****/
@@ -73,3 +75,19 @@
     --identity-tab-color: var(--uc-identity-purple, #af51f5) !important;
     --identity-icon-color: var(--uc-identity-purple, #af51f5) !important;
 }
+
+/***** popup.css *****/
+/* panel,
+#PersonalToolbar menupopup,
+#mainPopupSet menupopup {
+    --menu-color: var(--uc-menu-color) !important;
+    --menu-background-color: var(--uc-menu-background) !important;
+    --menu-border-color: var(--uc-menu-border-color) !important;
+    --menuitem-hover-background-color: var(
+        --uc-menuitem-hover-background-color
+    ) !important;
+    --menu-disabled-color: var(--uc-menu-disabled-color) !important;
+    --menuitem-disabled-hover-background-color: var(
+        --uc-menuitem-disabled-hover-background-color
+    ) !important;
+} */
