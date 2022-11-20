@@ -1,0 +1,19 @@
+/***** downloads *****/
+
+#downloadsFooterButtons[uc-hbox]:not([hidden]) {
+    display: flex !important;
+}
+
+#downloadsFooterButtons[uc-hbox] button#downloadsHistory {
+    margin: unset !important;
+}
+
+#downloadsFooterButtons[uc-hbox] button#clearDownloadsPanel {
+    border: unset !important;
+    margin: unset !important;
+}
+
+#downloadsFooterButtons[uc-hbox] button#downloadsHistory,
+#downloadsFooterButtons[uc-hbox] button#clearDownloadsPanel {
+    flex: auto;
+}

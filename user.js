@@ -107,3 +107,10 @@ user_pref("gfx.font_rendering.cleartype_params.force_gdi_classic_max_size", 6);
 user_pref("gfx.font_rendering.cleartype_params.pixel_structure", 1);
 user_pref("gfx.font_rendering.cleartype_params.rendering_mode", 5);
 user_pref("gfx.font_rendering.directwrite.use_gdi_table_loading", false);
+
+//// quick actions - what appears on the url/search bar when clicked
+user_pref("browser.urlbar.quickactions.enabled", false);
+user_pref("browser.urlbar.quickactions.showInZeroPrefix", false);
+user_pref("browser.urlbar.quickactions.showPrefs", false);
+user_pref("browser.urlbar.shortcuts.quickactions", false);
+user_pref("browser.urlbar.suggest.quickactions", false);

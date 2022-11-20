@@ -51,6 +51,8 @@ menu[label*="Tampermonkey"] + menuseperator,
 menuitem#anonaddy,
 menuitem[image*="libredirect"],
 menuitem.context-menu-add-engine,
-menuitem[id*="send_to_hydrus_meme"] {
+menuitem[id*="send_to_hydrus_meme"],
+.menuseparator-add-engine,
+[anonid="add-engine-separator"] {
     display: none !important;
 }

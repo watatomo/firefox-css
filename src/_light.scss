@@ -5,6 +5,8 @@ $accent: $blue;
 
 :host,
 :root {
+    --in-content-accent-color: #{$accent} !important;
+
     --in-content-page-color: #{$text} !important;
     --in-content-page-background: #{$mantle} !important;
     // --in-content-text-color: var(--in-content-page-color);
@@ -67,7 +69,7 @@ $accent: $blue;
             $maroon,
             $lightness: -20%
         )} !important;
-    // --in-content-focus-outline-color: var(--in-content-primary-button-background);
+    --in-content-focus-outline-color: #{$accent} !important;
     // --in-content-focus-outline-width: 2px;
     // --in-content-focus-outline-offset: 2px;
     // --in-content-focus-outline-inset: calc(-1 * var(--in-content-focus-outline-width));
