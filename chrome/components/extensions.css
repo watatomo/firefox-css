@@ -132,8 +132,10 @@ elaborate/compiled stylesheets */
 
 /* multi-container tabs */
 :is(.webextension-browser-action, .eom-addon-button)[data-extensionid="@testpilot-containers"i]
-    .toolbarbutton-icon {
-    list-style-image: url("../resources/extensions/container-base.svg");
+    .toolbarbutton-icon,
+/* containerize */
+:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="containerise@kinte.sh"] {
+    list-style-image: url("../resources/extensions/container-base.svg") !important;
 }
 
 :is(.pageAction-panel-button, .urlbar-page-action)[actionid="_testpilot-containers"] {
@@ -161,7 +163,12 @@ elaborate/compiled stylesheets */
 
 :is(.webextension-browser-action, .eom-addon-button)[data-extensionid="hydruscompanion@hydruscompanion.hydruscompanion"][badge="Post"]
     .toolbarbutton-badge {
-    font-size: 8px !important;
+    font-size: 7px !important;
+}
+
+panel#widget-overflow
+    [data-extensionid="hydruscompanion@hydruscompanion.hydruscompanion"].subviewbutton {
+    padding-left: 18px !important;
 }
 
 /* yomichan */
@@ -169,5 +176,4 @@ elaborate/compiled stylesheets */
     --pageAction-image-16px: url("../resources/extensions/yomichan.svg") !important;
     --pageAction-image-32px: url("../resources/extensions/yomichan.svg") !important;
     list-style-image: url("../resources/extensions/yomichan.svg") !important;
-    /* transform: scale(0.99); */
 }

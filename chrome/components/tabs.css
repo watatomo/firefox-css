@@ -44,6 +44,11 @@
     max-width: var(--uc-tab-inactive-max-width, calc(225px / 2)) !important;
 }
 
+.tabbrowser-tab:not([pinned]) {
+    transition: min-width var(--uc-tab-transition, 100ms ease-out),
+        max-width var(--uc-tab-transition, 100ms ease-out) !important;
+}
+
 /* inactive tabs are faded */
 .tabbrowser-tab:not([selected="true"], [pinned]) .tab-content {
     opacity: var(--uc-tab-inactive-opacity, 0.5);

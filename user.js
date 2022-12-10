@@ -22,8 +22,8 @@ user_pref("browser.startup.preXulSkeletonUI", false);
 // required for icons with data URLs
 user_pref("svg.context-properties.content.enabled", true);
 
-// prevent bugs that would otherwise be caused by the custom scrollbars in the user-agent sheet
-user_pref("layout.css.cached-scrollbar-styles.enabled", false);
+// https://bugzilla.mozilla.org/show_bug.cgi?id=1792319#c16 💀
+user_pref("layout.css.cached-scrollbar-styles.enabled", true);
 
 // allow the color-mix() CSS function
 user_pref("layout.css.color-mix.enabled", true);

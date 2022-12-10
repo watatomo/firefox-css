@@ -1,4 +1,4 @@
-@import url("./palette/catppuccin-frappe.css");
+@import url("./palette/catppuccin-mocha.css");
 
 :root {
     --uc-tab-min-height: 32px;
@@ -7,6 +7,7 @@
     --uc-tab-margin: 4px;
     --uc-tab-outline-width: 2px;
     --uc-tab-inactive-opacity: 0.55;
+    --uc-tab-transition: 150ms ease-out;
 
     --uc-urlbar-box-text-color: var(--toolbarbutton-icon-fill);
     --uc-urlbar-box-hover-bgcolor: var(--lwt-toolbarbutton-icon-fill-attention);

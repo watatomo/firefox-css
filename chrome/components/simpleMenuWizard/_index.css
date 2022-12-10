@@ -53,6 +53,7 @@ menuitem[image*="libredirect"],
 menuitem.context-menu-add-engine,
 menuitem[id*="send_to_hydrus_meme"],
 .menuseparator-add-engine,
-[anonid="add-engine-separator"] {
+[anonid="add-engine-separator"],
+menu[id*="_testpilot-containers-"] {
     display: none !important;
 }
