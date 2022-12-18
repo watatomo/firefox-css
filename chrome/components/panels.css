@@ -1,4 +1,4 @@
-/***** downloads *****/
+/********** DOWNLOADS **********/
 
 #downloadsFooterButtons[uc-hbox]:not([hidden]) {
     display: flex !important;

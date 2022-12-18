@@ -39,14 +39,6 @@
         --uc-menuitem-hover-background-color
     ); */
 
-    --uc-bookmark-height: 20px; /* Might need to adjust if the toolbar has other buttons */
-    --uc-bookmark-padding: 4px; /* Vertical padding to be applied to bookmarks */
-    --uc-bookmark-autohide-delay: 300ms;
-
-    /* 0deg = "show" ; 90deg = "hide" ;  Set the following to control when bookmarks are shown */
-    --uc-bookmark-autohide-focus-rotation: 90deg; /* urlbar is focused */
-    --uc-bookmark-autohide-hover-rotation: 0deg; /* cursor is over the toolbar area */
-
     --uc-findbar-min-width: 225px;
     --uc-findbar-max-width: 400px;
     --uc-findbar-height: 22px;

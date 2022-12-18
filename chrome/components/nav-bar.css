@@ -1,4 +1,5 @@
 /* https://www.reddit.com/r/FirefoxCSS/comments/myypur/how_can_i_remove_extension_tabliss_from_the */
+/* a fallback for hideTrackingProtectionIconOnCustomNewTabPage.uc.js */
 .extensionPage#identity-box
     #identity-icon[tooltiptext*="Tabliss"]
     ~ #identity-icon-label {
@@ -83,7 +84,7 @@
     fill: var(--urlbar-box-hover-text-color) !important;
 }
 
-/***** NAV ICONS CHANGE *****/
+/********** NAV ICONS CHANGE **********/
 
 #back-button,
 #forward-button {

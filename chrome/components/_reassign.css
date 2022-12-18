@@ -24,7 +24,8 @@
     --focus-outline-color: var(--uc-focus-outline-color) !important;
 }
 
-/***** usercontext.css *****/
+/********** usercontext.css **********/
+
 .identity-color-toolbar {
     --identity-tab-color: var(
         --uc-identity-toolbar,
@@ -76,7 +77,8 @@
     --identity-icon-color: var(--uc-identity-purple, #af51f5) !important;
 }
 
-/***** popup.css *****/
+/********** popup.css **********/
+
 /* panel,
 #PersonalToolbar menupopup,
 #mainPopupSet menupopup {
@@ -90,4 +92,10 @@
     --menuitem-disabled-hover-background-color: var(
         --uc-menuitem-disabled-hover-background-color
     ) !important;
+} */
+
+/********** preferences.css **********/
+
+/* .dialogBox {
+    --in-content-page-background: var(--uc-in-content-page-bgcolor) !important;
 } */

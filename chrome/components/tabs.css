@@ -75,7 +75,27 @@
     display: none !important;
 }
 
-/***** container tabs *****/
+/* tabs with attention */
+.tabbrowser-tab:is([image], [pinned])
+    > .tab-stack
+    > .tab-content[attention]:not([selected="true"]),
+.tabbrowser-tab
+    > .tab-stack
+    > .tab-content[pinned][titlechanged]:not([selected="true"]),
+#firefox-view-button[attention] {
+    background-image: radial-gradient(
+        circle,
+        var(--tab-attention-icon-color),
+        var(--tab-attention-icon-color) 2px,
+        transparent 2px
+    );
+    background-position: center bottom
+        calc(6.5px + var(--tabs-navbar-shadow-size));
+    background-size: 4px 4px;
+    background-repeat: no-repeat;
+}
+
+/********** CONTAINER TABS **********/
 
 .tabbrowser-tab[usercontextid] {
     color: color-mix(
@@ -125,4 +145,12 @@
     > .tab-background
     > .tab-context-line {
     display: none;
+}
+
+/********** USERSCRIPT CENTRIC **********/
+
+/* highlight unread tabs; requires italicizeUnreadTabs.uc.js */
+:root[italic-unread-tabs] .tabbrowser-tab[notselectedsinceload]:not([pending]),
+:root[italic-unread-tabs] .tabbrowser-tab[notselectedsinceload][pending][busy] {
+    font-style: italic !important;
 }

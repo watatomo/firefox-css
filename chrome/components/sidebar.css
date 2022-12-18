@@ -1,3 +1,5 @@
+/********** USERSCRIPT CENTRIC **********/
+
 #browser {
     position: relative !important;
 }
@@ -14,3 +16,74 @@
     box-shadow: 0px 0px 8px -4px hsla(240, 4%, 0%, 0.6),
         0px 0px 15px 0px hsla(0, 0%, 0%, 0.2) !important;
 }
+
+#sidebar-box[hidden] {
+    display: none !important;
+}
+
+#sidebar-box[positionend] {
+    left: auto !important;
+    right: 0 !important;
+}
+
+#sidebar-header {
+    top: 0 !important;
+    padding: 6px !important;
+    border-bottom: 0px solid transparent !important;
+    color: inherit !important;
+    font-size: 1.2em !important;
+}
+
+#sidebar-box[content-style]:is([sidebarcommand="viewBookmarksSidebar"], [sidebarcommand="viewHistorySidebar"], [sidebarcommand="viewTabsSidebar"])
+    #sidebar-header {
+    padding-bottom: 3px !important;
+}
+
+#sidebar {
+    min-width: -moz-available !important;
+    flex-grow: 1 !important;
+}
+
+#sidebar-switcher-target {
+    min-height: 28px !important;
+    min-width: 28px !important;
+    padding-inline: 6px !important;
+}
+
+#sidebar-switcher-target #sidebar-title {
+    padding-inline: 6px !important;
+}
+
+#sidebar-search-container {
+    padding: 3px 6px !important;
+}
+
+/* :where(#sidebar-search-container, .sidebar-search-container) search-textbox {
+    appearance: none !important;
+    padding-inline: 5px 0 !important;
+    padding-block: 0 !important;
+    color: currentColor !important;
+    min-height: 25px !important;
+    margin: 0 !important;
+    outline: 0 solid transparent !important;
+} */
+
+#viewButton {
+    padding-inline: 7px 5px !important;
+    margin-inline-start: 6px !important;
+    border: 0 !important;
+    background: transparent !important;
+}
+
+#viewButton > .button-box > dropmarker {
+    margin-inline-start: 4px !important;
+}
+
+#sidebarMenu-popup {
+    margin-top: 0 !important;
+}
+
+/* #sidebarMenu-popup > .webextension-menuitem > .toolbarbutton-icon {
+    opacity: 0.8 !important;
+    fill: currentColor !important;
+} */

@@ -5,7 +5,22 @@
     /* max-width: 27px !important; */
 }
 
-/***** ICONS *****/
+/* hides unified extensions button */
+toolbarbutton#unified-extensions-button {
+    display: none !important;
+}
+
+/********** ICONS **********/
+
+/* extensions */
+#eom-button {
+    list-style-image: url("../resources/material/extensions.svg") !important;
+}
+
+/* bookmark folder */
+.bookmark-item[container] {
+    list-style-image: url("../resources/material/folder.svg") !important;
+}
 
 /* tree-style-tabs */
 .webextension-browser-action[data-extensionid="treestyletab@piro.sakura.ne.jp"i]
@@ -166,10 +181,10 @@ elaborate/compiled stylesheets */
     font-size: 7px !important;
 }
 
-panel#widget-overflow
+/* panel#widget-overflow
     [data-extensionid="hydruscompanion@hydruscompanion.hydruscompanion"].subviewbutton {
     padding-left: 18px !important;
-}
+} */
 
 /* yomichan */
 :is(.webextension-browser-action, .eom-addon-button)[data-extensionid="alex@foosoft.net"] {
