@@ -23,8 +23,14 @@
     box-shadow: none !important;
 }
 
+/* remove unnecessary margin */
+#TabsToolbar .toolbarbutton-1 {
+    margin: 0 !important;
+}
+
 /* adds borders around tabs */
-.tab-background {
+.tab-background,
+#TabsToolbar #firefox-view-button > .toolbarbutton-icon:-moz-lwtheme {
     outline: var(--uc-tab-outline-width, 1px) solid
         color-mix(in srgb, currentColor 25%, transparent) !important;
     outline-offset: calc(0px - var(--uc-tab-outline-width, 1px)) !important;
@@ -32,7 +38,10 @@
 
 /* multiselected tabs should have colored borders too */
 .tab-background[selected]:-moz-lwtheme,
-.tab-background[multiselected="true"]:-moz-lwtheme {
+.tab-background[multiselected="true"]:-moz-lwtheme,
+#TabsToolbar
+    #firefox-view-button[open]:not(:focus-visible)
+    > .toolbarbutton-icon:-moz-lwtheme {
     outline: var(--uc-tab-outline-width) solid
         var(--lwt-tab-line-color, var(--lwt-tabs-border-color, currentColor)) !important;
     outline-offset: calc(0px - var(--uc-tab-outline-width, 1px)) !important;

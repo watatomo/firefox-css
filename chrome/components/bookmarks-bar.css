@@ -1,12 +1,4 @@
-#PersonalToolbar {
-    --uc-bookmarks-height: 20px; /* Might need to adjust if the toolbar has other buttons */
-    --uc-bookmarks-padding: 4px; /* Vertical padding to be applied to bookmarks */
-    --uc-autohide-toolbar-delay: 300ms;
-
-    /* 0deg = "show" ; 90deg = "hide" ;  Set the following to control when bookmarks are shown */
-    --uc-autohide-toolbar-focus-rotation: 0deg; /* urlbar is focused */
-    --uc-autohide-toolbar-hover-rotation: 0deg; /* cursor is over the toolbar area */
-}
+/* https://github.com/MrOtherGuy/firefox-csshacks/blob/master/chrome/autohide_bookmarks_toolbar.css */
 
 :root[uidensity="touch"] #PersonalToolbar {
     --uc-bookmarks-padding: 7px;

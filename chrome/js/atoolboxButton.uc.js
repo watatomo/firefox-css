@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name           Toolbox Button
-// @version        1.3.0
+// @version        1.3.3
 // @author         aminomancer
 // @homepage       https://github.com/aminomancer/uc.css.js
 // @description    Adds a new toolbar button that 1) opens the content toolbox on left click;
@@ -52,15 +52,15 @@
         // it'll launch a browser toolbox for window 2. But if I go back to window 1
         // and right-click the toolbox button a second time, it will do nothing except
         // show a brief confirmation hint to explain the lack of action.
-        alreadyOpenMsg: "Browser Toolbox is already open.",
+        alreadyOpenMsg: "Browser Toolbox is already open",
         // Confirmation hint. This appears when you first middle-click the toolbox
         // button. It signifies that popups are being kept open. That is, "popup
         // auto-hide" has been temporarily disabled.
-        holdingOpenMsg: "Holding popups open.",
+        holdingOpenMsg: "Holding popups open",
         // Confirmation hint. This appears when you middle-click the toolbox button a
         // second time, toggling "popup auto-hide" back on, thereby allowing popups to
         // close on their own.
-        lettingCloseMsg: "Letting popups close.",
+        lettingCloseMsg: "Letting popups close",
 
         bundles: {},
         strings: new Map(),
@@ -71,8 +71,11 @@
             this.strings.set(name, string);
             return string;
         },
+        getFluentValue(id, args) {
+            return this.fluentStrings.formatValueSync(id, args);
+        },
         get defaultLabel() {
-            return this.getString("browserContentToolboxMenu.label", "menu");
+            return this.getString("toolbox.label", "toolbox");
         },
         get defaultTooltip() {
             return this.defaultLabel;
@@ -88,24 +91,21 @@
             "chrome://devtools/locale/toolbox.properties"
         )
     );
+    XPCOMUtils.defineLazyGetter(
+        l10n,
+        "fluentStrings",
+        () => new Localization(["devtools/client/toolbox.ftl"], true)
+    );
 
     if (
         /^chrome:\/\/browser\/content\/browser.(xul||xhtml)$/i.test(location) &&
         !CustomizableUI.getPlacementOfWidget("toolbox-button", true)
     ) {
         const lazy = {};
-        // for developer
-        XPCOMUtils.defineLazyModuleGetters(lazy, {
+        ChromeUtils.defineESModuleGetters(lazy, {
             BrowserToolboxLauncher:
-                "resource://devtools/client/framework/browser-toolbox/Launcher.jsm"
-        });
-        // for nightly
-        // ChromeUtils.defineESModuleGetters(lazy, {
-        //     BrowserToolboxLauncher:
-        //         "resource://devtools/client/framework/browser-toolbox/Launcher.sys.mjs"
-        // });
-        XPCOMUtils.defineLazyModuleGetters(lazy, {
-            require: "resource://devtools/shared/loader/Loader.jsm"
+                "resource://devtools/client/framework/browser-toolbox/Launcher.sys.mjs",
+            require: "resource://devtools/shared/loader/Loader.sys.mjs"
         });
         XPCOMUtils.defineLazyGetter(
             lazy,
@@ -123,7 +123,7 @@
             tooltiptext: l10n.defaultTooltip,
             onBuild(aDoc) {
                 let CustomHint = {
-                    _timerID: null,
+                    ...aDoc.ownerGlobal.ConfirmationHint,
 
                     /**
                      * Shows a transient, non-interactive confirmation hint anchored to an
@@ -166,9 +166,11 @@
                     show(anchor, message, options = {}) {
                         this._reset();
 
+                        this._message.removeAttribute("data-l10n-id");
                         this._message.textContent = message;
 
                         if (options.description) {
+                            this._description.removeAttribute("data-l10n-id");
                             this._description.textContent = options.description;
                             this._description.hidden = false;
                             this._panel.classList.add("with-description");
@@ -188,6 +190,7 @@
                                 "hideCheckHint"
                             );
                         } else {
+                            this._animationBox.removeAttribute("hidden");
                             this._panel.setAttribute(
                                 "data-message-id",
                                 "checkmarkHint"
@@ -202,12 +205,10 @@
                                     "animate",
                                     "true"
                                 );
-                                this._timerID = setTimeout(() => {
-                                    this._panel.hidePopup(true);
-                                    this._animationBox.removeAttribute(
-                                        "hidden"
-                                    );
-                                }, DURATION + 120);
+                                this._timerID = setTimeout(
+                                    () => this._panel.hidePopup(true),
+                                    DURATION + 120
+                                );
                             },
                             { once: true }
                         );
@@ -215,7 +216,9 @@
                         this._panel.addEventListener(
                             "popuphidden",
                             () => this._reset(),
-                            { once: true }
+                            {
+                                once: true
+                            }
                         );
 
                         let { position, x, y } = options;
@@ -240,46 +243,15 @@
                         }
                     },
 
-                    get _panel() {
-                        this._ensurePanel();
-                        return this.__panel;
-                    },
-
-                    get _animationBox() {
-                        this._ensurePanel();
-                        delete this._animationBox;
-                        return (this._animationBox = aDoc.getElementById(
-                            "confirmation-hint-checkmark-animation-container"
-                        ));
-                    },
-
-                    get _message() {
-                        this._ensurePanel();
-                        delete this._message;
-                        return (this._message = aDoc.getElementById(
-                            "confirmation-hint-message"
-                        ));
-                    },
-
-                    get _description() {
-                        this._ensurePanel();
-                        delete this._description;
-                        return (this._description = aDoc.getElementById(
-                            "confirmation-hint-description"
-                        ));
-                    },
-
                     _ensurePanel() {
                         if (!this.__panel) {
                             // hook into the built-in confirmation hint element
-                            let wrapper = aDoc.getElementById(
+                            let wrapper = document.getElementById(
                                 "confirmation-hint-wrapper"
                             );
                             wrapper?.replaceWith(wrapper.content);
-                            this.__panel =
-                                aDoc.getElementById("confirmation-hint");
-                            ConfirmationHint.__panel =
-                                aDoc.getElementById("confirmation-hint");
+                            this.__panel = ConfirmationHint.__panel =
+                                document.getElementById("confirmation-hint");
                         }
                     }
                 };
@@ -320,6 +292,7 @@
                 }
 
                 let prefSvc = Services.prefs;
+                let defaultPrefs = prefSvc.getDefaultBranch("");
                 let obSvc = Services.obs;
                 let toolboxBranch = "userChrome.toolboxButton";
                 let autoHide = "ui.popup.disable_autohide";
@@ -337,7 +310,7 @@
                     switch (button) {
                         case this.mouseConfig.contentToolbox:
                             // toggle the content toolbox
-                            aDoc.defaultView.key_toggleToolbox.click();
+                            aDoc.ownerGlobal.key_toggleToolbox.click();
                             break;
                         case this.mouseConfig.browserToolbox:
                             lazy.BrowserToolboxLauncher.getBrowserToolboxSessionState() // check if a browser toolbox window is already open
@@ -349,7 +322,7 @@
                                           hideCheck: true
                                       }
                                   ) // if so, just show a hint that it's already open
-                                : aDoc.defaultView.key_browserToolbox.click(); // if not, launch a new one
+                                : aDoc.ownerGlobal.key_browserToolbox.click(); // if not, launch a new one
                             break;
                         case this.mouseConfig.popupHide:
                             CustomHint.show(
@@ -469,11 +442,13 @@
                             break;
                     }
                     if (!toolbarbutton.autoTogglePopups) return;
-                    if (state && !toolbarbutton.popupAutoHide)
+                    if (state && !toolbarbutton.popupAutoHide) {
                         prefSvc.setBoolPref(autoHide, true);
+                    }
                     // if toolbox just closed and autohide is not already disabled, disable it
-                    else if (!state && toolbarbutton.popupAutoHide)
+                    else if (!state && toolbarbutton.popupAutoHide) {
                         prefSvc.setBoolPref(autoHide, false);
+                    }
                 }
 
                 function destroyThreadActor() {
@@ -530,10 +505,10 @@
                             switch (key) {
                                 case "contentToolbox":
                                     labelString = l10n.getString(
-                                        "browserContentToolboxMenu.label",
-                                        "menu"
+                                        "toolbox.label",
+                                        "toolbox"
                                     );
-                                    hotkey = aDoc.defaultView.key_toggleToolbox;
+                                    hotkey = aDoc.ownerGlobal.key_toggleToolbox;
                                     break;
                                 case "browserToolbox":
                                     labelString = l10n.getString(
@@ -541,12 +516,11 @@
                                         "menu"
                                     );
                                     hotkey =
-                                        aDoc.defaultView.key_browserToolbox;
+                                        aDoc.ownerGlobal.key_browserToolbox;
                                     break;
                                 case "popupHide":
-                                    labelString = l10n.getString(
-                                        "toolbox.meatballMenu.noautohide.label",
-                                        "toolbox"
+                                    labelString = l10n.getFluentValue(
+                                        "toolbox-meatball-menu-noautohide-label"
                                     );
                                     break;
                             }
@@ -581,15 +555,11 @@
                     toolboxObserver(null, "initial-load");
                 }
 
-                if (!prefSvc.prefHasUserValue(autoTogglePopups)) {
-                    prefSvc.setBoolPref(autoTogglePopups, true);
-                }
-                if (!prefSvc.prefHasUserValue(mouseConfig)) {
-                    prefSvc.setStringPref(
-                        mouseConfig,
-                        `{"contentToolbox": 0, "browserToolbox": 2, "popupHide": 1}`
-                    );
-                }
+                defaultPrefs.setBoolPref(autoTogglePopups, true);
+                defaultPrefs.setStringPref(
+                    mouseConfig,
+                    `{"contentToolbox": 0, "browserToolbox": 2, "popupHide": 1}`
+                );
                 window.addEventListener("unload", uninit);
                 prefSvc.addObserver(autoHide, prefObserver);
                 prefSvc.addObserver(toolboxBranch, prefObserver);
@@ -668,7 +638,7 @@
     margin-inline: 0;
   }`;
     let styleURI = makeURI(
-        "data:text/css;charset=UTF=8," + encodeURIComponent(toolboxCSS)
+        `data:text/css;charset=UTF=8,${encodeURIComponent(toolboxCSS)}`
     );
     if (!styleSvc.sheetRegistered(styleURI, styleSvc.AUTHOR_SHEET)) {
         styleSvc.loadAndRegisterSheet(styleURI, styleSvc.AUTHOR_SHEET);

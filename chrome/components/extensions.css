@@ -6,8 +6,10 @@
 }
 
 /* hides unified extensions button */
-toolbarbutton#unified-extensions-button {
-    display: none !important;
+toolbarbutton#unified-extensions-button,
+/* hides container action on urlbar */
+hbox.urlbar-page-action.urlbar-addon-page-action#pageAction-urlbar-_testpilot-containers {
+    /* display: none !important; */
 }
 
 /********** ICONS **********/
@@ -134,17 +136,6 @@ elaborate/compiled stylesheets */
     list-style-image: url("../resources/extensions/react.svg");
 }
 
-/* invert github's black icon */
-:is(.menu-iconic-icon, .toolbarbutton-icon, .urlbarView-favicon):is([src^="page-icon:https://github.com"], [src^="page-icon:http://github.com"])
-{
-    background-image: url("../resources/extensions/github.svg") !important;
-    background-size: 16px !important;
-    background-repeat: no-repeat !important;
-    background-position: center !important;
-    padding-inline: 16px 0 !important;
-    box-sizing: border-box !important;
-}
-
 /* multi-container tabs */
 :is(.webextension-browser-action, .eom-addon-button)[data-extensionid="@testpilot-containers"i]
     .toolbarbutton-icon,
@@ -191,4 +182,62 @@ elaborate/compiled stylesheets */
     --pageAction-image-16px: url("../resources/extensions/yomichan.svg") !important;
     --pageAction-image-32px: url("../resources/extensions/yomichan.svg") !important;
     list-style-image: url("../resources/extensions/yomichan.svg") !important;
+}
+
+/********** BOOKMARKS **********/
+
+/* folder */
+#PersonalToolbar
+    .bookmark-item[container]
+    > image.toolbarbutton-icon[type="menu"] {
+    background-image: url("../resources/material/folder.svg") !important;
+    background-size: 16px !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    padding-inline: 16px 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* invert github's black icon */
+:is(.menu-iconic-icon, .toolbarbutton-icon, .urlbarView-favicon):is([src^="page-icon:https://github.com"], [src^="page-icon:http://github.com"])
+{
+    background-image: url("../resources/extensions/github.svg") !important;
+    background-size: 16px !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    padding-inline: 16px 0 !important;
+    box-sizing: border-box !important;
+}
+
+#PersonalToolbar
+    :is([data-extensionid="alex@foosoft.net"], [data-extensionid="containerise@kinte.sh"])
+    stack.toolbarbutton-badge-stack,
+#PersonalToolbar toolbarbutton#PlacesChevron {
+    list-style-image: none !important;
+}
+
+#PersonalToolbar
+    :is([data-extensionid="alex@foosoft.net"], [data-extensionid="containerise@kinte.sh"])
+    image.toolbarbutton-icon {
+    background-size: 16px !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    padding-inline: 16px 0 !important;
+    box-sizing: border-box !important;
+}
+
+#PersonalToolbar
+    [data-extensionid="alex@foosoft.net"]
+    image.toolbarbutton-icon {
+    background-image: url("../resources/extensions/yomichan.svg") !important;
+}
+
+#PersonalToolbar
+    [data-extensionid="containerise@kinte.sh"]
+    image.toolbarbutton-icon {
+    background-image: url("../resources/extensions/container-base.svg") !important;
+}
+
+#PersonalToolbar toolbarbutton#PlacesChevron image.toolbarbutton-icon {
+    background-image: url("chrome://global/skin/icons/chevron.svg") !important;
 }
