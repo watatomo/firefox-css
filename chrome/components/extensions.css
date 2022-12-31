@@ -6,10 +6,10 @@
 }
 
 /* hides unified extensions button */
-toolbarbutton#unified-extensions-button,
+/* toolbarbutton#unified-extensions-button, */
 /* hides container action on urlbar */
 hbox.urlbar-page-action.urlbar-addon-page-action#pageAction-urlbar-_testpilot-containers {
-    /* display: none !important; */
+    display: none !important;
 }
 
 /********** ICONS **********/
@@ -211,8 +211,7 @@ elaborate/compiled stylesheets */
 
 #PersonalToolbar
     :is([data-extensionid="alex@foosoft.net"], [data-extensionid="containerise@kinte.sh"])
-    stack.toolbarbutton-badge-stack,
-#PersonalToolbar toolbarbutton#PlacesChevron {
+    stack.toolbarbutton-badge-stack {
     list-style-image: none !important;
 }
 
@@ -236,8 +235,4 @@ elaborate/compiled stylesheets */
     [data-extensionid="containerise@kinte.sh"]
     image.toolbarbutton-icon {
     background-image: url("../resources/extensions/container-base.svg") !important;
-}
-
-#PersonalToolbar toolbarbutton#PlacesChevron image.toolbarbutton-icon {
-    background-image: url("chrome://global/skin/icons/chevron.svg") !important;
 }
