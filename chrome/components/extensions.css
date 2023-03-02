@@ -209,6 +209,7 @@ elaborate/compiled stylesheets */
     box-sizing: border-box !important;
 }
 
+/* yomichan */
 #PersonalToolbar
     :is([data-extensionid="alex@foosoft.net"], [data-extensionid="containerise@kinte.sh"])
     stack.toolbarbutton-badge-stack {
@@ -236,3 +237,11 @@ elaborate/compiled stylesheets */
     image.toolbarbutton-icon {
     background-image: url("../resources/extensions/container-base.svg") !important;
 }
+
+/********** URLBAR **********/
+
+/* translate */
+/* #pageAction-urlbar-_036a55b4-5e72-4d05-a06c-cba2dfcc134a_ {
+    --pageAction-image-16px: url("../resources/extensions/translate.svg") !important;
+    --pageAction-image-32px: url("../resources/extensions/translate.svg") !important;
+} */

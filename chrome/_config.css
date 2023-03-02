@@ -26,6 +26,8 @@
     --uc-toolbarbutton-badge-color: var(--tabpanel-background-color);
     --uc-toolbarbutton-border-radius: 8px;
 
+    --uc-tab-icon-overlay-fill: var(--lwt-tab-text);
+
     /* --uc-menu-background: var(--arrowpanel-background);
     --uc-menu-color: var(--arrowpanel-color);
     --uc-menu-border-color: var(--arrowpanel-border-color);
@@ -39,17 +41,12 @@
         --uc-menuitem-hover-background-color
     ); */
 
-    --uc-bookmarks-height: 20px; /* Might need to adjust if the toolbar has other buttons */
+    --uc-bookmarks-height: 22px; /* Might need to adjust if the toolbar has other buttons */
     --uc-bookmarks-padding: 4px; /* Vertical padding to be applied to bookmarks */
     --uc-autohide-toolbar-delay: 300ms;
     /* 0deg = "show" ; 90deg = "hide" ;  Set the following to control when bookmarks are shown */
     --uc-autohide-toolbar-focus-rotation: 0deg; /* urlbar is focused */
     --uc-autohide-toolbar-hover-rotation: 0deg; /* cursor is over the toolbar area */
-
-    /* --uc-findbar-min-width: 225px;
-    --uc-findbar-max-width: 400px;
-    --uc-findbar-height: 22px;
-    --uc-findbar-textbox-bg-transition-duration: 200ms; */
 
     /* identity colors */
     --uc-identity-toolbar: var(--ctp-text);

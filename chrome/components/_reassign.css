@@ -22,6 +22,8 @@
     /* --urlbar-box-focus-bgcolor: var(--uc-urlbar-box-focus-bgcolor, var(--button-bgcolor)) !important; */
 
     --focus-outline-color: var(--uc-focus-outline-color) !important;
+
+    --tab-icon-overlay-fill: var(--uc-tab-icon-overlay-fill) !important;
 }
 
 /********** usercontext.css **********/

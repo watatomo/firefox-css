@@ -49,14 +49,14 @@
 
 /* make inactive tabs shorter */
 /* https://www.reddit.com/r/FirefoxCSS/comments/brklu0/the_right_way_to_change_your_tab_max_width */
-.tabbrowser-tab[fadein]:not([pinned], [style*="max-width"], [selected="true"]) {
+/* .tabbrowser-tab[fadein]:not([pinned], [style*="max-width"], [selected="true"]) {
     max-width: var(--uc-tab-inactive-max-width, calc(225px / 2)) !important;
 }
 
 .tabbrowser-tab:not([pinned]) {
     transition: min-width var(--uc-tab-transition, 100ms ease-out),
         max-width var(--uc-tab-transition, 100ms ease-out) !important;
-}
+} */
 
 /* inactive tabs are faded */
 .tabbrowser-tab:not([selected="true"], [pinned]) .tab-content {
