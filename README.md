@@ -2,8 +2,6 @@
 
 Uses [simpleMenuWizard](https://github.com/stonecrusher/simpleMenuWizard). Takes some code from [DuskFox](https://github.com/aminomancer/uc.css.js) and MrOtherGuy's [CSS hacks](https://github.com/MrOtherGuy/firefox-csshacks).
 
-This theme uses userscripts, [but with how Firefox keeps crashing on me lately](https://bugzilla.mozilla.org/show_bug.cgi?id=1792319), I tried to keep it as minimal as possible (for now). There seems to be an issue with the tabs lately but I can't figure out what's causing it.
-
 ## Installation
 
 1. Place the files in the `program` folder from [fx-autoconfig](https://github.com/MrOtherGuy/fx-autoconfig) inside your Firefox install folder.
