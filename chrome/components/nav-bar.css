@@ -84,6 +84,16 @@
     fill: var(--urlbar-box-hover-text-color) !important;
 }
 
+.identity-box-button:hover:active,
+.identity-box-button[open="true"],
+#tracking-protection-icon-container:hover:active,
+#tracking-protection-icon-container[open="true"] {
+    color: var(
+        --uc-urlbar-active-text-color,
+        var(--urlbar-box-hover-text-color)
+    ) !important;
+}
+
 /********** NAV ICONS CHANGE **********/
 
 #back-button,
