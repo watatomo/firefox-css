@@ -1,7 +1,7 @@
 @import url("./palette/catppuccin-mocha.css");
 
 :root {
-    --uc-tab-min-height: 32px;
+    --uc-tab-min-height: ;
     --uc-tab-inactive-max-width: calc(225px / 2);
     --uc-tab-border-radius: 8px;
     --uc-tab-margin: 4px;
@@ -46,7 +46,7 @@
         --uc-menuitem-hover-background-color
     ); */
 
-    --uc-bookmarks-height: 22px; /* Might need to adjust if the toolbar has other buttons */
+    --uc-bookmarks-height: ; /* Might need to adjust if the toolbar has other buttons */
     --uc-bookmarks-padding: 4px; /* Vertical padding to be applied to bookmarks */
     --uc-autohide-toolbar-delay: 300ms;
     /* 0deg = "show" ; 90deg = "hide" ;  Set the following to control when bookmarks are shown */
@@ -63,4 +63,18 @@
     --uc-identity-red: var(--ctp-red);
     --uc-identity-pink: var(--ctp-pink);
     --uc-identity-purple: var(--ctp-mauve);
+}
+
+@media (-moz-platform: windows) {
+    :root {
+        --uc-tab-min-height: 32px;
+        --uc-bookmarks-height: 22px;
+    }
+}
+
+@media (-moz-platform: linux) {
+    :root {
+        --uc-tab-min-height: 34px;
+        --uc-bookmarks-height: 25px;
+    }
 }

@@ -23,7 +23,7 @@ user_pref("browser.startup.preXulSkeletonUI", false);
 user_pref("svg.context-properties.content.enabled", true);
 
 // https://bugzilla.mozilla.org/show_bug.cgi?id=1792319#c16 💀
-user_pref("layout.css.cached-scrollbar-styles.enabled", true);
+// user_pref("layout.css.cached-scrollbar-styles.enabled", true);
 
 // allow the color-mix() CSS function
 user_pref("layout.css.color-mix.enabled", true);
@@ -38,7 +38,7 @@ user_pref("widget.content.allow-gtk-dark-theme", true);
 // disable urlbar result group labels since we don't use them
 user_pref("browser.urlbar.groupLabels.enabled", false);
 // corresponds to the system color Highlight
-user_pref("ui.highlight", "hsl(220, 91%, 54%)");
+// user_pref("ui.highlight", "hsl(220, 91%, 54%)");
 // background for selected <option> elements and others
 user_pref("ui.selecteditem", "#313244");
 // text color for selected <option> elements and others
@@ -81,20 +81,20 @@ user_pref("browser.display.background_color.dark", "#181825");
 user_pref("widget.non-native-theme.solid-outline-style", true);
 
 //// findbar highlight and selection colors
-user_pref("ui.textHighlightBackground", "#1e66f5");
-user_pref("ui.textHighlightForeground", "#eff1f5");
-user_pref("ui.textSelectBackground", "#eff1f5");
-user_pref("ui.textSelectAttentionBackground", "#ea76cb");
-user_pref("ui.textSelectAttentionForeground", "#eff1f5");
-user_pref("ui.textSelectDisabledBackground", "#1e66f5");
-user_pref("ui.textSelectBackgroundAttention", "#ea76cb");
-user_pref("ui.textSelectBackgroundDisabled", "#1e66f5");
+// user_pref("ui.textHighlightBackground", "#1e66f5");
+// user_pref("ui.textHighlightForeground", "#eff1f5");
+// user_pref("ui.textSelectBackground", "#eff1f5");
+// user_pref("ui.textSelectAttentionBackground", "#ea76cb");
+// user_pref("ui.textSelectAttentionForeground", "#eff1f5");
+// user_pref("ui.textSelectDisabledBackground", "#1e66f5");
+// user_pref("ui.textSelectBackgroundAttention", "#ea76cb");
+// user_pref("ui.textSelectBackgroundDisabled", "#1e66f5");
 //// spell check style
-user_pref("ui.SpellCheckerUnderline", "#e64553");
-user_pref("ui.SpellCheckerUnderlineStyle", 1);
+// user_pref("ui.SpellCheckerUnderline", "#e64553");
+// user_pref("ui.SpellCheckerUnderlineStyle", 1);
 //// IME style (for example when typing pinyin or hangul)
-user_pref("ui.IMERawInputBackground", "#4c4f69");
-user_pref("ui.IMESelectedRawTextBackground", "#1e66f5");
+// user_pref("ui.IMERawInputBackground", "#4c4f69");
+// user_pref("ui.IMESelectedRawTextBackground", "#1e66f5");
 ////
 
 //// windows font settings - does nothing on macOS or linux
