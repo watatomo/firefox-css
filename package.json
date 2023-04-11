@@ -4,7 +4,7 @@
     "main": "false",
     "scripts": {
         "prettier": "npx prettier --write .",
-        "update": "cp -r chrome /c/Users/Ren/AppData/Roaming/Mozilla/Firefox/Profiles/nq6hzual.dev-edition-default && cp -r user.js /c/Users/Ren/AppData/Roaming/Mozilla/Firefox/Profiles/nq6hzual.dev-edition-default",
+        "update-win": "cp -r chrome /c/Users/Ren/AppData/Roaming/Mozilla/Firefox/Profiles/a472ssb9.dev-edition-default && cp -r user.js /c/Users/Ren/AppData/Roaming/Mozilla/Firefox/Profiles/a472ssb9.dev-edition-default",
         "sass": "sass --no-charset --no-source-map src:chrome"
     },
     "repository": {
