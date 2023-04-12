@@ -75,6 +75,6 @@
 @media (-moz-platform: linux) {
     :root {
         --uc-tab-min-height: 34px;
-        --uc-bookmarks-height: 25px;
+        --uc-bookmarks-height: 23px;
     }
 }

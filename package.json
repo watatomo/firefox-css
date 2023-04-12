@@ -5,6 +5,7 @@
     "scripts": {
         "prettier": "npx prettier --write .",
         "update-win": "cp -r chrome /c/Users/Ren/AppData/Roaming/Mozilla/Firefox/Profiles/a472ssb9.dev-edition-default && cp -r user.js /c/Users/Ren/AppData/Roaming/Mozilla/Firefox/Profiles/a472ssb9.dev-edition-default",
+        "update-linux": "cp -r chrome ~/.mozilla/firefox/e2dp5dng.dev-edition-default && cp -r user.js ~/.mozilla/firefox/e2dp5dng.dev-edition-default",
         "sass": "sass --no-charset --no-source-map src:chrome"
     },
     "repository": {
