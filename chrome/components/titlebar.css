@@ -57,10 +57,6 @@
     .titlebar-max,
     .titlebar-restore {
         list-style-image: url("../resources/window/maximize.svg") !important;
-        grid-column: 1 !important;
-        /* windows order bc i'm on windows :clueless: */
-        order: 1 !important;
-        -moz-box-ordinal-group: 2 !important;
     }
 
     :is(.titlebar-max):hover {
@@ -74,8 +70,6 @@
 
     :is(.titlebar-min) {
         list-style-image: url("../resources/window/minimize.svg") !important;
-        /* windows order bc i'm on windows :clueless: */
-        -moz-box-ordinal-group: 1 !important;
     }
 
     :is(.titlebar-min):hover {
@@ -84,7 +78,6 @@
 
     .titlebar-close {
         list-style-image: url("../resources/window/close.svg") !important;
-        -moz-box-ordinal-group: 3 !important;
     }
 
     :is(.titlebar-close):hover {
