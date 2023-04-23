@@ -77,4 +77,8 @@
         --uc-tab-min-height: 34px;
         --uc-bookmarks-height: 26px;
     }
+
+    #TabsToolbar .titlebar-buttonbox-container {
+        display: none !important;
+    }
 }
