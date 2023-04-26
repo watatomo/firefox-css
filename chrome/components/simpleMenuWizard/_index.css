@@ -54,6 +54,7 @@ menuitem.context-menu-add-engine,
 menuitem[id*="send_to_hydrus_meme"],
 .menuseparator-add-engine,
 [anonid="add-engine-separator"],
-menu[id*="_testpilot-containers-"] {
+menu[id*="_testpilot-containers-"],
+menupopup#contentAreaContextMenu menu[label="LibRedirect"] {
     display: none !important;
 }
