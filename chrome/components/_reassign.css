@@ -2,10 +2,7 @@
     --tab-min-height: var(--uc-tab-min-height, 32px) !important;
     --tab-border-radius: var(--uc-tab-border-radius, 8px) !important;
 
-    --toolbarbutton-border-radius: var(
-        --uc-toolbarbutton-border-radius,
-        8px
-    ) !important;
+    --toolbarbutton-border-radius: var(--uc-toolbarbutton-border-radius, 8px) !important;
 
     --urlbar-box-hover-bgcolor: var(
         --uc-urlbar-box-hover-bgcolor,
@@ -29,14 +26,8 @@
 /********** usercontext.css **********/
 
 .identity-color-toolbar {
-    --identity-tab-color: var(
-        --uc-identity-toolbar,
-        var(--toolbar-field-color)
-    ) !important;
-    --identity-icon-color: var(
-        --uc-identity-toolbar,
-        var(--toolbar-field-color)
-    ) !important;
+    --identity-tab-color: var(--uc-identity-toolbar, var(--toolbar-field-color)) !important;
+    --identity-icon-color: var(--uc-identity-toolbar, var(--toolbar-field-color)) !important;
 }
 
 .identity-color-blue {

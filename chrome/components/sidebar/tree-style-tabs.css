@@ -1,0 +1,37 @@
+:root {
+    --navbar-height: 48px;
+    --sidebar-collapsed-width: var(--navbar-height);
+    --sidebar-width: 250px;
+    --transition-duration: 0.2s;
+    --transition-ease: ease-out;
+}
+
+/* hides tst header & splitter */
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header,
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] + .sidebar-splitter {
+    display: none;
+}
+
+#sidebar-box {
+    z-index: 100 !important;
+    position: relative !important;
+    min-width: var(--sidebar-collapsed-width) !important;
+    max-width: var(--sidebar-collapsed-width) !important;
+}
+
+/* inner width = expanded width & move inner to only show initial-width long section */
+#sidebar-box #sidebar {
+    min-width: var(--sidebar-width) !important;
+    max-width: var(--sidebar-width) !important;
+    width: var(--sidebar-width) !important;
+    transform: translateX(calc(var(--sidebar-collapsed-width) - var(--sidebar-width)));
+    transition: var(--transition-duration) var(--transition-ease);
+}
+
+#sidebar-box #sidebar:hover {
+    transform: translateX(0) !important;
+}
+
+#sidebar-box[sidebarcommand="viewBookmarksSidebar"] #sidebar {
+    transform: translateX(0) !important;
+}

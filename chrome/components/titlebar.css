@@ -23,9 +23,7 @@
         display: none !important;
     }
 
-    :root:-moz-window-inactive:not([customizing])
-        .titlebar-buttonbox
-        > toolbarbutton:not(:hover) {
+    :root:-moz-window-inactive:not([customizing]) .titlebar-buttonbox > toolbarbutton:not(:hover) {
         list-style-image: url("../resources/window/inactive.svg") !important;
     }
 
@@ -82,5 +80,13 @@
 
     :is(.titlebar-close):hover {
         list-style-image: url("../resources/window/close-hover.svg") !important;
+    }
+}
+
+/********** TITLE BAR - LINUX **********/
+
+@media (-moz-platform: linux) {
+    #TabsToolbar .titlebar-buttonbox-container {
+        display: none !important;
     }
 }

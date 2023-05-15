@@ -17,3 +17,21 @@
 #downloadsFooterButtons[uc-hbox] button#clearDownloadsPanel {
     flex: auto;
 }
+
+/********** EXTENSIONS **********/
+
+/* https://www.reddit.com/r/FirefoxCSS/comments/1325g91/clean_extensions_menu/ */
+#unified-extensions-view {
+    --uei-icon-size: 20px !important;
+    width: 350px !important;
+}
+
+.panel-header,
+.unified-extensions-item-message-deck,
+.unified-extensions-item-menu-button.subviewbutton {
+    display: none !important;
+}
+
+.panel-subview-footer-button {
+    text-align-last: center !important;
+}

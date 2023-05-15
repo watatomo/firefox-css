@@ -3,7 +3,6 @@
     "version": "0.0.1",
     "main": "false",
     "scripts": {
-        "prettier": "npx prettier --write .",
         "update-win": "cp -r chrome /c/Users/Ren/AppData/Roaming/Mozilla/Firefox/Profiles/a472ssb9.dev-edition-default && cp -r user.js /c/Users/Ren/AppData/Roaming/Mozilla/Firefox/Profiles/a472ssb9.dev-edition-default",
         "update-linux": "cp -r chrome ~/.mozilla/firefox/504osnhf.dev-edition-default && cp -r user.js ~/.mozilla/firefox/504osnhf.dev-edition-default",
         "sass": "sass --no-charset --no-source-map src:chrome"
@@ -20,8 +19,5 @@
     "homepage": "https://github.com/watatomo/firefox-css#readme",
     "description": "",
     "devDependencies": {
-        "eslint": "^8.23.0",
-        "eslint-config-prettier": "^8.5.0",
-        "prettier": "2.7.1"
     }
 }

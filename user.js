@@ -95,7 +95,9 @@ user_pref("widget.non-native-theme.solid-outline-style", true);
 //// IME style (for example when typing pinyin or hangul)
 // user_pref("ui.IMERawInputBackground", "#4c4f69");
 // user_pref("ui.IMESelectedRawTextBackground", "#1e66f5");
-////
+
+//// fallback to jp first
+user_pref("font.cjk_pref_fallback_order", "ja,zh-cn,zh-hk,zh-tw,ko");
 
 //// windows font settings - does nothing on macOS or linux
 user_pref("gfx.font_rendering.cleartype_params.cleartype_level", 100);

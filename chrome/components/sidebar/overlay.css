@@ -58,16 +58,6 @@
     padding: 3px 6px !important;
 }
 
-/* :where(#sidebar-search-container, .sidebar-search-container) search-textbox {
-    appearance: none !important;
-    padding-inline: 5px 0 !important;
-    padding-block: 0 !important;
-    color: currentColor !important;
-    min-height: 25px !important;
-    margin: 0 !important;
-    outline: 0 solid transparent !important;
-} */
-
 #viewButton {
     padding-inline: 7px 5px !important;
     margin-inline-start: 6px !important;
@@ -82,8 +72,3 @@
 #sidebarMenu-popup {
     margin-top: 0 !important;
 }
-
-/* #sidebarMenu-popup > .webextension-menuitem > .toolbarbutton-icon {
-    opacity: 0.8 !important;
-    fill: currentColor !important;
-} */

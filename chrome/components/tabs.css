@@ -18,8 +18,7 @@
 
 /* remove shadow from selected tabs */
 #TabsToolbar #firefox-view-button[open] > .toolbarbutton-icon,
-#tabbrowser-tabs:not([noshadowfortests])
-    .tab-background:is([selected], [multiselected]) {
+#tabbrowser-tabs:not([noshadowfortests]) .tab-background:is([selected], [multiselected]) {
     box-shadow: none !important;
 }
 
@@ -39,9 +38,7 @@
 /* multiselected tabs should have colored borders too */
 .tab-background[selected]:-moz-lwtheme,
 .tab-background[multiselected="true"]:-moz-lwtheme,
-#TabsToolbar
-    #firefox-view-button[open]:not(:focus-visible)
-    > .toolbarbutton-icon:-moz-lwtheme {
+#TabsToolbar #firefox-view-button[open]:not(:focus-visible) > .toolbarbutton-icon:-moz-lwtheme {
     outline: var(--uc-tab-outline-width) solid
         var(--lwt-tab-line-color, var(--lwt-tabs-border-color, currentColor)) !important;
     outline-offset: calc(0px - var(--uc-tab-outline-width, 1px)) !important;
@@ -63,20 +60,13 @@
     opacity: var(--uc-tab-inactive-opacity, 0.5);
 }
 
-/* for some reason, the close button appears when the first tab on the list is selected; this is a fix (?) */
-.tabbrowser-tab:not([pinned="true"], [selected="true"])
-    > .tab-stack
-    > .tab-content
-    > .tab-close-button:not([selected="true"]) {
+/* show close button when hovered but not when pinned */
+.tabbrowser-tab:not([pinned="true"]) > .tab-stack > .tab-content > .tab-close-button {
     display: none !important;
 }
 
-/* show close button when hovered but not when pinned */
-.tabbrowser-tab:not([pinned="true"]):hover
-    > .tab-stack
-    > .tab-content
-    > .tab-close-button:not([selected="true"]) {
-    display: -moz-box !important;
+.tabbrowser-tab:not([pinned="true"]):hover > .tab-stack > .tab-content > .tab-close-button {
+    display: flex !important;
 }
 
 /* don't show all tabs button */
@@ -85,12 +75,8 @@
 }
 
 /* tabs with attention */
-.tabbrowser-tab:is([image], [pinned])
-    > .tab-stack
-    > .tab-content[attention]:not([selected="true"]),
-.tabbrowser-tab
-    > .tab-stack
-    > .tab-content[pinned][titlechanged]:not([selected="true"]),
+.tabbrowser-tab:is([image], [pinned]) > .tab-stack > .tab-content[attention]:not([selected="true"]),
+.tabbrowser-tab > .tab-stack > .tab-content[pinned][titlechanged]:not([selected="true"]),
 #firefox-view-button[attention] {
     background-image: radial-gradient(
         circle,
@@ -98,8 +84,7 @@
         var(--tab-attention-icon-color) 2px,
         transparent 2px
     );
-    background-position: center bottom
-        calc(6.5px + var(--tabs-navbar-shadow-size));
+    background-position: center bottom calc(6.5px + var(--tabs-navbar-shadow-size));
     background-size: 4px 4px;
     background-repeat: no-repeat;
 }
@@ -107,11 +92,7 @@
 /********** CONTAINER TABS **********/
 
 .tabbrowser-tab[usercontextid] {
-    color: color-mix(
-        in srgb,
-        var(--identity-tab-color) 30%,
-        var(--lwt-tab-text)
-    ) !important;
+    color: color-mix(in srgb, var(--identity-tab-color) 30%, var(--lwt-tab-text)) !important;
     --lwt-selected-tab-background-color: color-mix(
         in srgb,
         var(--identity-tab-color) 11%,
@@ -126,9 +107,7 @@
     background-color: var(--lwt-selected-tab-background-color) !important;
 }
 
-.tabbrowser-tab[usercontextid]
-    > .tab-stack
-    > .tab-background:is([selected], [multiselected]) {
+.tabbrowser-tab[usercontextid] > .tab-stack > .tab-background:is([selected], [multiselected]) {
     outline: var(--uc-tab-outline-width, 1px) solid var(--identity-tab-color) !important;
     background-image: linear-gradient(
             var(--lwt-selected-tab-background-color, transparent),
@@ -141,18 +120,11 @@
 .tabbrowser-tab[usercontextid]:hover
     > .tab-stack
     > .tab-background:not([selected="true"], [multiselected]) {
-    background-color: color-mix(
-        in srgb,
-        var(--identity-tab-color) 18%,
-        transparent
-    ) !important;
+    background-color: color-mix(in srgb, var(--identity-tab-color) 18%, transparent) !important;
 }
 
 /* no top line */
-.tabbrowser-tab[usercontextid]
-    > .tab-stack
-    > .tab-background
-    > .tab-context-line {
+.tabbrowser-tab[usercontextid] > .tab-stack > .tab-background > .tab-context-line {
     display: none;
 }
 

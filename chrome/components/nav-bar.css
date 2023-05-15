@@ -1,8 +1,6 @@
 /* https://www.reddit.com/r/FirefoxCSS/comments/myypur/how_can_i_remove_extension_tabliss_from_the */
 /* a fallback for hideTrackingProtectionIconOnCustomNewTabPage.uc.js */
-.extensionPage#identity-box
-    #identity-icon[tooltiptext*="Tabliss"]
-    ~ #identity-icon-label {
+.extensionPage#identity-box #identity-icon[tooltiptext*="Tabliss"] ~ #identity-icon-label {
     display: none !important;
 }
 
@@ -20,13 +18,11 @@
     background-color: transparent !important;
 }
 
-#identity-box.extensionPage
-    > #identity-icon-box:hover:not([open]):has([tooltiptext*="Tabliss"]) {
+#identity-box.extensionPage > #identity-icon-box:hover:not([open]):has([tooltiptext*="Tabliss"]) {
     background-color: var(--urlbar-box-hover-bgcolor) !important;
 }
 
-#identity-box.extensionPage
-    > #identity-icon-box[open="true"]:has([tooltiptext*="Tabliss"]) {
+#identity-box.extensionPage > #identity-icon-box[open="true"]:has([tooltiptext*="Tabliss"]) {
     background-color: var(--urlbar-box-active-bgcolor) !important;
 }
 
@@ -88,10 +84,7 @@
 .identity-box-button[open="true"],
 #tracking-protection-icon-container:hover:active,
 #tracking-protection-icon-container[open="true"] {
-    color: var(
-        --uc-urlbar-active-text-color,
-        var(--urlbar-box-hover-text-color)
-    ) !important;
+    color: var(--uc-urlbar-active-text-color, var(--urlbar-box-hover-text-color)) !important;
 }
 
 /********** NAV ICONS CHANGE **********/
