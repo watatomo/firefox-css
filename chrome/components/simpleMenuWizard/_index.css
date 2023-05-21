@@ -55,6 +55,7 @@ menuitem[id*="send_to_hydrus_meme"],
 .menuseparator-add-engine,
 [anonid="add-engine-separator"],
 menu[id*="_testpilot-containers-"],
-menupopup#contentAreaContextMenu menu[label="LibRedirect"] {
+menupopup#contentAreaContextMenu menu[label="LibRedirect"],
+menu[id*="private-relay_firefox_"] {
     display: none !important;
 }
