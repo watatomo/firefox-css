@@ -93,28 +93,28 @@
 
 .tabbrowser-tab[usercontextid] {
     color: color-mix(in srgb, var(--identity-tab-color) 30%, var(--lwt-tab-text)) !important;
-    --lwt-selected-tab-background-color: color-mix(
+    /* --lwt-selected-tab-background-color: color-mix(
         in srgb,
         var(--identity-tab-color) 11%,
         transparent
-    ) !important;
+    ) !important; */
 }
 
 /* make tab border the identity color */
 .tabbrowser-tab[usercontextid] > .tab-stack > .tab-background {
     outline: var(--uc-tab-outline-width, 1px) solid
         color-mix(in srgb, var(--identity-tab-color) 50%, transparent) !important;
-    background-color: var(--lwt-selected-tab-background-color) !important;
+    /* background-color: var(--lwt-selected-tab-background-color) !important; */
 }
 
 .tabbrowser-tab[usercontextid] > .tab-stack > .tab-background:is([selected], [multiselected]) {
     outline: var(--uc-tab-outline-width, 1px) solid var(--identity-tab-color) !important;
-    background-image: linear-gradient(
+    /* background-image: linear-gradient(
             var(--lwt-selected-tab-background-color, transparent),
             var(--lwt-selected-tab-background-color, transparent)
         ),
         linear-gradient(var(--toolbar-bgcolor), var(--toolbar-bgcolor)),
-        var(--lwt-header-image, none) !important;
+        var(--lwt-header-image, none) !important; */
 }
 
 .tabbrowser-tab[usercontextid]:hover
