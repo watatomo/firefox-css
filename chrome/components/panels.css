@@ -1,7 +1,13 @@
 /********** DOWNLOADS **********/
 
+#downloadsFooter > toolbarseparator:first-child {
+    display: none !important;
+}
+
 #downloadsFooterButtons[uc-hbox]:not([hidden]) {
     display: flex !important;
+    justify-content: center;
+    flex-direction: row;
 }
 
 #downloadsFooterButtons[uc-hbox] button#downloadsHistory {
@@ -26,7 +32,7 @@
     width: 350px !important;
 }
 
-.panel-header,
+/* .panel-header, */
 .unified-extensions-item-message-deck,
 .unified-extensions-item-menu-button.subviewbutton {
     display: none !important;
