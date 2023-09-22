@@ -8,12 +8,11 @@ import { createRoot } from "react-dom/client";
 import {
     GlobalContext,
     GlobalContextProvider,
-    DEFAULT_PATH
+    DEFAULT_PATH,
 } from "./components/GlobalContext";
 import { ScriptsView } from "./components/ScriptsView";
 import { SettingsView } from "./components/SettingsView";
-
-// TODO - Convert to typescript
+import { version } from "./aboutuserchrome.json";
 
 const UserChromeManager = () => {
     const { path, navigate, updateCount } = useContext(GlobalContext);
@@ -34,6 +33,7 @@ const UserChromeManager = () => {
                     orientation="vertical"
                     role="tablist"
                     tabIndex="0"
+                    aria-controls="content"
                 >
                     <button
                         className={`category ${
@@ -42,6 +42,7 @@ const UserChromeManager = () => {
                                 : ""
                         }`}
                         role="tab"
+                        aria-selected={path.split("/")[0] === DEFAULT_PATH}
                         title="Manage your scripts"
                         onClick={onCategoryClick}
                         path={DEFAULT_PATH}
@@ -55,6 +56,7 @@ const UserChromeManager = () => {
                             path.split("/")[0] === "settings" ? "selected" : ""
                         }`}
                         role="tab"
+                        aria-selected={path.split("/")[0] === "settings"}
                         title="Settings"
                         onClick={onCategoryClick}
                         path="settings"
@@ -109,7 +111,7 @@ const UserChromeManager = () => {
                 {
                     {
                         scripts: <ScriptsView />,
-                        settings: <SettingsView />
+                        settings: <SettingsView />,
                         // TODO - Add a recommended scripts view
                     }[path.split("/")[0]]
                 }
@@ -119,6 +121,9 @@ const UserChromeManager = () => {
 };
 
 history.scrollRestoration = "manual";
+
+// eslint-disable-next-line no-console
+console.log(`UserChrome Manager v${version}`);
 
 createRoot(document.getElementById("root")).render(
     <GlobalContextProvider>

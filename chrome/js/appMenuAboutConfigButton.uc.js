@@ -43,7 +43,7 @@ By default the script will open to that link, so if you don't have that module i
         .getDefaultBranch("")
         .setBoolPref("aboutCfg.pathOverride", "");
     const config = {
-        urlOverride: Services.prefs.getStringPref("aboutCfg.pathOverride", "")
+        urlOverride: Services.prefs.getStringPref("aboutCfg.pathOverride", ""),
     };
 
     function findAboutConfig() {
@@ -94,7 +94,7 @@ By default the script will open to that link, so if you don't have that module i
         );
         // localize the "Advanced Preferences" string
         const advancedPrefsLabel = await configStrings.formatValue([
-            "about-config-page-title"
+            "about-config-page-title",
         ]);
         const { mainView } = PanelUI;
         const doc = mainView.ownerDocument;
@@ -108,7 +108,7 @@ By default the script will open to that link, so if you don't have that module i
             id: "appMenu-advanced-settings-button",
             class: "subviewbutton",
             label: advancedPrefsLabel,
-            oncommand: `openTrustedLinkIn(this.preferredURL, gBrowser.currentURI.spec === AboutNewTab.newTabURL || gBrowser.currentURI.spec === HomePage.get(window) ? "current" : "tab")`
+            oncommand: `openTrustedLinkIn(this.preferredURL, gBrowser.currentURI.spec === AboutNewTab.newTabURL || gBrowser.currentURI.spec === HomePage.get(window) ? "current" : "tab")`,
         })) {
             prefsButton.setAttribute(key, val);
         }

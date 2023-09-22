@@ -13,7 +13,8 @@
     right: auto !important;
     z-index: 1 !important;
     flex-direction: column !important;
-    box-shadow: 0px 0px 8px -4px hsla(240, 4%, 0%, 0.6),
+    box-shadow:
+        0px 0px 8px -4px hsla(240, 4%, 0%, 0.6),
         0px 0px 15px 0px hsla(0, 0%, 0%, 0.2) !important;
 }
 
@@ -34,7 +35,11 @@
     font-size: 1.2em !important;
 }
 
-#sidebar-box[content-style]:is([sidebarcommand="viewBookmarksSidebar"], [sidebarcommand="viewHistorySidebar"], [sidebarcommand="viewTabsSidebar"])
+#sidebar-box[content-style]:is(
+        [sidebarcommand="viewBookmarksSidebar"],
+        [sidebarcommand="viewHistorySidebar"],
+        [sidebarcommand="viewTabsSidebar"]
+    )
     #sidebar-header {
     padding-bottom: 3px !important;
 }

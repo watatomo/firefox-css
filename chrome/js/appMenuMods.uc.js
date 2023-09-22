@@ -15,7 +15,7 @@
             PanelUI._initialized ||
                 PanelUI.init(shouldSuppressPopupNotifications);
             PanelUI.mainView.addEventListener("ViewShowing", this, {
-                once: true
+                once: true,
             });
             this.addSeparatorToAccountPanel();
             this.fixSyncSubviewButtonAlignment();
@@ -91,7 +91,7 @@
           );
           PanelMultiView.forNode(this.closest("panelmultiview")).hidePopup();
           event.preventDefault();
-        `
+        `,
             });
             let exitButton = document.getElementById("appMenu-quit-button2");
             if (exitButton) {

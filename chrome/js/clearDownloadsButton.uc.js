@@ -18,7 +18,7 @@ class ClearDLPanel {
     async genStrings() {
         this.strings = await new Localization(["browser/downloads.ftl"], true);
         const messages = await this.strings.formatMessages([
-            "downloads-cmd-clear-downloads"
+            "downloads-cmd-clear-downloads",
         ]);
         this.label = messages[0].attributes[0].value;
         this.accessKey = messages[0].attributes[1].value;
@@ -37,7 +37,7 @@ class ClearDLPanel {
             label: labelString,
             accesskey: strings[1],
             flex: "1",
-            pack: "start"
+            pack: "start",
         })) {
             this.clearPanelButton.setAttribute(key, val);
         }

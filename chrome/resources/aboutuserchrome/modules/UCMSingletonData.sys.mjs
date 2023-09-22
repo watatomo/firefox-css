@@ -8,23 +8,25 @@ import { AppConstants } from "resource://gre/modules/AppConstants.sys.mjs";
 
 const lazy = {};
 ChromeUtils.defineESModuleGetters(lazy, {
-    FileUtils: "resource://gre/modules/FileUtils.sys.mjs"
+    FileUtils: "resource://gre/modules/FileUtils.sys.mjs",
 });
 XPCOMUtils.defineLazyModuleGetters(lazy, {
-    NetUtil: "resource://gre/modules/NetUtil.jsm"
+    NetUtil: "resource://gre/modules/NetUtil.jsm",
 });
 XPCOMUtils.defineLazyServiceGetters(lazy, {
     gUpdateTimerManager: [
         "@mozilla.org/updates/timer-manager;1",
-        "nsIUpdateTimerManager"
+        "nsIUpdateTimerManager",
     ],
     gExternalProtocolService: [
         "@mozilla.org/uriloader/external-protocol-service;1",
-        "nsIExternalProtocolService"
+        "nsIExternalProtocolService",
     ],
-    gMIMEService: ["@mozilla.org/mime;1", "nsIMIMEService"]
+    gMIMEService: ["@mozilla.org/mime;1", "nsIMIMEService"],
 });
 
+// Set the prefs on default branch so they show up in about:config and don't
+// appear modified by the user.
 const defaultPrefs = Services.prefs.getDefaultBranch("");
 export const PREF_NOTIFICATIONS_ENABLED = "userChromeJS.manager.notifications";
 export const PREF_UPDATE_INTERVAL = "userChromeJS.manager.updateInterval";
@@ -58,42 +60,57 @@ class ScriptHandle {
         this.filename = script.filename;
         this.path = script.path || script.asFile().path;
         this.currentVersion = script.version;
-        this.topic = `userChromeManager_update_check_${this.filename}`;
+        this.timerTopic = `userChromeManager_update_check_${this.filename}`;
         for (let method of [
             "checkRemoteFile",
             "updateScript",
             "subscribe",
             "unsubscribe",
-            "launchLocalFile"
+            "launchLocalFile",
         ]) {
             this[method] = this[method].bind(this);
         }
         lazy.gUpdateTimerManager.registerTimer(
-            this.topic,
+            this.timerTopic,
             () => this.checkRemoteFile(),
             lazy.UPDATE_INTERVAL / 1000 // in seconds
         );
     }
 
+    /**
+     * Subscribe to changes to this handle.
+     * @param {function(handle)} callback What to do when the handle changes
+     * @returns {function()} A function to unsubscribe
+     */
     subscribe(callback) {
         this.#subscriptions.add(callback);
         return () => this.unsubscribe(callback);
     }
 
+    /**
+     * Unsubscribe from changes to this handle.
+     * @param {function(handle)} callback What to do when the handle changes
+     */
     unsubscribe(callback) {
         this.#subscriptions.delete(callback);
     }
 
+    /** Notify all subscribers that this handle has changed. */
     #notify() {
         for (let callback of this.#subscriptions) {
             callback(this);
         }
     }
 
+    /** @type {boolean} */
     get recentlyChecked() {
         return this.lastUpdateCheck > Date.now() - lazy.UPDATE_INTERVAL;
     }
 
+    /**
+     * Download the remote file and notify subscribers about the updated data.
+     * @returns {Promise<void>} Resolves when the download is complete/failed.
+     */
     async checkRemoteFile() {
         if (
             !this.remoteURL ||
@@ -117,6 +134,10 @@ class ScriptHandle {
         this.#notify();
     }
 
+    /**
+     * Try updating the local file with the remote file.
+     * @returns {Promise<void>} Resolves when the write is complete/failed.
+     */
     async updateScript() {
         if (
             !this.remoteFile ||
@@ -126,7 +147,6 @@ class ScriptHandle {
         ) {
             return;
         }
-        Services.console.logStringMessage(`Updating ${this.filename}`);
         this.#finishedWritingPromise = new Promise((resolve) => {
             this.#finishedWritingResolve = resolve;
         });
@@ -135,7 +155,7 @@ class ScriptHandle {
         try {
             await IOUtils.writeUTF8(this.path, this.remoteFile, {
                 mode: "overwrite",
-                tmpPath: `${this.path}.tmp`
+                tmpPath: `${this.path}.tmp`,
             });
             this.pendingRestart = true;
         } catch (error) {
@@ -145,10 +165,15 @@ class ScriptHandle {
             this.writing = false;
             this.#finishedWritingResolve();
             this.#notify();
-            lazy.gUpdateTimerManager.unregisterTimer(this.topic);
+            lazy.gUpdateTimerManager.unregisterTimer(this.timerTopic);
         }
     }
 
+    /**
+     * Launch the local file in the default application (according to Firefox's
+     * app defaults first, then the OS defaults).
+     * @returns {Promise<void>} Resolves when the file is launched.
+     */
     async launchLocalFile() {
         if (this.writing) {
             await this.#finishedWritingPromise;
@@ -183,7 +208,7 @@ class ScriptHandle {
                 file.reveal();
                 return;
             } catch (ex) {}
-            let parent = file.parent;
+            let { parent } = file;
             if (!parent) {
                 throw new Error(
                     "Unexpected reference to a top-level directory instead of a file"
@@ -217,12 +242,15 @@ class ScriptHandle {
     }
 }
 
-/**
- * A set of script handles shared between all windows.
- */
+/** A set of script handles shared between all windows. */
 class ScriptUpdater {
     #handles = new Map();
 
+    /**
+     * Get or create the handle for a script.
+     * @param {Script} script
+     * @returns {ScriptHandle}
+     */
     getHandle(script) {
         if (!this.#handles.has(script.filename)) {
             let handle = new ScriptHandle(script);
@@ -234,6 +262,7 @@ class ScriptUpdater {
         return this.#handles.get(script.filename);
     }
 
+    /** @type {ScriptHandle[]} */
     get handles() {
         return [...this.#handles.values()];
     }

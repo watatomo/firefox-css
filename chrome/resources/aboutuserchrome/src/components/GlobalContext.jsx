@@ -3,9 +3,10 @@ const { PREF_UPDATE_INTERVAL, PREF_NOTIFICATIONS_ENABLED } =
     ChromeUtils.importESModule(
         "chrome://userchrome/content/aboutuserchrome/modules/UCMSingletonData.sys.mjs"
     );
+const { _ucUtils: ucUtils } = ChromeUtils.importESModule(
+    "chrome://userchromejs/content/utils.sys.mjs"
+);
 
-export const ucUtils =
-    window._ucUtils || window.docShell.chromeEventHandler.ownerGlobal._ucUtils;
 export const PREF_BRANCH = "userChromeJS.";
 export const PREF_ENABLED = "userChromeJS.enabled";
 export const PREF_SCRIPTSDISABLED = "userChromeJS.scriptsDisabled";
@@ -32,7 +33,7 @@ export const gPrefs = {
         } catch (ex) {}
         return def;
     },
-    set: (pref, value) => {
+    set(pref, value) {
         const { prefs } = Services;
         switch (typeof value) {
             case "string":
@@ -45,28 +46,61 @@ export const gPrefs = {
                 prefs.setBoolPref(pref, value);
                 break;
         }
-    }
+    },
 };
 
 export class GlobalContextProvider extends React.Component {
     constructor(props) {
         super(props);
 
-        this.navigate = (newPath) => {
-            if (newPath !== this.state.path) {
-                this.setState({ path: newPath });
-                window.history.pushState({ path: newPath }, "");
+        this.navigate = (newPath, pushState = true) => {
+            let path = newPath.replace(/^\/+|\/+$/g, "");
+            if (path !== this.state.path) {
+                this.setState({ path, initialFocus: false });
+                window.history[pushState ? "pushState" : "replaceState"](
+                    { ...window.history.state, path, initialFocus: false },
+                    ""
+                );
             }
+        };
+        this.setSearch = (terms) => {
+            if (!this.state.search && terms) {
+                window.history.pushState(
+                    { ...window.history.state, search: terms },
+                    ""
+                );
+            } else {
+                window.history.replaceState(
+                    { ...window.history.state, search: terms },
+                    ""
+                );
+            }
+            this.setState({ search: terms });
+        };
+        this.setUpdateCount = (count) => {
+            this.setState({ updateCount: count });
+        };
+        this.setInitialFocus = (focus) => {
+            this.setState({ initialFocus: focus });
+            window.history.replaceState(
+                { ...window.history.state, initialFocus: focus },
+                ""
+            );
         };
 
         this.state = {
-            path: DEFAULT_PATH,
+            path: window.history?.state?.path || DEFAULT_PATH,
             navigate: this.navigate,
+            restart: () => ucUtils?.restart(true),
+            search: window.history?.state?.search || "",
+            setSearch: this.setSearch,
             missingFxAutoconfig: !ucUtils,
-            outdatedFxAutoconfig: !ucUtils?.parseStringAsScriptInfo,
+            outdatedFxAutoconfig:
+                !ucUtils?.parseStringAsScriptInfo ||
+                ucUtils?.getScriptData.toString().startsWith("()"),
             scripts: ucUtils?.getScriptData().map((script) => ({
                 ...script,
-                path: script.asFile().path
+                path: script.asFile().path,
             })),
             ucjsEnabled: gPrefs.get(PREF_ENABLED, false),
             scriptsDisabled: gPrefs.get(PREF_SCRIPTSDISABLED, ""),
@@ -75,12 +109,19 @@ export class GlobalContextProvider extends React.Component {
             updateInterval: gPrefs.get(PREF_UPDATE_INTERVAL, 86400000), // 24 hours
             notificationsEnabled: gPrefs.get(PREF_NOTIFICATIONS_ENABLED, true),
             updateCount: 0,
-            setUpdateCount: (count) => {
-                this.setState({ updateCount: count });
-            }
+            setUpdateCount: this.setUpdateCount,
+            initialFocus: window.history?.state?.initialFocus ?? true,
+            setInitialFocus: this.setInitialFocus,
         };
 
-        window.history.replaceState({ path: this.state.path }, "");
+        window.history.replaceState(
+            {
+                path: this.state.path,
+                initialFocus: this.state.initialFocus,
+                search: this.state.search,
+            },
+            ""
+        );
 
         window.addEventListener("popstate", this);
         Services.prefs.addObserver(PREF_BRANCH, this);
@@ -89,7 +130,10 @@ export class GlobalContextProvider extends React.Component {
     handleEvent(event) {
         switch (event.type) {
             case "popstate":
-                this.setState({ path: event.state?.path || DEFAULT_PATH });
+                this.setState({
+                    ...event.state,
+                    path: event.state?.path || DEFAULT_PATH,
+                });
                 break;
         }
     }
@@ -100,7 +144,7 @@ export class GlobalContextProvider extends React.Component {
                 switch (data) {
                     case PREF_ENABLED:
                         this.setState({
-                            ucjsEnabled: gPrefs.get(PREF_ENABLED, false)
+                            ucjsEnabled: gPrefs.get(PREF_ENABLED, false),
                         });
                         break;
                     case PREF_SCRIPTSDISABLED:
@@ -108,7 +152,7 @@ export class GlobalContextProvider extends React.Component {
                             scriptsDisabled: gPrefs.get(
                                 PREF_SCRIPTSDISABLED,
                                 ""
-                            )
+                            ),
                         });
                         break;
                     case PREF_GBROWSERHACK_ENABLED:
@@ -116,7 +160,7 @@ export class GlobalContextProvider extends React.Component {
                             gBrowserHackEnabled: gPrefs.get(
                                 PREF_GBROWSERHACK_ENABLED,
                                 false
-                            )
+                            ),
                         });
                         break;
                     case PREF_GBROWSERHACK_REQUIRED:
@@ -124,7 +168,7 @@ export class GlobalContextProvider extends React.Component {
                             gBrowserHackRequired: gPrefs.get(
                                 PREF_GBROWSERHACK_REQUIRED,
                                 false
-                            )
+                            ),
                         });
                         break;
                     case PREF_UPDATE_INTERVAL:
@@ -132,7 +176,7 @@ export class GlobalContextProvider extends React.Component {
                             updateInterval: gPrefs.get(
                                 PREF_UPDATE_INTERVAL,
                                 86400000
-                            )
+                            ),
                         });
                         break;
                     case PREF_NOTIFICATIONS_ENABLED:
@@ -140,7 +184,7 @@ export class GlobalContextProvider extends React.Component {
                             notificationsEnabled: gPrefs.get(
                                 PREF_NOTIFICATIONS_ENABLED,
                                 true
-                            )
+                            ),
                         });
                         break;
                 }

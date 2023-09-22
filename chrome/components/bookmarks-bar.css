@@ -6,7 +6,9 @@
 
 #PersonalToolbar:not([customizing]) {
     position: relative;
-    margin-bottom: calc(-1px - var(--uc-bookmarks-height) - 2 * var(--uc-bookmarks-padding));
+    margin-bottom: calc(
+        -1px - var(--uc-bookmarks-height) - 2 * var(--uc-bookmarks-padding)
+    );
     transform: rotateX(90deg);
     transform-origin: top;
     transition: transform 135ms linear var(--uc-autohide-toolbar-delay) !important;

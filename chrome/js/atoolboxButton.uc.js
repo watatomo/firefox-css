@@ -64,7 +64,7 @@ When you middle click, the button will show a notification telling you the curre
         },
         get defaultTooltip() {
             return this.defaultLabel;
-        }
+        },
     };
     XPCOMUtils.defineLazyGetter(l10n.bundles, "menu", () =>
         Services.strings.createBundle(
@@ -90,7 +90,7 @@ When you middle click, the button will show a notification telling you the curre
         ChromeUtils.defineESModuleGetters(lazy, {
             BrowserToolboxLauncher:
                 "resource://devtools/client/framework/browser-toolbox/Launcher.sys.mjs",
-            require: "resource://devtools/shared/loader/Loader.sys.mjs"
+            require: "resource://devtools/shared/loader/Loader.sys.mjs",
         });
         XPCOMUtils.defineLazyGetter(
             lazy,
@@ -202,14 +202,14 @@ When you middle click, the button will show a notification telling you the curre
                             "popuphidden",
                             () => this._reset(),
                             {
-                                once: true
+                                once: true,
                             }
                         );
 
                         let { position, x, y } = options;
                         this._panel.openPopup(null, {
                             position,
-                            triggerEvent: options.event
+                            triggerEvent: options.event,
                         });
                         this._panel.moveToAnchor(anchor, position, x, y);
                     },
@@ -238,7 +238,7 @@ When you middle click, the button will show a notification telling you the curre
                             this.__panel = ConfirmationHint.__panel =
                                 document.getElementById("confirmation-hint");
                         }
-                    }
+                    },
                 };
 
                 let toolbarbutton = aDoc.createXULElement("toolbarbutton");
@@ -255,7 +255,7 @@ When you middle click, the button will show a notification telling you the curre
                     icon: "toolbox",
                     removable: true,
                     overflows: true,
-                    tooltiptext: l10n.defaultTooltip
+                    tooltiptext: l10n.defaultTooltip,
                 })) {
                     toolbarbutton.setAttribute(key, val);
                 }
@@ -271,7 +271,7 @@ When you middle click, the button will show a notification telling you the curre
                     class: "toolbarbutton-text",
                     crop: "right",
                     flex: "1",
-                    value: l10n.defaultLabel
+                    value: l10n.defaultLabel,
                 })) {
                     label.setAttribute(key, val);
                 }
@@ -304,7 +304,7 @@ When you middle click, the button will show a notification telling you the curre
                                       l10n.alreadyOpenMsg,
                                       {
                                           event: e,
-                                          hideCheck: true
+                                          hideCheck: true,
                                       }
                                   ) // if so, just show a hint that it's already open
                                 : aDoc.ownerGlobal.key_browserToolbox.click(); // if not, launch a new one
@@ -345,7 +345,7 @@ When you middle click, the button will show a notification telling you the curre
                         "animationend",
                         () => this.removeAttribute("animate"),
                         {
-                            once: true
+                            once: true,
                         }
                     );
                     this.setAttribute("animate", "true");
@@ -392,7 +392,7 @@ When you middle click, the button will show a notification telling you the curre
                                 value = {
                                     contentToolbox: 0,
                                     browserToolbox: 2,
-                                    popupHide: 1
+                                    popupHide: 1,
                                 };
                             }
                             toolbarbutton.mouseConfig = JSON.parse(value);
@@ -526,7 +526,7 @@ When you middle click, the button will show a notification telling you the curre
                     for (const topic of [
                         "devtools-thread-ready",
                         "devtools-thread-destroyed",
-                        "devtools:loader:destroy"
+                        "devtools:loader:destroy",
                     ]) {
                         obSvc.removeObserver(toolboxObserver, topic);
                     }
@@ -551,7 +551,7 @@ When you middle click, the button will show a notification telling you the curre
                 for (const topic of [
                     "devtools-thread-ready",
                     "devtools-thread-destroyed",
-                    "devtools:loader:destroy"
+                    "devtools:loader:destroy",
                 ]) {
                     obSvc.addObserver(toolboxObserver, topic);
                 }
@@ -573,7 +573,7 @@ When you middle click, the button will show a notification telling you the curre
                     );
                 }
                 return toolbarbutton;
-            }
+            },
         });
     }
 

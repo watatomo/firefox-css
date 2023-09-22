@@ -18,6 +18,5 @@
     },
     "homepage": "https://github.com/watatomo/firefox-css#readme",
     "description": "",
-    "devDependencies": {
-    }
+    "devDependencies": {}
 }

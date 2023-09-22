@@ -41,7 +41,7 @@ But if the script is installed, it will restore the built-in behavior of hiding 
                 for (let id of [
                     "star-button-box",
                     "bookmarks-menu-button",
-                    "libary-button"
+                    "libary-button",
                 ]) {
                     let node = document.getElementById(id);
                     if (node && !node.hidden) {

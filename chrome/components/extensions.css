@@ -25,11 +25,15 @@ hbox.urlbar-page-action.urlbar-addon-page-action#pageAction-urlbar-_testpilot-co
 /* tree-style-tabs */
 .webextension-browser-action[data-extensionid="treestyletab@piro.sakura.ne.jp"i]
     .toolbarbutton-icon,
-#sidebarMenu-popup #button_treestyletab_piro_sakura_ne_jp-sidebar-action:not([checked="true"]) {
+#sidebarMenu-popup
+    #button_treestyletab_piro_sakura_ne_jp-sidebar-action:not(
+        [checked="true"]
+    ) {
     list-style-image: url("../resources/extensions/tree-style-tabs-32.svg") !important;
 }
 
-.eom-addon-button[data-extensionid="treestyletab@piro.sakura.ne.jp"i] .toolbarbutton-icon,
+.eom-addon-button[data-extensionid="treestyletab@piro.sakura.ne.jp"i]
+    .toolbarbutton-icon,
 menupopup#viewSidebarMenu
     menuitem.menuitem-iconic.webextension-menuitem#menu_treestyletab_piro_sakura_ne_jp-sidebar-action[style]:is(
         [type="checkbox"],
@@ -72,13 +76,19 @@ menupopup#viewSidebarMenu
         .eom-addon-button
     )[data-extensionid="jid1-KKzOGWgsW3Ao4Q@jetpack"i]
     .toolbarbutton-icon,
-:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="idcac-pub@guus.ninja"i]
+:is(
+        .webextension-browser-action,
+        .eom-addon-button
+    )[data-extensionid="idcac-pub@guus.ninja"i]
     .toolbarbutton-icon {
     list-style-image: url("../resources/extensions/3rdpartycookies.svg");
 }
 
 /* dark reader */
-:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="addon@darkreader.org"i]
+:is(
+        .webextension-browser-action,
+        .eom-addon-button
+    )[data-extensionid="addon@darkreader.org"i]
     .toolbarbutton-icon {
     list-style-image: url("../resources/extensions/darkmode.svg");
 }
@@ -90,7 +100,10 @@ menupopup#viewSidebarMenu
 }
 
 /* uBlock origin */
-:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="uBlock0@raymondhill.net"i]
+:is(
+        .webextension-browser-action,
+        .eom-addon-button
+    )[data-extensionid="uBlock0@raymondhill.net"i]
     .toolbarbutton-icon {
     list-style-image: url("../resources/extensions/show-password.svg");
 }
@@ -105,13 +118,15 @@ menupopup#viewSidebarMenu
 }
 
 /* violentmonkey/tampermonkey, for injecting scripts into content windows */
-:is(.webextension-browser-action, .eom-addon-button)[label^="Violentmonkey"] .toolbarbutton-icon,
+:is(.webextension-browser-action, .eom-addon-button)[label^="Violentmonkey"]
+    .toolbarbutton-icon,
 :is(
         .webextension-browser-action,
         .eom-addon-button
     )[data-extensionid="{aecec67f-0d10-4fa7-b7c7-609a2db280cf}"i]
     .toolbarbutton-icon,
-:is(.webextension-browser-action, .eom-addon-button)[label^="Tampermonkey"] .toolbarbutton-icon,
+:is(.webextension-browser-action, .eom-addon-button)[label^="Tampermonkey"]
+    .toolbarbutton-icon,
 :is(
         .webextension-browser-action,
         .eom-addon-button
@@ -129,7 +144,8 @@ menupopup#viewSidebarMenu
 /* stylus, for injecting inline CSS into content windows. more useful than
 userContent.css when dealing with very complex websites that need
 elaborate/compiled stylesheets */
-:is(.webextension-browser-action, .eom-addon-button)[label="Stylus"] .toolbarbutton-icon,
+:is(.webextension-browser-action, .eom-addon-button)[label="Stylus"]
+    .toolbarbutton-icon,
 :is(
         .webextension-browser-action,
         .eom-addon-button
@@ -139,7 +155,10 @@ elaborate/compiled stylesheets */
 }
 
 /* sponsorblock */
-:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="sponsorBlocker@ajay.app"]
+:is(
+        .webextension-browser-action,
+        .eom-addon-button
+    )[data-extensionid="sponsorBlocker@ajay.app"]
     .toolbarbutton-icon {
     list-style-image: url("../resources/extensions/sponsorblock.svg");
 }
@@ -154,7 +173,10 @@ elaborate/compiled stylesheets */
 }
 
 /* react devtools */
-:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="@react-devtools"]
+:is(
+        .webextension-browser-action,
+        .eom-addon-button
+    )[data-extensionid="@react-devtools"]
     .toolbarbutton-icon {
     list-style-image: url("../resources/extensions/react.svg");
 }
@@ -167,7 +189,10 @@ elaborate/compiled stylesheets */
     list-style-image: url("../resources/extensions/container-base.svg") !important;
 }
 
-:is(.pageAction-panel-button, .urlbar-page-action)[actionid="_testpilot-containers"] {
+:is(
+        .pageAction-panel-button,
+        .urlbar-page-action
+    )[actionid="_testpilot-containers"] {
     --pageAction-image-16px: url("../resources/extensions/container-go.svg") !important;
     --pageAction-image-32px: url("../resources/extensions/container-go.svg") !important;
     list-style-image: url("../resources/extensions/container-go.svg") !important;
@@ -175,7 +200,10 @@ elaborate/compiled stylesheets */
 
 /* canvasblocker */
 :is(.pageAction-panel-button, .urlbar-page-action)[actionid^="canvasblocker_"],
-:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="CanvasBlocker@kkapsner.de"] {
+:is(
+        .webextension-browser-action,
+        .eom-addon-button
+    )[data-extensionid="CanvasBlocker@kkapsner.de"] {
     --pageAction-image-16px: url("../resources/extensions/fingerprint.svg") !important;
     --pageAction-image-32px: url("../resources/extensions/fingerprint.svg") !important;
     list-style-image: url("../resources/extensions/fingerprint.svg") !important;
@@ -207,7 +235,10 @@ elaborate/compiled stylesheets */
 } */
 
 /* yomichan */
-:is(.webextension-browser-action, .eom-addon-button)[data-extensionid="alex@foosoft.net"] {
+:is(
+        .webextension-browser-action,
+        .eom-addon-button
+    )[data-extensionid="alex@foosoft.net"] {
     --pageAction-image-16px: url("../resources/extensions/yomichan.svg") !important;
     --pageAction-image-32px: url("../resources/extensions/yomichan.svg") !important;
     list-style-image: url("../resources/extensions/yomichan.svg") !important;
@@ -216,7 +247,9 @@ elaborate/compiled stylesheets */
 /********** BOOKMARKS **********/
 
 /* folder */
-#PersonalToolbar .bookmark-item[container] > image.toolbarbutton-icon[type="menu"] {
+#PersonalToolbar
+    .bookmark-item[container]
+    > image.toolbarbutton-icon[type="menu"] {
     background-image: url("../resources/material/folder.svg") !important;
     background-size: 16px !important;
     background-repeat: no-repeat !important;
@@ -238,13 +271,19 @@ elaborate/compiled stylesheets */
 
 /* yomichan */
 #PersonalToolbar
-    :is([data-extensionid="alex@foosoft.net"], [data-extensionid="containerise@kinte.sh"])
+    :is(
+        [data-extensionid="alex@foosoft.net"],
+        [data-extensionid="containerise@kinte.sh"]
+    )
     stack.toolbarbutton-badge-stack {
     list-style-image: none !important;
 }
 
 #PersonalToolbar
-    :is([data-extensionid="alex@foosoft.net"], [data-extensionid="containerise@kinte.sh"])
+    :is(
+        [data-extensionid="alex@foosoft.net"],
+        [data-extensionid="containerise@kinte.sh"]
+    )
     image.toolbarbutton-icon {
     background-size: 16px !important;
     background-repeat: no-repeat !important;
@@ -253,11 +292,15 @@ elaborate/compiled stylesheets */
     box-sizing: border-box !important;
 }
 
-#PersonalToolbar [data-extensionid="alex@foosoft.net"] image.toolbarbutton-icon {
+#PersonalToolbar
+    [data-extensionid="alex@foosoft.net"]
+    image.toolbarbutton-icon {
     background-image: url("../resources/extensions/yomichan.svg") !important;
 }
 
-#PersonalToolbar [data-extensionid="containerise@kinte.sh"] image.toolbarbutton-icon {
+#PersonalToolbar
+    [data-extensionid="containerise@kinte.sh"]
+    image.toolbarbutton-icon {
     background-image: url("../resources/extensions/container-base.svg") !important;
 }
 

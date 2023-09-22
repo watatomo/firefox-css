@@ -8,7 +8,7 @@ import {
     GlobalContext,
     gPrefs,
     PREF_ENABLED,
-    PREF_GBROWSERHACK_ENABLED
+    PREF_GBROWSERHACK_ENABLED,
 } from "./GlobalContext";
 import { WarningBox } from "./WarningBox";
 import { PeriodInput } from "./PeriodInput";
@@ -25,7 +25,7 @@ export const SettingsView = () => {
         gBrowserHackEnabled,
         gBrowserHackRequired,
         updateInterval,
-        notificationsEnabled
+        notificationsEnabled,
     } = useContext(GlobalContext);
 
     const setBoolPref = useCallback((event) => {
@@ -36,18 +36,22 @@ export const SettingsView = () => {
         gPrefs.set(PREF_UPDATE_INTERVAL, value);
     }, []);
 
+    // TODO - Move the header to a separate component, using e.g. context
     return (
-        <div id="scripts">
-            <div id="scripts-header" className="view-header">
+        <div id="settings">
+            <div id="settings-header" className="view-header">
                 <div className="sticky-container">
+                    <div className="main-search">
+                        <div className="search-spacer"></div>
+                    </div>
                     <div className="main-heading">
                         <h1 className="header-name">Settings</h1>
                     </div>
+                    <WarningBox
+                        missingFxAutoconfig={missingFxAutoconfig}
+                        outdatedFxAutoconfig={outdatedFxAutoconfig}
+                    />
                 </div>
-                <WarningBox
-                    missingFxAutoconfig={missingFxAutoconfig}
-                    outdatedFxAutoconfig={outdatedFxAutoconfig}
-                />
             </div>
             <div id="main">
                 <div id="settings">

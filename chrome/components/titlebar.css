@@ -23,7 +23,9 @@
         display: none !important;
     }
 
-    :root:-moz-window-inactive:not([customizing]) .titlebar-buttonbox > toolbarbutton:not(:hover) {
+    :root:-moz-window-inactive:not([customizing])
+        .titlebar-buttonbox
+        > toolbarbutton:not(:hover) {
         list-style-image: url("../resources/window/inactive.svg") !important;
     }
 
