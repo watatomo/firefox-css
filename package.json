@@ -1,6 +1,6 @@
 {
     "name": "firefox-css",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "main": "false",
     "scripts": {
         "update-win": "cp -r chrome /c/Users/Ren/AppData/Roaming/Mozilla/Firefox/Profiles/a472ssb9.dev-edition-default && cp -r user.js /c/Users/Ren/AppData/Roaming/Mozilla/Firefox/Profiles/a472ssb9.dev-edition-default",

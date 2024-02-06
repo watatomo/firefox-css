@@ -97,6 +97,11 @@
     ) !important;
 }
 
+[badge-status="script-updates-available"]#PanelUI-menu-button
+    .toolbarbutton-badge {
+    color: unset !important;
+}
+
 /********** NAV ICONS CHANGE **********/
 
 #back-button,
